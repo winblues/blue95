@@ -1,6 +1,5 @@
 ---
 # yaml-language-server: $schema=https://schema.blue-build.org/recipe-v1.json
-# image will be published to ghcr.io/<user>/<name>
 name: blue95
 description: A workstation from your childhood home's computer room
 
@@ -15,11 +14,20 @@ modules:
       - source: system
         destination: /
 
-  # https://github.com/hyperreal64/vauxite-build/blob/main/src/xfce-desktop-pkgs.yaml
   - type: rpm-ostree
+    install:
+      - neovim
+      - just
+      - btop
+      - fastfetch
     remove:
       - firefox
       - firefox-langpacks
+
+  - type: script
+    scripts:
+      - 02-defaults.sh
+      - 10-install-appimages.sh
 
   - type: default-flatpaks
     notify: true # Send notification after install/uninstall is finished (true/false)
@@ -32,5 +40,5 @@ modules:
         - org.gnome.eog
     user: {} # Also add Flathub user repo, but no user packages
 
-  - type: signing # this sets up the proper policy & signing files for signed images to work fully
+  - type: signing
 

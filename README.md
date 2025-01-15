@@ -1,5 +1,5 @@
 # blue95 &nbsp; [![bluebuild build badge](https://github.com/ledif/blue95/actions/workflows/build.yml/badge.svg)](https://github.com/ledif/blue95/actions/workflows/build.yml)
-A workstation from your childhood home's computer room.
+A workstation for your childhood home's computer room.
 
 Fedora Atomic Desktop variant using XFCE and Chicago95.
 
@@ -29,9 +29,6 @@ To rebase an existing atomic Fedora installation to the latest build:
 
 The `latest` tag will automatically point to the latest build. That build will still always use the Fedora version specified in `recipe.yml`, so you won't get accidentally updated to the next major version.
 
-## ISO
-
-If build on Fedora Atomic, you can generate an offline ISO with the instructions available [here](https://blue-build.org/learn/universal-blue/#fresh-install-from-an-iso). These ISOs cannot unfortunately be distributed on GitHub for free due to large sizes, so for public projects something else has to be used for hosting.
 
 ## Verification
 
