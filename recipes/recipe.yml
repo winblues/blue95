@@ -15,7 +15,8 @@ modules:
       - source: system
         destination: /
 
-    # https://github.com/hyperreal64/vauxite-build/blob/main/src/xfce-desktop-pkgs.yaml
+  # https://github.com/hyperreal64/vauxite-build/blob/main/src/xfce-desktop-pkgs.yaml
+  - type: rpm-ostree
     install:
       - NetworkManager-openconnect-gnome
       - NetworkManager-openvpn-gnome
@@ -70,7 +71,6 @@ modules:
       - xfwm4
       - xfwm4-themes
       - zathura
-
     remove:
       - firefox
       - firefox-langpacks
