@@ -1,12 +1,10 @@
 ---
 # yaml-language-server: $schema=https://schema.blue-build.org/recipe-v1.json
 # image will be published to ghcr.io/<user>/<name>
-name: bluegap
-# description will be included in the image's metadata
-description: This is my personal OS image.
+name: blue95
+description: A workstation from your childhood home's computer room
 
-# the base image to build on top of (FROM) and the version tag to use
-base-image: ghcr.io/ublue-os/silverblue-main
+base-image: ghcr.io/ublue-os/base-main
 image-version: 41 # latest is also supported if you want new updates ASAP
 
 # module configuration, executed in order
@@ -15,19 +13,67 @@ modules:
   - type: files
     files:
       - source: system
-        destination: / # copies files/system/* (* means everything inside it) into your image's root folder /
+        destination: /
 
-  - type: rpm-ostree
-    repos:
-      - https://copr.fedorainfracloud.org/coprs/atim/starship/repo/fedora-%OS_VERSION%/atim-starship-fedora-%OS_VERSION%.repo
+    # https://github.com/hyperreal64/vauxite-build/blob/main/src/xfce-desktop-pkgs.yaml
     install:
-      - micro
-      - starship
-    remove:
-      # example: removing firefox (in favor of the flatpak)
-      # "firefox" is the main package, "firefox-langpacks" is a dependency
+      - NetworkManager-openconnect-gnome
+      - NetworkManager-openvpn-gnome
+      - NetworkManager-pptp-gnome
+      - NetworkManager-ssh-gnome
+      - NetworkManager-vpnc-gnome
+      - Thunar
+      - adwaita-gtk2-theme
+      - adwaita-icon-theme
+      - blueman
       - firefox
-      - firefox-langpacks # also remove firefox dependency (not required for all packages, this is a special case)
+      - galculator
+      - gnome-keyring-pam
+      - greybird-dark-theme
+      - greybird-light-theme
+      - greybird-xfce4-notifyd-theme
+      - greybird-xfwm4-theme
+      - gtk-xfce-engine
+      - gvfs
+      - gvfs-archive
+      - gvfs-mtp
+      - initial-setup-gui
+      - lightdm-gtk
+      - mint-y-theme
+      - mousepad
+      - network-manager-applet
+      - nm-connection-editor
+      - ristretto
+      - seahorse
+      - thunar-archive-plugin
+      - thunar-media-tags-plugin
+      - thunar-volman
+      - xarchiver
+      - xdg-user-dirs-gtk
+      - xfce4-about
+      - xfce4-appfinder
+      - xfce4-clipman-plugin
+      - xfce4-datetime-plugin
+      - xfce4-dict-plugin
+      - xfce4-panel
+      - xfce4-places-plugin
+      - xfce4-power-manager
+      - xfce4-pulseaudio-plugin
+      - xfce4-screensaver
+      - xfce4-screenshooter-plugin
+      - xfce4-session
+      - xfce4-settings
+      - xfce4-taskmanager
+      - xfce4-terminal
+      - xfconf
+      - xfdesktop
+      - xfwm4
+      - xfwm4-themes
+      - zathura
+
+    remove:
+      - firefox
+      - firefox-langpacks
 
   - type: default-flatpaks
     notify: true # Send notification after install/uninstall is finished (true/false)
