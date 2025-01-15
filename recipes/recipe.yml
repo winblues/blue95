@@ -1,7 +1,7 @@
 ---
 # yaml-language-server: $schema=https://schema.blue-build.org/recipe-v1.json
 name: blue95
-description: A workstation from your childhood home's computer room
+description: A desktop from your childhood home's computer room
 
 base-image: quay.io/fedora-ostree-desktops/xfce-atomic
 image-version: 41 # latest is also supported if you want new updates ASAP
@@ -14,6 +14,12 @@ modules:
       - source: system
         destination: /
 
+  - type: script
+    scripts:
+      - 02-defaults.sh
+      - 10-install-appimages.sh
+      - 20-chicago95.sh
+
   - type: rpm-ostree
     install:
       - neovim
@@ -24,20 +30,12 @@ modules:
       - firefox
       - firefox-langpacks
 
-  - type: script
-    scripts:
-      - 02-defaults.sh
-      - 10-install-appimages.sh
-
   - type: default-flatpaks
     notify: true # Send notification after install/uninstall is finished (true/false)
     system:
       # If no repo information is specified, Flathub will be used by default
       install:
         - org.mozilla.firefox
-        - org.gnome.Loupe
-      remove:
-        - org.gnome.eog
     user: {} # Also add Flathub user repo, but no user packages
 
   - type: signing

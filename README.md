@@ -1,7 +1,7 @@
 # blue95 &nbsp; [![bluebuild build badge](https://github.com/ledif/blue95/actions/workflows/build.yml/badge.svg)](https://github.com/ledif/blue95/actions/workflows/build.yml)
 A workstation for your childhood home's computer room.
 
-Fedora Atomic Desktop variant using XFCE and Chicago95.
+Fedora Atomic Desktop variant using XFCE and [Chicago95](https://github.com/grassmunk/Chicago95).
 
 ## Installation
 
