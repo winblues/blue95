@@ -20,6 +20,7 @@ modules:
 
   - type: script
     scripts:
+      - 00-image-info.sh
       - 02-defaults.sh
       - 03-ublue.sh
       - 10-install-appimages.sh
@@ -33,6 +34,7 @@ modules:
       - fastfetch
       - lightdm-gtk-greeter-settings
       - vorbis-tools
+      - qt5ct
       - qt5-qtstyleplugins
       - libcanberra
       - sox

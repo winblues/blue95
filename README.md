@@ -29,6 +29,15 @@ These images are signed with [Sigstore](https://www.sigstore.dev/)'s [cosign](ht
 cosign verify --key cosign.pub ghcr.io/ledif/blue95
 ```
 
+## Project Goals
+
+- Match upstream Fedora Xfce in terms of core system components (e.g., X11 vs Wayland, pulseaudio vs wireplumber, etc).
+- Pull in tweaks from [Universal Blue](https://github.com/ublue-os) (e.g. codecs, drivers) to provide a more usable out-of-the box experience.
+- Provide an aesthetic that is reminiscent of a bygone era of computing.
+
+**Non goals**:
+- Faithful reproduction of design elements from decades old operating systems. Whenever usability and exact replication are at odds, usability and accessibility will generally be preferred.
+
 ## Shoutouts
 - [@grassmunk](https://github.com/grassmunk)/[@dominichayesferen](https://github.com/dominichayesferen) for [Chicago95](https://github.com/grassmunk/Chicago95) and [Chicagofier](https://github.com/dominichayesferen/Chicagofier) respectively
 - [BlueBuild](https://github.com/blue-build), [Universal Blue](https://github.com/ublue-os) and [Fedora](https://fedoraproject.org)

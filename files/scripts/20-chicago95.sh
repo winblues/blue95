@@ -24,6 +24,14 @@ cp Fonts/vga_font/LessPerfectDOSVGA.ttf /usr/share/fonts
 cp -r Fonts/bitmap/cronyx-cyrillic /usr/share/fonts
 fc-cache -fv
 
+# Use Qt instead of GTK if possible
+mkdir -p /usr/share/qt5ct/colors
+cp Extras/Chicago95_qt.conf /usr/share/qt5ct/colors
+
+# Terminal
+mkdir -p /etc/skel/.local/share/xfce4/terminal/colorschemes
+cp Extras/Chicago95.theme /etc/skel/.local/share/xfce4/terminal/colorschemes
+
 # Sounds
 cp -Rf sounds/Chicago95 /usr/share/sounds/
 cp -f "Extras/Microsoft Windows 95 Startup Sound.ogg" /usr/share/sounds/Chicago95/startup.ogg

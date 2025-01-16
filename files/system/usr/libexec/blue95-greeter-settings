@@ -1,0 +1,2 @@
+#!/usr/bin/env bash
+pkexec lightdm-gtk-greeter-settings
