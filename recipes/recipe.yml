@@ -14,6 +14,10 @@ modules:
       - source: system
         destination: /
 
+  - type: rpm-ostree
+    install:
+      - plymouth-plugin-script
+
   - type: script
     scripts:
       - 02-defaults.sh
@@ -25,6 +29,7 @@ modules:
       - neovim
       - just
       - btop
+      - tmux
       - fastfetch
     remove:
       - firefox

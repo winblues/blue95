@@ -1,33 +1,25 @@
 # blue95 &nbsp; [![bluebuild build badge](https://github.com/ledif/blue95/actions/workflows/build.yml/badge.svg)](https://github.com/ledif/blue95/actions/workflows/build.yml)
-A workstation for your childhood home's computer room.
 
-Fedora Atomic Desktop variant using XFCE and [Chicago95](https://github.com/grassmunk/Chicago95).
+> A workstation for your childhood home's computer room.
+
+Blue95 is a modern Fedora Atomic Desktop using the Xfce Desktop environment with the [Chicago95](https://github.com/grassmunk/Chicago95) theme.
+Its goal is to provide a modern and lightweight Linux experience with looks that remind us of a bygone era of computing.
 
 ## Installation
 
-> **Warning**  
-> [This is an experimental feature](https://www.fedoraproject.org/wiki/Changes/OstreeNativeContainerStable), try at your own discretion.
-
-To rebase an existing atomic Fedora installation to the latest build:
+The only way to install currently is to rebase from an existing atomic Fedora installation to the latest build.
+ISOs will be available at some point.
 
 - First rebase to the unsigned image, to get the proper signing keys and policies installed:
   ```
   rpm-ostree rebase ostree-unverified-registry:ghcr.io/ledif/blue95:latest
   ```
-- Reboot to complete the rebase:
-  ```
-  systemctl reboot
-  ```
-- Then rebase to the signed image, like so:
+- Reboot and then rebase to the signed image, like so:
   ```
   rpm-ostree rebase ostree-image-signed:docker://ghcr.io/ledif/blue95:latest
   ```
-- Reboot again to complete the installation
-  ```
-  systemctl reboot
-  ```
 
-The `latest` tag will automatically point to the latest build. That build will still always use the Fedora version specified in `recipe.yml`, so you won't get accidentally updated to the next major version.
+The `latest` tag will automatically point to the latest build.
 
 
 ## Verification
@@ -39,6 +31,7 @@ cosign verify --key cosign.pub ghcr.io/ledif/blue95
 ```
 
 ## Shoutouts
-- @grassmunk and @dominichayesferen for [Chicago95](https://github.com/grassmunk/Chicago95) and [Chicagofier](https://github.com/dominichayesferen/Chicagofier) respectively
+- [@grassmunk](https://github.com/grassmunk/Chicago95) and [@dominichayesferen](https://github.com/grassmunk/Chicago95) for [Chicago95](https://github.com/grassmunk/Chicago95) and [Chicagofier](https://github.com/dominichayesferen/Chicagofier) respectively
 - [BlueBuild](https://github.com/blue-build), [Universal Blue](https://github.com/ublue-os) and Fedora
 - The XFCE team
+ 
