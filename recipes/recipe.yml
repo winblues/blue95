@@ -21,6 +21,7 @@ modules:
   - type: script
     scripts:
       - 02-defaults.sh
+      - 03-ublue.sh
       - 10-install-appimages.sh
       - 20-chicago95.sh
 
@@ -31,6 +32,8 @@ modules:
       - btop
       - tmux
       - fastfetch
+      - vorbis-tools
+      - qt5-qtstyleplugins
     remove:
       - firefox
       - firefox-langpacks

@@ -1,9 +1,9 @@
 # blue95 &nbsp; [![bluebuild build badge](https://github.com/ledif/blue95/actions/workflows/build.yml/badge.svg)](https://github.com/ledif/blue95/actions/workflows/build.yml)
 
-> A workstation for your childhood home's computer room.
+> A desktop for your childhood home's computer room.
 
 Blue95 is a modern Fedora Atomic Desktop using the Xfce Desktop environment with the [Chicago95](https://github.com/grassmunk/Chicago95) theme.
-Its goal is to provide a modern and lightweight Linux experience with looks that remind us of a bygone era of computing.
+Its goal is to provide a modern and lightweight Linux experience with that reminds us of a bygone era of computing.
 
 ## Installation
 
@@ -31,7 +31,7 @@ cosign verify --key cosign.pub ghcr.io/ledif/blue95
 ```
 
 ## Shoutouts
-- [@grassmunk](https://github.com/grassmunk/Chicago95) and [@dominichayesferen](https://github.com/grassmunk/Chicago95) for [Chicago95](https://github.com/grassmunk/Chicago95) and [Chicagofier](https://github.com/dominichayesferen/Chicagofier) respectively
-- [BlueBuild](https://github.com/blue-build), [Universal Blue](https://github.com/ublue-os) and Fedora
-- The XFCE team
+- [@grassmunk](https://github.com/grassmunk/Chicago95)/[@dominichayesferen](https://github.com/grassmunk/Chicago95) for [Chicago95](https://github.com/grassmunk/Chicago95) and [Chicagofier](https://github.com/dominichayesferen/Chicagofier) respectively
+- [BlueBuild](https://github.com/blue-build), [Universal Blue](https://github.com/ublue-os) and [Fedora](https://fedoraproject.org)
+- The [Xfce](https://www.xfce.org/) team
  
