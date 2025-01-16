@@ -31,6 +31,7 @@ modules:
       - neovim
       - btop
       - fastfetch
+      - lightdm-gtk-greeter-settings
       - vorbis-tools
       - qt5-qtstyleplugins
       - libcanberra
