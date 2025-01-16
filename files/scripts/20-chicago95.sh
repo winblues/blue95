@@ -2,13 +2,12 @@
 
 set -xueo pipefail
 
-
 # Fetch
 cd /tmp
 wget https://github.com/grassmunk/Chicago95/archive/31a357c.zip
 unzip -q *.zip
-mv Chicago95* /usr/share/chicago95
-cd /usr/share/chicago95
+mv Chicago95* /usr/src/chicago95
+cd /usr/src/chicago95
 
 # Themes
 mkdir -p /usr/share/blue95/themes
@@ -18,7 +17,7 @@ flatpak override --filesystem=/usr/share/blue95/themes/
 flatpak override --env=GTK_THEME=Chicago95
 
 # Icons and cursors
-cp -r Icons/* Cursors/ /usr/share/icons/
+cp -r Icons/* Cursors/* /usr/share/icons/
 
 # Fonts
 cp Fonts/vga_font/LessPerfectDOSVGA.ttf /usr/share/fonts
@@ -32,7 +31,7 @@ cp -f "Extras/Microsoft Windows 95 Startup Sound.ogg" /usr/share/sounds/Chicago9
 cp -f ./sounds/chicago95-startup.desktop /etc/skel/.config/autostart
 
 # Backgrounds
-cp -Rf ./Extras/Backgrounds /usr/share/backChicago95Backgrounds
+cp -Rf ./Extras/Backgrounds /usr/share/backgrounds/Chicago95
 
 
 # Plymouth

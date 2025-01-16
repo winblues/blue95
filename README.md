@@ -2,8 +2,8 @@
 
 > A desktop for your childhood home's computer room.
 
-Blue95 is a modern Fedora Atomic Desktop using the Xfce Desktop environment with the [Chicago95](https://github.com/grassmunk/Chicago95) theme.
-Its goal is to provide a modern and lightweight Linux experience with that reminds us of a bygone era of computing.
+Blue95 is a modern and lightweight desktop experience that reminds us of a bygone era of computing.
+Based on Fedora Atomic Xfce with the [Chicago95](https://github.com/grassmunk/Chicago95) theme.
 
 ## Installation
 
@@ -19,8 +19,7 @@ ISOs will be available at some point.
   rpm-ostree rebase ostree-image-signed:docker://ghcr.io/ledif/blue95:latest
   ```
 
-The `latest` tag will automatically point to the latest build.
-
+It is recommended to create a new user after rebasing.
 
 ## Verification
 
@@ -31,7 +30,7 @@ cosign verify --key cosign.pub ghcr.io/ledif/blue95
 ```
 
 ## Shoutouts
-- [@grassmunk](https://github.com/grassmunk/Chicago95)/[@dominichayesferen](https://github.com/grassmunk/Chicago95) for [Chicago95](https://github.com/grassmunk/Chicago95) and [Chicagofier](https://github.com/dominichayesferen/Chicagofier) respectively
+- [@grassmunk](https://github.com/grassmunk)/[@dominichayesferen](https://github.com/dominichayesferen) for [Chicago95](https://github.com/grassmunk/Chicago95) and [Chicagofier](https://github.com/dominichayesferen/Chicagofier) respectively
 - [BlueBuild](https://github.com/blue-build), [Universal Blue](https://github.com/ublue-os) and [Fedora](https://fedoraproject.org)
 - The [Xfce](https://www.xfce.org/) team
  

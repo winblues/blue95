@@ -1,4 +1,4 @@
-{
+ {
     "all": {
         "include": {
             "all": [
@@ -21,6 +21,7 @@
                 "heif-pixbuf-loader",
                 "htop",
                 "intel-vaapi-driver",
+                "jetbrains-mono-fonts-all",
                 "just",
                 "kernel-tools",
                 "libcamera",

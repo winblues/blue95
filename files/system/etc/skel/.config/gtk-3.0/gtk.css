@@ -1,0 +1,37 @@
+/* GTK 3.24 Theme Override for the Chicago95 theme.
+ * REMOVE THIS FILE WHEN USING OTHER GTK THEMES! */
+
+/* XFCE APP: Color Profiles
+ * Add a background colour since the color profile app overrides the GTK theme. */
+.color-profiles {
+  background-color: @bg_color; }
+
+/* XFCE APP: XFCE Session logout dialogue
+ * Add a border to the logout dialogue. */
+.xfsm-logout-dialog {
+  border-left: 1px solid @border_bright;
+  border-top: 1px solid @border_bright;
+  border-bottom: 1px solid @border_dark;
+  border-right: 1px solid @border_dark;
+  box-shadow: inset -1px -1px @border_shade, inset 1px 1px @border_light; }
+
+/* XFCE APP: Thunar
+ * Add a border effect to areas where Thunar will attempt to override. */
+.thunar .sidebar {
+  border-right: 2px solid @border_color; }
+.thunar notebook .standard-view {
+  padding: 0px;
+  border-left: 2px solid @border_color;
+  border-right: 2px solid @border_color; }
+
+/* GNOME APP: GNOME Disks
+ * This is a fix for the GNOME Disks application grid style. */ 
+.gnome-disk-utility-grid {
+  background-color: @bg_shade;
+  color: @font_bright;
+  border-radius: 0px;
+  outline-color: @border_bright; }
+  .gnome-disk-utility-grid:backdrop {
+    background-color: @bg_shade; }
+
+

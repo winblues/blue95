@@ -1,19 +1,19 @@
 ---
 # yaml-language-server: $schema=https://schema.blue-build.org/recipe-v1.json
 name: blue95
-description: A desktop from your childhood home's computer room
+description: A desktop for your childhood home's computer room
 
 base-image: quay.io/fedora-ostree-desktops/xfce-atomic
-image-version: 41 # latest is also supported if you want new updates ASAP
+image-version: 41
 
 # module configuration, executed in order
-# you can include multiple instances of the same module
 modules:
   - type: files
     files:
       - source: system
         destination: /
 
+    # Packages needed by the build scripts
   - type: rpm-ostree
     install:
       - plymouth-plugin-script
@@ -25,28 +25,30 @@ modules:
       - 10-install-appimages.sh
       - 20-chicago95.sh
 
+  # General packages
   - type: rpm-ostree
     install:
       - neovim
-      - just
       - btop
-      - tmux
       - fastfetch
       - vorbis-tools
       - qt5-qtstyleplugins
+      - libcanberra
+      - sox
     remove:
       - firefox
       - firefox-langpacks
 
   - type: default-flatpaks
-    notify: true # Send notification after install/uninstall is finished (true/false)
+    notify: true # Send notification after install/uninstall is finished
     system:
-      # If no repo information is specified, Flathub will be used by default
+      # Flathub will be used by default
       install:
         - org.mozilla.firefox
-    user: {} # Also add Flathub user repo, but no user packages
+        - org.kde.kolourpaint
 
   # Regenerate initramfs because of plymouth
   - type: initramfs
+
   - type: signing
 
