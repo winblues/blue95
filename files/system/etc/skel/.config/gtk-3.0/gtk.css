@@ -31,7 +31,12 @@
   color: @font_bright;
   border-radius: 0px;
   outline-color: @border_bright; }
-  .gnome-disk-utility-grid:backdrop {
-    background-color: @bg_shade; }
 
+.gnome-disk-utility-grid:backdrop {
+  background-color: @bg_shade; }
+
+/* Show full name for desktop icons */
+* {
+  -XfdesktopIconView-ellipsize-icon-labels: 0;
+}
 
