@@ -2,6 +2,8 @@
 
 > A desktop for your childhood home's computer room.
 
+![Screenshot_2025-01-16_11-24-29](https://github.com/user-attachments/assets/03cc5a25-755c-43c5-ae07-87d4bc1912f8)
+
 Blue95 is a modern and lightweight desktop experience that reminds us of a bygone era of computing.
 Based on Fedora Atomic Xfce with the [Chicago95](https://github.com/grassmunk/Chicago95) theme.
 
