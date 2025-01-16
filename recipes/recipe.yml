@@ -38,5 +38,7 @@ modules:
         - org.mozilla.firefox
     user: {} # Also add Flathub user repo, but no user packages
 
+  # Regenerate initramfs because of plymouth
+  - type: initramfs
   - type: signing
 
