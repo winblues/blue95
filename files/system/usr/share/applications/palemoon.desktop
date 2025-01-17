@@ -1,0 +1,11 @@
+[Desktop Entry]
+Type=Application
+Exec=/usr/bin/palemoon
+Terminal=false
+X-MultipleArgs=false
+Icon=firefox
+StartupWMClass=firefox
+DBusActivatable=false
+Categories=GTK;Network;WebBrowser;
+StartupNotify=true
+Name=Pale Moon

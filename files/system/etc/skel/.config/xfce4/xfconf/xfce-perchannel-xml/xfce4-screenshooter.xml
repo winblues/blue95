@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<channel name="xfce4-screenshooter" version="1.0">
+  <property name="imgur-custom-action-added" type="bool" value="true"/>
+  <property name="actions" type="empty">
+    <property name="action-0" type="empty">
+      <property name="name" type="string" value="Host on Imgur™"/>
+      <property name="command" type="string" value="/usr/libexec/xfce4/screenshooter/scripts/imgur-upload.sh %f %imgur_client_id"/>
+    </property>
+    <property name="actions" type="int" value="1"/>
+  </property>
+</channel>

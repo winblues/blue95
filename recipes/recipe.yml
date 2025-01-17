@@ -13,10 +13,26 @@ modules:
       - source: system
         destination: /
 
-    # Packages needed by the build scripts
+
   - type: rpm-ostree
     install:
+      - neovim
+      - btop
+      - fastfetch
+      - lightdm-gtk-greeter-settings
+      - vorbis-tools
+      - wine-ms-sans-serif-fonts
+      - wine-tahoma-fonts
+      - menulibre
+      - qt5ct
+      - qt5-qtstyleplugins
+      - libcanberra
+      - sox
+      - strace
       - plymouth-plugin-script
+    remove:
+      - firefox
+      - firefox-langpacks
 
   - type: script
     scripts:
@@ -25,22 +41,6 @@ modules:
       - 03-ublue.sh
       - 10-install-appimages.sh
       - 20-chicago95.sh
-
-  # General packages
-  - type: rpm-ostree
-    install:
-      - neovim
-      - btop
-      - fastfetch
-      - lightdm-gtk-greeter-settings
-      - vorbis-tools
-      - qt5ct
-      - qt5-qtstyleplugins
-      - libcanberra
-      - sox
-    remove:
-      - firefox
-      - firefox-langpacks
 
   - type: default-flatpaks
     notify: true # Send notification after install/uninstall is finished

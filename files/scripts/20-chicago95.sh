@@ -18,6 +18,9 @@ flatpak override --env=GTK_THEME=Chicago95
 
 # Icons and cursors
 cp -r Icons/* Cursors/* /usr/share/icons/
+update-mime-database /usr/share/mime
+gdk-pixbuf-query-loaders-64 --update-cache
+
 
 # Fonts
 cp Fonts/vga_font/LessPerfectDOSVGA.ttf /usr/share/fonts
