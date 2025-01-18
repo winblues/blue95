@@ -13,7 +13,6 @@ modules:
       - source: system
         destination: /
 
-
   - type: rpm-ostree
     install:
       - btop
@@ -44,6 +43,7 @@ modules:
       - 03-ublue.sh
       - 10-install-appimages.sh
       - 20-chicago95.sh
+      - 21-fix-icon-sizes.py
 
   - type: default-flatpaks
     notify: true # Send notification after install/uninstall is finished

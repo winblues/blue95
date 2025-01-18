@@ -4,7 +4,7 @@ from pathlib import Path
 import cairosvg
 
 # This script is meant to add missing icons for some sizes
-SIZES_TO_PROCESS = ["48"]
+SIZES_TO_PROCESS = ["28"]
 
 base = Path("/usr/share/icons/Chicago95")
 
