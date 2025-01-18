@@ -4,7 +4,7 @@
 
 ![Screenshot_2025-01-16_11-24-29](https://github.com/user-attachments/assets/03cc5a25-755c-43c5-ae07-87d4bc1912f8)
 
-Blue95 is a modern and lightweight desktop experience that reminds us of a bygone era of computing.
+Blue95 is a modern and lightweight desktop experience that is reminiscent of of a bygone era of computing.
 Based on Fedora Atomic Xfce with the [Chicago95](https://github.com/grassmunk/Chicago95) theme.
 
 ## Installation
@@ -35,7 +35,7 @@ cosign verify --key cosign.pub ghcr.io/ledif/blue95
 
 - Match upstream Fedora Xfce in terms of core system components (e.g., X11 vs Wayland, PulseAudo vs PipeWire, etc).
 - Pull in tweaks from [Universal Blue](https://github.com/ublue-os) (e.g. codecs, drivers) to provide a more usable out-of-the box experience.
-- Provide an aesthetic that is reminiscent of a bygone era of computing.
+- Provide an aesthetic rooted in a bygone era of computing.
 
 **Non goals**:
 - Faithful reproduction of design elements from decades old operating systems. Whenever usability and exact replication are at odds, usability and accessibility will generally be preferred.
