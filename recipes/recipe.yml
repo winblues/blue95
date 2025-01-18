@@ -16,20 +16,23 @@ modules:
 
   - type: rpm-ostree
     install:
-      - neovim
       - btop
       - fastfetch
+      - libcanberra
       - lightdm-gtk-greeter-settings
+      - menulibre
+      - neovim
+      - python3-cairosvg
+      - plymouth-plugin-script
+      - qt5ct
+      - qt5-qtstyleplugins
+      - sox
+      - strace
       - vorbis-tools
       - wine-ms-sans-serif-fonts
       - wine-tahoma-fonts
-      - menulibre
-      - qt5ct
-      - qt5-qtstyleplugins
-      - libcanberra
-      - sox
-      - strace
-      - plymouth-plugin-script
+      - xscreensaver-extras
+      - xscreensaver-extras-gss
     remove:
       - firefox
       - firefox-langpacks
