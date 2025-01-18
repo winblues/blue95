@@ -17,16 +17,8 @@ cp -r Theme/Chicago95 /usr/share/themes
 # Icons and cursors
 cp -r Icons/* Cursors/* /usr/share/icons/
 
-# Battery tweaks (stay on full icon from 100%-90%)
-for f in $(find . -name "battery-level-90*"); do
-  target=$(echo ${f/90/100} | sed 's/-charging//')
-  rm $f
-  ln -s $target $f
-done
-
 
 # Custom app icons
-
 ln -s /usr/share/icons/Chicago95/apps/48/{software,bauh}.png
 ln -s /usr/share/icons/Chicago95/apps/48/stock_keyring.png /usr/share/icons/Chicago95/apps/com.onepassword.OnePassword.png
 
