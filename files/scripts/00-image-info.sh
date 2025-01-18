@@ -12,7 +12,7 @@ SUPPORT_URL="https://github.com/ledif/blue95/issues/"
 BUG_SUPPORT_URL="https://github.com/ledif/blue95/issues"
 VERSION_CODENAME="Ross"
 
-IMAGE_INFO="/usr/share/blue95/image-info.json"
+IMAGE_INFO="/usr/share/ublue-os/image-info.json"
 IMAGE_REF="ostree-image-signed:docker://ghcr.io/$IMAGE_VENDOR/$IMAGE_NAME"
 
 FEDORA_MAJOR_VERSION=41

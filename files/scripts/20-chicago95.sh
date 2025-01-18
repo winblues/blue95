@@ -10,14 +10,26 @@ mv Chicago95* /usr/src/chicago95
 cd /usr/src/chicago95
 
 # Themes
-mkdir -p /usr/share/blue95/themes
-cp -r Theme/Chicago95 /usr/share/blue95/themes
-ln -s /usr/share/blue95/themes/Chicago95 /usr/share/themes/Chicago95
-flatpak override --filesystem=/usr/share/blue95/themes/
-flatpak override --env=GTK_THEME=Chicago95
+cp -r Theme/Chicago95 /usr/share/themes
+#flatpak override --filesystem=/usr/share/blue95/themes/
+#flatpak override --env=GTK_THEME=Chicago95
 
 # Icons and cursors
 cp -r Icons/* Cursors/* /usr/share/icons/
+
+# Battery tweaks (stay on full icon from 100%-90%)
+for f in $(find . -name "battery-level-90*"); do
+  target=$(echo ${f/90/100} | sed 's/-charging//')
+  rm $f
+  ln -s $target $f
+done
+
+
+# Custom app icons
+
+ln -s /usr/share/icons/Chicago95/apps/48/{software,bauh}.png
+ln -s /usr/share/icons/Chicago95/apps/48/stock_keyring.png /usr/share/icons/Chicago95/apps/com.onepassword.OnePassword.png
+
 update-mime-database /usr/share/mime
 gdk-pixbuf-query-loaders-64 --update-cache
 

@@ -37,11 +37,13 @@ for category_dir in base.iterdir():
     if not size_dir.is_dir():
         size_dir.mkdir()
 
+    num_created = 0
     for icon in icons_for_all_sizes:
       out_png = size_dir / icon
       in_svg = Path(category_dir / "scalable" / f"{Path(icon).stem}.svg")
 
       if not out_png.exists() and in_svg.exists():
-        print(f"-- Creating {out_png}")
         cairosvg.svg2png(url=str(in_svg), write_to=str(out_png), output_width=int(size), output_height=int(size))
+        num_created = num_created + 1
 
+    print(f"-- Created {num_created} icons for {category_dir.name} ({size}px)")

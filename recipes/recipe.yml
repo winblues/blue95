@@ -13,12 +13,18 @@ modules:
       - source: system
         destination: /
 
+  - type: containerfile
+    containerfiles: ["ublue"]
+
+
   - type: rpm-ostree
     install:
       - btop
       - fastfetch
       - libcanberra
       - lightdm-gtk-greeter-settings
+      - mate-disk-usage-analyzer
+      - mate-system-monitor
       - menulibre
       - neovim
       - python3-cairosvg
@@ -44,6 +50,7 @@ modules:
       - 10-install-appimages.sh
       - 20-chicago95.sh
       - 21-fix-icon-sizes.py
+      - 29-finalize-de-tweaks.sh
 
   - type: default-flatpaks
     notify: true # Send notification after install/uninstall is finished
