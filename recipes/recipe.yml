@@ -23,6 +23,7 @@ modules:
       - catfish
       - fastfetch
       - libcanberra
+      - libcanberra-gtk3
       - lightdm-gtk-greeter-settings
       - mate-disk-usage-analyzer
       - mate-system-monitor
@@ -51,8 +52,7 @@ modules:
       - 03-ublue.sh
       - 10-install-appimages.sh
       - 20-chicago95.sh
-      #- 21-fix-icon-sizes.py
-      - 29-finalize-de-tweaks.sh
+      - 21-de-tweaks.sh
 
   - type: default-flatpaks
     notify: true # Send notification after install/uninstall is finished

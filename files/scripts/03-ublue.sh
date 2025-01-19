@@ -9,6 +9,11 @@ sed -i '0,/enabled=1/{s/enabled=1/enabled=1\npriority=90/}' /etc/yum.repos.d/neg
 
 curl -Lo /etc/yum.repos.d/_copr_ublue-os_staging.repo https://copr.fedorainfracloud.org/coprs/ublue-os/staging/repo/fedora-"${RELEASE}"/ublue-os-staging-fedora-"${RELEASE}".repo
 
+# Custom ujusts
+
+find /usr/share/ublue-os/just/blue95 -iname '*.just' -exec printf "\n\n" \; -exec cat {} \; >> /usr/share/ublue-os/just/60-custom.just
+rm -rf /usr/share/ublue-os/just/blue95
+
 # From https://github.com/ublue-os/main/blob/main/packages.sh
 
 # build list of all packages requested for inclusion
@@ -58,3 +63,5 @@ if [[ "${#EXCLUDED_PACKAGES[@]}" -gt 0 ]]; then
     rpm-ostree override remove \
         ${EXCLUDED_PACKAGES[@]}
 fi
+
+
