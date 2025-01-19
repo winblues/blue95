@@ -20,6 +20,7 @@ modules:
   - type: rpm-ostree
     install:
       - btop
+      - catfish
       - fastfetch
       - libcanberra
       - lightdm-gtk-greeter-settings
@@ -27,6 +28,7 @@ modules:
       - mate-system-monitor
       - menulibre
       - neovim
+      - orage
       - python3-cairosvg
       - plymouth-plugin-script
       - qt5ct
@@ -49,7 +51,7 @@ modules:
       - 03-ublue.sh
       - 10-install-appimages.sh
       - 20-chicago95.sh
-      - 21-fix-icon-sizes.py
+      #- 21-fix-icon-sizes.py
       - 29-finalize-de-tweaks.sh
 
   - type: default-flatpaks
