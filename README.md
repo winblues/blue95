@@ -34,7 +34,7 @@ cosign verify --key cosign.pub ghcr.io/ledif/blue95
 ## Project Goals
 
 - Match upstream Fedora Xfce in terms of core system components (e.g., X11 vs Wayland, PulseAudo vs PipeWire, etc).
-- Pull in tweaks from [Universal Blue](https://github.com/ublue-os) (e.g. codecs, drivers) to provide a more usable out-of-the box experience.
+- Pull in tweaks from [Universal Blue](https://github.com/ublue-os) (e.g. codecs, automatic updates, etc) to produce a more usable out-of-the box experience.
 - Provide an aesthetic rooted in a bygone era of computing.
 
 **Non goals**:
