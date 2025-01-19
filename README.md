@@ -10,7 +10,7 @@ Based on Fedora Atomic Xfce with the [Chicago95](https://github.com/grassmunk/Ch
 
 ## Project Goals
 
-- Match upstream Fedora Xfce in terms of core system components (e.g., X11 vs Wayland, PulseAudo vs PipeWire, etc).
+- Match upstream Fedora Xfce in terms of core system components and update schedule.
 - Pull in tweaks from [Universal Blue](https://github.com/ublue-os) (e.g. codecs, automatic updates, etc) to produce a more usable out-of-the box experience.
 - Provide an aesthetic rooted in a bygone era of computing.
 
