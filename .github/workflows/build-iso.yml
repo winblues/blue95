@@ -3,6 +3,7 @@ on:
   schedule:
     - cron:
         "00 10 * * 1" # build at 10:00 UTC every Monday
+  workflow_dispatch:
 
 jobs:
   iso:

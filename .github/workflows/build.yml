@@ -15,8 +15,8 @@ concurrency:
   group: ${{ github.workflow }}-${{ github.ref || github.run_id }}
   cancel-in-progress: true
 jobs:
-  bluebuild:
-    name: Build Custom Image
+  build-image:
+    name: Build main image
     runs-on: ubuntu-latest
     permissions:
       contents: read
