@@ -36,5 +36,5 @@ jobs:
         run: |
           sudo apt-get update
           sudo apt-get install -y rclone
-          rclone copyto ${{ steps.build.outputs.iso_path }} R2:ublue-ledif
-          rclone copyto ${{ steps.build.outputs.iso_path }}-CHECKSUM R2:ublue-ledif
+          rclone copyto ${{ steps.iso.outputs.iso_path }} R2:ublue-ledif
+          rclone copyto ${{ steps.iso.outputs.iso_path }}-CHECKSUM R2:ublue-ledif
