@@ -32,9 +32,7 @@ jobs:
           RCLONE_CONFIG_R2_SECRET_ACCESS_KEY: ${{ secrets.R2_SECRET_ACCESS_KEY }}
           RCLONE_CONFIG_R2_REGION: auto
           RCLONE_CONFIG_R2_ENDPOINT: ${{ secrets.R2_ENDPOINT }}
-          SOURCE_DIR: ${{ steps.upload-directory.outputs.iso-upload-dir }}
         run: |
           sudo apt-get update
           sudo apt-get install -y rclone
           rclone copyto ${{ steps.iso.outputs.iso_path }} R2:ublue-ledif
-          rclone copyto ${{ steps.iso.outputs.iso_path }}-CHECKSUM R2:ublue-ledif
