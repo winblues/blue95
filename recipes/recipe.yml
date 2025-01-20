@@ -51,6 +51,7 @@ modules:
       - 02-defaults.sh
       - 03-ublue.sh
       - 10-install-appimages.sh
+      - 11-xfce-extras.sh
       - 20-chicago95.sh
       - 21-de-tweaks.sh
 
