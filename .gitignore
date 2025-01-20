@@ -2,3 +2,5 @@ cosign.key
 cosign.private
 /Containerfile
 *swp
+*.iso
+*.iso-CHECKSUM

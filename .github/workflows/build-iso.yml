@@ -1,0 +1,38 @@
+name: generate-iso
+on:
+  schedule:
+    - cron:
+        "00 10 * * 1" # build at 10:00 UTC every Monday
+
+jobs:
+  iso:
+    name: Create and Upload ISO
+    runs-on: ubuntu-latest
+    - name: Build ISO
+      uses: jasonn3/build-container-installer@main
+      id: iso
+      with:
+        arch: x86_64
+        image_name: blue95
+        image_repo: ghcr.io/ledif
+        image_tag: latest
+        version: 41
+        variant: xfce
+        iso_name: blue95-latest-41.iso
+
+      - name: Upload ISOs and Checksum to R2
+        if: github.ref_name == 'main'
+        shell: bash
+        env:
+          RCLONE_CONFIG_R2_TYPE: s3
+          RCLONE_CONFIG_R2_PROVIDER: Cloudflare
+          RCLONE_CONFIG_R2_ACCESS_KEY_ID: ${{ secrets.R2_ACCESS_KEY_ID }}
+          RCLONE_CONFIG_R2_SECRET_ACCESS_KEY: ${{ secrets.R2_SECRET_ACCESS_KEY }}
+          RCLONE_CONFIG_R2_REGION: auto
+          RCLONE_CONFIG_R2_ENDPOINT: ${{ secrets.R2_ENDPOINT }}
+          SOURCE_DIR: ${{ steps.upload-directory.outputs.iso-upload-dir }}
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y rclone
+          rclone copyto ${{ steps.build.outputs.iso_path }} R2:ublue-ledif
+          rclone copyto ${{ steps.build.outputs.iso_path }}-CHECKSUM R2:ublue-ledif
