@@ -66,6 +66,7 @@ modules:
       install:
         - org.mozilla.firefox
         - org.kde.kolourpaint
+        - org.dupot.easyflatpak
 
   # Regenerate initramfs because of plymouth
   - type: initramfs
