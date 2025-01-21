@@ -22,10 +22,6 @@ cp -r Icons/* Cursors/* /usr/share/icons/
 ln -s /usr/share/icons/Chicago95/apps/48/{software,bauh}.png
 ln -s /usr/share/icons/Chicago95/apps/48/stock_keyring.png /usr/share/icons/Chicago95/apps/com.onepassword.OnePassword.png
 
-update-mime-database /usr/share/mime
-gdk-pixbuf-query-loaders-64 --update-cache
-
-
 # Fonts
 cp Fonts/vga_font/LessPerfectDOSVGA.ttf /usr/share/fonts
 cp -r Fonts/bitmap/cronyx-cyrillic /usr/share/fonts

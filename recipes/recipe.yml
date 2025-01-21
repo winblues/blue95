@@ -8,14 +8,12 @@ image-version: 41
 
 # module configuration, executed in order
 modules:
-  - type: files
-    files:
-      - source: system
-        destination: /
-
   - type: containerfile
     containerfiles: ["ublue"]
 
+  - type: bling
+    install:
+      - ublue-update
 
   - type: rpm-ostree
     install:
@@ -44,6 +42,12 @@ modules:
     remove:
       - firefox
       - firefox-langpacks
+
+  - type: files
+    files:
+      - source: system
+        destination: /
+
 
   - type: script
     scripts:
