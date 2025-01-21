@@ -17,10 +17,10 @@ cp -r Theme/Chicago95 /usr/share/themes
 # Icons and cursors
 cp -r Icons/* Cursors/* /usr/share/icons/
 
-
 # Custom app icons
 ln -s /usr/share/icons/Chicago95/apps/48/{software,bauh}.png
-ln -s /usr/share/icons/Chicago95/apps/48/stock_keyring.png /usr/share/icons/Chicago95/apps/com.onepassword.OnePassword.png
+ln -s /usr/share/icons/Chicago95/apps/48/stock_keyring.png /usr/share/icons/Chicago95/apps/scalable/com.onepassword.OnePassword.png
+ln -s /usr/share/icons/Chicago95/apps/scalable/internet-mail.svg /usr/share/icons/Chicago95/apps/scalable/epyrus.svg
 
 # Fonts
 cp Fonts/vga_font/LessPerfectDOSVGA.ttf /usr/share/fonts
@@ -43,7 +43,6 @@ cp -f ./sounds/chicago95-startup.desktop /etc/skel/.config/autostart
 
 # Backgrounds
 cp -Rf ./Extras/Backgrounds /usr/share/backgrounds/Chicago95
-
 
 # Plymouth
 cp -Rf Plymouth/Chicago95 /usr/share/plymouth/themes/

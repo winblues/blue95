@@ -1,0 +1,11 @@
+[Desktop Entry]
+Type=Application
+Exec=/usr/bin/epyrus
+Terminal=false
+X-MultipleArgs=false
+Icon=internet-mail
+StartupWMClass=epyrus
+DBusActivatable=false
+Categories=GTK;Network;Email;
+StartupNotify=true
+Name=Epyrus
