@@ -20,8 +20,12 @@ Based on Fedora Atomic Xfce with the [Chicago95](https://github.com/grassmunk/Ch
 
 ## Installation
 
-The only way to install currently is to rebase from an existing atomic Fedora installation to the latest build.
-ISOs will be available at some point.
+### From ISO
+
+Visit https://blue95.neocities.org for links to the latest ISOs.
+
+## From Other Atomic Desktops
+If you are currently using an atomic desktop, you can rebase to the latest blue95 image.
 
 - First rebase to the unsigned image, to get the proper signing keys and policies installed:
   ```
