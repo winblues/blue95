@@ -1,3 +1,9 @@
+commit 71c88f294b1e95327fb8b01c63d14654014b9f9b
+Author: Adam Fidel <adam@fidel.id>
+Date:   Wed Jan 22 07:25:26 2025 -0600
+
+    Fix buffer overrun caused by uninitialized variable
+
 diff --git a/src/skippy.c b/src/skippy.c
 index d8e7dac..f97d05d 100644
 --- a/src/skippy.c
