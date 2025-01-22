@@ -20,6 +20,7 @@ modules:
       - btop
       - catfish
       - fastfetch
+      - gdb
       - libcanberra
       - libcanberra-gtk3
       - lightdm-gtk-greeter-settings

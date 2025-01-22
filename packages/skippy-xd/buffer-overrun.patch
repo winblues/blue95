@@ -1,0 +1,41 @@
+commit 8444145f9e79507fc41aacee9dfe8d1e46e7bdff
+Author: Adam Fidel <adam@fidel.id>
+Date:   Wed Jan 22 07:59:34 2025 -0600
+
+    fix: buffer overrun while writing to fifo
+
+diff --git a/src/skippy.c b/src/skippy.c
+index d8e7dac..456b113 100644
+--- a/src/skippy.c
++++ b/src/skippy.c
+@@ -420,15 +420,16 @@ send_string_command_to_daemon_via_fifo(
+ 		}
+ 	}
+ 
+-	printfdf(false, "(): sending string command to pipe of length %d",
+-			(int)strlen(command) + 1);
++	// reserve space for first char and null terminator
++	int command_len = strlen(command) + 2;
++	printfdf(false, "(): sending string command to pipe of length %d", command_len);
+ 
+-	char final_cmd[strlen(command)+1];
++	char final_cmd[command_len];
+ 	sprintf(final_cmd, "%c%s", (char)strlen(command), command);
+ 	printfdf(false, "(): string command: %s", final_cmd);
+ 
+ 	int fp = open(pipePath, O_WRONLY);
+-	int bytes_written = write(fp, final_cmd, strlen(command)+1);
++	int bytes_written = write(fp, final_cmd, command_len);
+ 	if (bytes_written < strlen(command))
+ 		printfef(true, "(): incomplete command sent!");
+ 	close(fp);
+@@ -2065,7 +2066,8 @@ load_config_file(session_t *ps)
+     // less efficient, may introduce inconsistent default value, and
+     // occupies a lot more memory for non-string types.
+ 	{
+-		int pipeStrLen = 3;
++		// two -'s, the first digit of uid/xid and null terminator
++		int pipeStrLen = 5;
+ 
+ 		int uid = getuid();
+ 		{
