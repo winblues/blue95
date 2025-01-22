@@ -8,6 +8,7 @@ Source:         https://github.com/felixfung/skippy-xd/archive/refs/tags/v2024.1
 License:        GPL-2.0
 
 BuildRequires:  make
+BuildRequires:  gcc
 BuildRequires:  libXft-devel
 BuildRequires:  libXrender-devel
 BuildRequires:  libXcomposite-devel
