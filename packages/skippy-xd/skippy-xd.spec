@@ -22,6 +22,9 @@ BuildRequires:  giflib-devel
 %description
 Skippy-xd is a lightweight, window-manager-agnostic window selector on X server. With skippy, you get live-preview on your alt-tab motions; you get the much coveted expose feature from Mac; you get a handy overview of all your virtual desktops in one glance with paging mode.
 
+%prep
+%autosetup -n %{name}-%{version}
+
 %build
 make
 
