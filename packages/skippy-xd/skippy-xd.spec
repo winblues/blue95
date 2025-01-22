@@ -5,6 +5,7 @@ Summary:        Fastfetch configuration for Universal Blue systems
 
 URL:            https://github.com/felixfung/skippy-xd
 Source:         https://github.com/felixfung/skippy-xd/archive/refs/tags/v2024.12.26.zip
+License:        GPL-2.0
 
 BuildRequires:  libXft-devel
 BuildRequires:  libXrender-devel
