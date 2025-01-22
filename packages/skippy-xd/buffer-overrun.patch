@@ -1,0 +1,20 @@
+commit 20aa0319d2a6cd21fd2a0ec91c1abdaadc01d94a
+Author: Adam Fidel <adam@fidel.id>
+Date:   Wed Jan 22 07:59:34 2025 -0600
+
+    fix: buffer overrun while writing to fifo
+
+diff --git a/src/skippy.c b/src/skippy.c
+index d8e7dac..8dc9053 100644
+--- a/src/skippy.c
++++ b/src/skippy.c
+@@ -2065,7 +2065,8 @@ load_config_file(session_t *ps)
+     // less efficient, may introduce inconsistent default value, and
+     // occupies a lot more memory for non-string types.
+ 	{
+-		int pipeStrLen = 3;
++		// two -'s, the first digit of uid/xid and null terminator
++		int pipeStrLen = 5;
+ 
+ 		int uid = getuid();
+ 		{

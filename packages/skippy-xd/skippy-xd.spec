@@ -1,13 +1,13 @@
 Name:           skippy-xd
 Version:        0.9.0
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        A window selector for X11 with Exposé and live preview Alt-Tab effects and more
 
 URL:            https://github.com/felixfung/skippy-xd
 Source:         https://github.com/felixfung/skippy-xd/archive/cb14e598431b93f46073256f603cfd0e6f20e517.zip
 License:        GPL-2.0
 
-Patch0:         uninitialized-vars.diff
+Patch0:         buffer-overrun.diff
 
 BuildRequires:  make
 BuildRequires:  gcc
