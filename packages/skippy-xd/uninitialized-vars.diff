@@ -1,0 +1,20 @@
+diff --git a/src/skippy.c b/src/skippy.c
+index d8e7dac..f97d05d 100644
+--- a/src/skippy.c
++++ b/src/skippy.c
+@@ -2069,13 +2069,13 @@ load_config_file(session_t *ps)
+ 
+ 		int uid = getuid();
+ 		{
+-			int num;
++			int num = 0;
+ 			for (num = uid; num >= 10; num /= 10) pipeStrLen++;
+ 		}
+ 
+ 		int xid = XConnectionNumber(ps->dpy);
+ 		{
+-			int num;
++			int num = 0;
+ 			for (num = xid; num >= 10; num /= 10) pipeStrLen++;
+ 		}
+ 
