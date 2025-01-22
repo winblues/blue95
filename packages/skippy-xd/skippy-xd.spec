@@ -7,7 +7,7 @@ URL:            https://github.com/felixfung/skippy-xd
 Source:         https://github.com/felixfung/skippy-xd/archive/cb14e598431b93f46073256f603cfd0e6f20e517.zip
 License:        GPL-2.0
 
-Patch0:         buffer-overrun.diff
+Patch0:         buffer-overrun.patch
 
 BuildRequires:  make
 BuildRequires:  gcc
