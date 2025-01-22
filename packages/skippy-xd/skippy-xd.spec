@@ -1,7 +1,7 @@
 Name:           skippy-xd
 Version:        2024.12.26
-Release:        1%{?dist}
-Summary:        Fastfetch configuration for Universal Blue systems
+Release:        2%{?dist}
+Summary:        A window selector for X11 with Exposé and live preview Alt-Tab effects and more
 
 URL:            https://github.com/felixfung/skippy-xd
 Source:         https://github.com/felixfung/skippy-xd/archive/refs/tags/v2024.12.26.zip
