@@ -11,3 +11,8 @@ The default mail application is [Epyrus](http://www.epyrus.org), pictured above 
 ## Software Development
 
 ![https://blue95.neocities.org/screenshot-code.png](https://blue95.neocities.org/screenshot-code.png)
+
+
+## Ultrawide Display
+
+![https://blue95.neocities.org/screenshot-wide.png](https://blue95.neocities.org/screenshot-wide.png)

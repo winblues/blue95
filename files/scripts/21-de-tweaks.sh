@@ -14,14 +14,6 @@ for f in $(find . -name "battery-level-90*"); do
   fi
 done
 
-# TODO: remove when https://github.com/grassmunk/Chicago95/pull/362 is merged
-# Fix missing icons in xfce4-notifyd for volume
-cd /usr/share/icons/Chicago95/status/32
-for icon in audio-volume-*; do
-  cd ../symbolic
-  ln -s ../32/$icon $icon
-done
-
 # Fix Wifi icons in NetworkManager applet (nm-applet)
 for i in 16 24 32 48; do
     j=$i

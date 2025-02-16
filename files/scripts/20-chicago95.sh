@@ -4,15 +4,15 @@ set -xueo pipefail
 
 # Fetch
 cd /tmp
-wget https://github.com/grassmunk/Chicago95/archive/31a357c.zip
+# TODO: add renovate
+CHICAGO95_SHA=71e854e45fa8adeeb911aa77662557cf5c4bcaf1
+wget https://github.com/grassmunk/Chicago95/archive/${CHICAGO95_SHA}.zip
 unzip -q *.zip
 mv Chicago95* /usr/src/chicago95
 cd /usr/src/chicago95
 
 # Themes
 cp -r Theme/Chicago95 /usr/share/themes
-#flatpak override --filesystem=/usr/share/blue95/themes/
-#flatpak override --env=GTK_THEME=Chicago95
 
 # Icons and cursors
 cp -r Icons/* Cursors/* /usr/share/icons/
