@@ -54,6 +54,7 @@ modules:
   - type: script
     scripts:
       - 00-image-info.sh
+      - 01-main.sh
       - 02-defaults.sh
       - 03-ublue.sh
       - 10-install-appimages.sh
