@@ -71,6 +71,7 @@ modules:
         - org.mozilla.firefox
         - org.kde.kolourpaint
         - org.dupot.easyflatpak
+        - org.geany.Geany
 
   # Regenerate initramfs because of plymouth
   - type: initramfs
