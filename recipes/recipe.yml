@@ -15,8 +15,14 @@ modules:
     install:
       - ublue-update
 
+  - type: files
+    files:
+      - source: system
+        destination: /
+
   - type: rpm-ostree
     install:
+      - audacious
       - btop
       - catfish
       - fastfetch
@@ -35,6 +41,7 @@ modules:
       - qt5-qtstyleplugins
       - sox
       - strace
+      - tailscale
       - vorbis-tools
       - wine-ms-sans-serif-fonts
       - wine-tahoma-fonts
@@ -43,12 +50,6 @@ modules:
     remove:
       - firefox
       - firefox-langpacks
-
-  - type: files
-    files:
-      - source: system
-        destination: /
-
 
   - type: script
     scripts:
@@ -59,6 +60,7 @@ modules:
       - 11-xfce-extras.sh
       - 20-chicago95.sh
       - 21-de-tweaks.sh
+      - 99-cleanup.sh
 
   - type: default-flatpaks
     notify: true # Send notification after install/uninstall is finished
