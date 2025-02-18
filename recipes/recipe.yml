@@ -25,14 +25,12 @@ modules:
       - audacious
       - btop
       - catfish
-      - docker-ce
-      - docker-ce-cli
       - edk2-ovmf
       - fastfetch
       - gdb
       - iotop
       - libcanberra
-      - libvert
+      - libvirt
       - libvirt-nss
       - libcanberra-gtk3
       - lightdm-gtk-greeter-settings
@@ -41,7 +39,6 @@ modules:
       - menulibre
       - neovim
       - orage
-      - podman-bootc
       - podman-compose
       - podman-machine
       - python3-cairosvg
