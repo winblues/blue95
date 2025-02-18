@@ -25,9 +25,15 @@ modules:
       - audacious
       - btop
       - catfish
+      - docker-ce
+      - docker-ce-cli
+      - edk2-ovmf
       - fastfetch
       - gdb
+      - iotop
       - libcanberra
+      - libvert
+      - libvirt-nss
       - libcanberra-gtk3
       - lightdm-gtk-greeter-settings
       - mate-disk-usage-analyzer
@@ -35,8 +41,20 @@ modules:
       - menulibre
       - neovim
       - orage
+      - podman-bootc
+      - podman-compose
+      - podman-machine
       - python3-cairosvg
       - plymouth-plugin-script
+      - qemu-char-spice
+      - qemu-device-display-virtio-gpu
+      - qemu-device-display-virtio-vga
+      - qemu-device-usb-redirect
+      - qemu-img
+      - qemu-system-x86-core
+      - qemu-user-binfmt
+      - qemu-user-static
+      - qemu
       - qt5ct
       - qt5-qtstyleplugins
       - sox
