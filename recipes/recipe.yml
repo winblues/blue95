@@ -25,6 +25,7 @@ modules:
       - audacious
       - btop
       - catfish
+      - deepin-qt5platform-plugins # for bauh
       - edk2-ovmf
       - fastfetch
       - gdb
@@ -85,7 +86,6 @@ modules:
       install:
         - org.mozilla.firefox
         - org.kde.kolourpaint
-        - org.dupot.easyflatpak
         - org.geany.Geany
 
   # Regenerate initramfs because of plymouth

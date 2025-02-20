@@ -1,0 +1,7 @@
+[Desktop Entry]
+Type=Application
+Name=Software Store
+Categories=System;
+Comment=Install and manage Flatpak applications
+Exec=/usr/bin/bauh
+Icon=system-software-installer
