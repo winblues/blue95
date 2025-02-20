@@ -20,8 +20,7 @@ cp -r Icons/* Cursors/* /usr/share/icons/
 # Custom app icons
 ln -s /usr/share/icons/Chicago95/apps/48/{software,bauh}.png
 ln -s /usr/share/icons/Chicago95/apps/48/stock_keyring.png /usr/share/icons/Chicago95/apps/scalable/com.onepassword.OnePassword.png
-ln -s /usr/share/icons/Chicago95/apps/scalable/internet-mail.svg /usr/share/icons/Chicago95/apps/scalable/Epyrus.svg
-ln -s /usr/share/icons/Chicago95/apps/scalable/{kpackage,org.dupot.easyflatpak}.svg
+ln -s /usr/share/icons/Chicago95/apps/scalable/internet-mail.svg /usr/share/icons/Chicago95/apps/scalable/epyrus.svg
 
 # Fonts
 cp Fonts/vga_font/LessPerfectDOSVGA.ttf /usr/share/fonts
