@@ -58,6 +58,7 @@ modules:
       - sox
       - strace
       - tailscale
+      - virt-manager
       - vorbis-tools
       - wine-ms-sans-serif-fonts
       - wine-tahoma-fonts
