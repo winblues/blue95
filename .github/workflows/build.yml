@@ -2,8 +2,8 @@ name: bluebuild
 on:
   schedule:
     - cron:
-        "00 06 * * *" # build at 06:00 UTC every day
-        # (20 minutes after last ublue images start building)
+        "00 07 * * *" # build at 07:00 UTC every day
+        # (1 hour after winblues/vauxite)
   push:
     paths-ignore: # don't rebuild if only documentation has changed
       - "**.md"

@@ -2,14 +2,14 @@
 
 set -ouex pipefail
 
-IMAGE_VENDOR="ledif"
+IMAGE_VENDOR="winblues"
 IMAGE_NAME="blue95"
 IMAGE_PRETTY_NAME="Blue95"
 IMAGE_LIKE="fedora"
 HOME_URL="https://blue95.org/"
 DOCUMENTATION_URL="https://docs.blue95.org"
-SUPPORT_URL="https://github.com/ledif/blue95/issues/"
-BUG_SUPPORT_URL="https://github.com/ledif/blue95/issues"
+SUPPORT_URL="https://github.com/winblues/blue95/issues"
+BUG_SUPPORT_URL="https://github.com/winblues/blue95/issues"
 VERSION_CODENAME="Ross"
 
 IMAGE_INFO="/usr/share/ublue-os/image-info.json"

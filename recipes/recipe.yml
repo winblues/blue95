@@ -3,14 +3,10 @@
 name: blue95
 description: A desktop for your childhood home's computer room
 
-base-image: quay.io/fedora-ostree-desktops/xfce-atomic
+base-image: ghcr.io/winblues/vauxite
 image-version: 41
 
-# module configuration, executed in order
 modules:
-  - type: containerfile
-    containerfiles: ["ublue"]
-
   - type: bling
     install:
       - 1password
@@ -27,10 +23,6 @@ modules:
       - catfish
       - deepin-qt5platform-plugins # for bauh
       - edk2-ovmf
-      - fastfetch
-      - gdb
-      - iotop
-      - libcanberra
       - libvirt
       - libvirt-nss
       - libcanberra-gtk3
@@ -57,28 +49,20 @@ modules:
       - qt5-qtstyleplugins
       - sox
       - strace
-      - tailscale
       - virt-manager
       - vorbis-tools
       - wine-ms-sans-serif-fonts
       - wine-tahoma-fonts
       - xscreensaver-extras
       - xscreensaver-extras-gss
-    remove:
-      - firefox
-      - firefox-langpacks
 
   - type: script
     scripts:
       - 00-image-info.sh
       - 01-main.sh
-      - 02-defaults.sh
-      - 03-ublue.sh
       - 10-install-appimages.sh
-      - 11-xfce-extras.sh
       - 20-chicago95.sh
       - 21-de-tweaks.sh
-      - 99-cleanup.sh
 
   - type: default-flatpaks
     notify: true # Send notification after install/uninstall is finished
@@ -86,7 +70,6 @@ modules:
       # Flathub will be used by default
       install:
         - org.mozilla.firefox
-        - org.kde.kolourpaint
         - org.geany.Geany
 
   # Regenerate initramfs because of plymouth
