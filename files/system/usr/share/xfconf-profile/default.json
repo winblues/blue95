@@ -1,0 +1,13 @@
+{
+  "X-Metadata": {
+    "version": 1,
+    "name": "winblues-blue95"
+  },
+	"xsettings": {
+		"/Net/ThemeName": "Chicago95",
+    "/Net/IconThemeName": "Chicago95"
+	},
+  "xfwm4": {
+    "/general/theme": "Chicago95"
+  }
+}

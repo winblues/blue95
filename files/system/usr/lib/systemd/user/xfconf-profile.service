@@ -1,0 +1,11 @@
+[Unit]
+Description=Synchronize Xfce settings from /usr/share/xfconf-profile
+After=default.target
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/xfconf-profile sync
+Restart=always
+
+[Install]
+WantedBy=default.target
