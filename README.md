@@ -31,11 +31,11 @@ If you are currently using an atomic desktop, you can rebase to the latest blue9
 
 - First rebase to the unsigned image, to get the proper signing keys and policies installed:
   ```
-  rpm-ostree rebase ostree-unverified-registry:ghcr.io/ledif/blue95:latest
+  rpm-ostree rebase ostree-unverified-registry:ghcr.io/winblues/blue95:latest
   ```
 - Reboot and then rebase to the signed image, like so:
   ```
-  rpm-ostree rebase ostree-image-signed:docker://ghcr.io/ledif/blue95:latest
+  rpm-ostree rebase ostree-image-signed:docker://ghcr.io/winblues/blue95:latest
   ```
 
 It is recommended to create a new user after rebasing.
