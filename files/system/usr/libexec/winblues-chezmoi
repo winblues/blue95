@@ -7,7 +7,7 @@ state_dir=${XDG_STATE_HOME:-$HOME/.local/state}/winblues/chezmoi
 user_chezmoi_ignore=${XDG_CONFIG_HOME:-$HOME/.config}/winblues/chezmoiignore
 user_env_file=$(mktemp -p /tmp winblues-chezmoi-env.XXXX)
 
-# Save current user environment so we can reload it in chezmoi run_ scripts
+# Save current user environment so we can reload it in chezmoi run_*.sh scripts
 echo "export XDG_CONFIG_HOME=${XDG_CONFIG_HOME:-$HOME/.config}" >"${user_env_file}"
 echo "export XDG_DATA_HOME=${XDG_DATA_HOME:-$HOME/.local/share}" >>"${user_env_file}"
 echo "export XDG_STATE_HOME=${XDG_STATE_HOME:-$HOME/.local/state}" >>"${user_env_file}"
@@ -29,8 +29,7 @@ fi
 
 # Copy the booted image's chezmoi source to the user's state
 winblues_chezmoi_data_home="${XDG_DATA_HOME}/chezmoi"
-#winblues_chezmoi_source=/usr/share/winblues/chezmoi}
-winblues_chezmoi_source=/var/home/afidel/Projects/winblues/blue95/files/system/usr/share/winblues/chezmoi
+winblues_chezmoi_source=/usr/share/winblues/chezmoi
 
 cd $winblues_chezmoi_data_home/..
 rsync -aP $winblues_chezmoi_source .
