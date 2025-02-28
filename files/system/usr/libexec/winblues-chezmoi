@@ -1,0 +1,76 @@
+#!/bin/bash
+
+set -xeuo pipefail
+
+state_dir=${XDG_STATE_HOME:-$HOME/.local/state}/winblues/chezmoi
+
+# NOTE: assume that /usr/share/winblues/chezmoi/dot_local/share/xfconf-profile
+# is a link to /usr/share/xfconf-profile
+#
+#winblues_chezmoi_source=/usr/share/winblues/chezmoi}
+winblues_chezmoi_source=$(pwd)/chezmoi
+
+winblues_chezmoi_home="${state_dir}/home"
+
+export XDG_CONFIG_HOME="${winblues_chezmoi_home}/.config"
+export XDG_DATA_HOME="${winblues_chezmoi_home}/.local/share"
+export XDG_STATE_HOME="${winblues_chezmoi_home}/.local/state"
+export XDG_CACHE_HOME="${winblues_chezmoi_home}/.cache"
+
+winblues_chezmoi_data_home="${XDG_STATE_HOME}/chezmoi"
+
+if [ ! -d "$state_dir" ]; then
+  echo "First run of $0"
+  mkdir -p "$winblues_chezmoi_home"
+  chezmoi init
+fi
+
+cd $winblues_chezmoi_data_home
+
+git config --local user.name "Winblues User"
+git config --local user.email "user@blues.win"
+
+cd $winblues_chezmoi_data_home/..
+rsync -aP $winblues_chezmoi_source .
+
+cd $winblues_chezmoi_data_home
+
+if [[ -z "$(git status --porcelain)" ]]; then
+  echo "No changes needed"
+  exit 0
+fi
+
+# At this point, we know that we need to run chezmoi
+
+git add .
+
+booted_image_version=$(rpm-ostree status --json | jq '.deployments[] | select(.booted == true) | .version' | tr -d '"')
+booted_image=$(rpm-ostree status --json | jq '.deployments[] | select(.booted == true) | ."container-image-reference"' | tr -d '"')
+
+git commit -m "bump: $booted_image_version-$booted_image"
+
+# Check if user has some changes to files we're managing. Save them in a branch and rollback
+# to a known-good state.
+git checkout HEAD~
+
+if [[ -z "$(chezmoi diff --porcelain)" ]]; then
+  echo "Dirty state of managed files. Creating a branch to preserve user's changes."
+  if git rev-parse "rollback" >/dev/null 2>&1; then
+    git tag -d rollback
+  fi
+
+  git checkout -b "rollback-$(date +%Y%m%d-%H%M%S)"
+  git add .
+  git commit -m "user-changes"
+  git tag rollback
+fi
+
+git checkout master
+
+# Allow users to ignore updates to certain files
+if [[ -f ~/.config/winblues/chezmoi_ignore ]]; then
+  cp ~/.config/winblues/chezmoi_ignore $winblues_chezmoi_data_home/.chezmoiignore
+fi
+
+chezmoi apply
+rm $winblues_chezmoi_data_home/.chezmoiignore
