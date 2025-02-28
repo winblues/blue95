@@ -1,0 +1,10 @@
+[Unit]
+Description=Update user-level configs managed by winblues
+After=default.target
+
+[Service]
+Type=oneshot
+ExecStart=/usr/libexec/winblues-chezmoi
+
+[Install]
+WantedBy=default.target

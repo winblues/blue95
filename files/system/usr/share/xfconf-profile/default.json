@@ -9,5 +9,8 @@
 	},
   "xfwm4": {
     "/general/theme": "Chicago95"
+  },
+  "xfce4-keyboard-shortcuts": {
+    "/commands/custom/Super_L": "/usr/bin/xfce4-popup-whiskermenu"
   }
 }

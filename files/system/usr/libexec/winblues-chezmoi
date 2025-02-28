@@ -1,0 +1,80 @@
+#!/bin/bash
+
+set -xeuo pipefail
+
+state_dir=${XDG_STATE_HOME:-$HOME/.local/state}/winblues/chezmoi
+
+user_chezmoi_ignore=${XDG_CONFIG_HOME:-$HOME/.config}/winblues/chezmoiignore
+user_env_file=$(mktemp -p /tmp winblues-chezmoi-env.XXXX)
+
+# Save current user environment so we can reload it in chezmoi run_*.sh scripts
+echo "export XDG_CONFIG_HOME=${XDG_CONFIG_HOME:-$HOME/.config}" >"${user_env_file}"
+echo "export XDG_DATA_HOME=${XDG_DATA_HOME:-$HOME/.local/share}" >>"${user_env_file}"
+echo "export XDG_STATE_HOME=${XDG_STATE_HOME:-$HOME/.local/state}" >>"${user_env_file}"
+echo "export XDG_CACHE_HOME=${XDG_CACHE_HOME:-$HOME/.cache}" >>"${user_env_file}"
+export WINBLUES_CHEZMOI_ORIGINAL_ENV_FILE="${user_env_file}"
+
+# Use our own chezmoi directories so we don't interfere with the user's chezmoi
+export XDG_CONFIG_HOME="${state_dir}/.config"
+export XDG_DATA_HOME="${state_dir}/.local/share"
+export XDG_STATE_HOME="${state_dir}/.local/state"
+export XDG_CACHE_HOME="${state_dir}/.cache"
+
+if [ ! -d "$state_dir" ]; then
+  echo "First run of $0"
+  mkdir -p "$state_dir"
+  chezmoi init
+  chezmoi git -- checkout -b main
+fi
+
+# Copy the booted image's chezmoi source to the user's state
+winblues_chezmoi_data_home="${XDG_DATA_HOME}/chezmoi"
+winblues_chezmoi_source=/usr/share/winblues/chezmoi
+
+cd $winblues_chezmoi_data_home/..
+rsync -aP $winblues_chezmoi_source .
+cd $winblues_chezmoi_data_home
+
+if [[ -z "$(git status --porcelain)" ]]; then
+  echo "No changes needed"
+  exit 0
+fi
+
+# At this point, we know that we need to run chezmoi apply to update
+# our managed files
+
+git config --local user.name "Winblues User"
+git config --local user.email "user@blues.win"
+git add .
+
+booted_image_version=$(rpm-ostree status --json | jq '.deployments[] | select(.booted == true) | .version' | tr -d '"')
+booted_image=$(rpm-ostree status --json | jq '.deployments[] | select(.booted == true) | ."container-image-reference"' | tr -d '"')
+
+git commit -m "bump: $booted_image_version of $booted_image"
+
+# Check if user has changes to files we're managing. Save them in a branch and rollback
+# to a known-good state.
+if [[ ! -z "$(chezmoi diff --script-contents=false)" ]]; then
+  echo "Dirty state of managed files. Creating a branch to preserve user's changes."
+  if git rev-parse "rollback" >/dev/null 2>&1; then
+    git tag -d rollback
+  fi
+
+  git checkout -b "rollback-$(date +%Y%m%d-%H%M%S)"
+  chezmoi re-add
+  git add .
+  git commit --allow-empty -m "changes to managed files"
+  git tag rollback
+else
+  echo "No user-modified managed files"
+fi
+
+git checkout main
+
+# Allow users to ignore updates to certain files
+if [[ -f $user_chezmoi_ignore ]]; then
+  cp $user_chezmoi_ignore $winblues_chezmoi_data_home/.chezmoiignore
+fi
+
+chezmoi apply --force
+rm -f $winblues_chezmoi_data_home/.chezmoiignore
