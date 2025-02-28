@@ -1,3 +1,11 @@
+/*
+ * NOTE: this file is managed by Winblues using chezmoi. Any changes to this
+ * file will be overwritten the next time you log in. To configure chezmoi to
+ * not manage this file, run the following:
+ *   mkdir -p ~/.config/winblues
+ *   echo ".config/gtk-3.0/gtk.css" >> ~/.config/winblues/chezmoiignore
+ */
+
 /* GTK 3.24 Theme Override for the Chicago95 theme.
  * REMOVE THIS FILE WHEN USING OTHER GTK THEMES! */
 
