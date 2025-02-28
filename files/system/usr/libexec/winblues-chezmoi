@@ -3,32 +3,31 @@
 set -xeuo pipefail
 
 state_dir=${XDG_STATE_HOME:-$HOME/.local/state}/winblues/chezmoi
+user_env_file=$(mktemp -p /tmp winblues-chezmoi-env.XXXX)
 
-# NOTE: assume that /usr/share/winblues/chezmoi/dot_local/share/xfconf-profile
-# is a link to /usr/share/xfconf-profile
-#
-#winblues_chezmoi_source=/usr/share/winblues/chezmoi}
-winblues_chezmoi_source=$(pwd)/chezmoi
+# Save current user environment so we can reload it in chezmoi run_ scripts
+echo "export XDG_CONFIG_HOME=${XDG_CONFIG_HOME:-$HOME/.config}" >"${user_env_file}"
+echo "export XDG_DATA_HOME=${XDG_DATA_HOME:-$HOME/.local/share}" >>"${user_env_file}"
+echo "export XDG_STATE_HOME=${XDG_STATE_HOME:-$HOME/.local/state}" >>"${user_env_file}"
+echo "export XDG_CACHE_HOME=${XDG_CACHE_HOME:-$HOME/.cache}" >>"${user_env_file}"
+export WINBLUES_CHEZMOI_ORIGINAL_ENV_FILE="${user_env_file}"
 
-winblues_chezmoi_home="${state_dir}/home"
-
-export XDG_CONFIG_HOME="${winblues_chezmoi_home}/.config"
-export XDG_DATA_HOME="${winblues_chezmoi_home}/.local/share"
-export XDG_STATE_HOME="${winblues_chezmoi_home}/.local/state"
-export XDG_CACHE_HOME="${winblues_chezmoi_home}/.cache"
-
-winblues_chezmoi_data_home="${XDG_STATE_HOME}/chezmoi"
+# Use our own chezmoi directories so we don't interfere with the user's chezmoi
+export XDG_CONFIG_HOME="${state_dir}/.config"
+export XDG_DATA_HOME="${state_dir}/.local/share"
+export XDG_STATE_HOME="${state_dir}/.local/state"
+export XDG_CACHE_HOME="${state_dir}/.cache"
 
 if [ ! -d "$state_dir" ]; then
   echo "First run of $0"
-  mkdir -p "$winblues_chezmoi_home"
+  mkdir -p "$state_dir"
   chezmoi init
+  chezmoi git -- checkout -b main
 fi
 
-cd $winblues_chezmoi_data_home
-
-git config --local user.name "Winblues User"
-git config --local user.email "user@blues.win"
+winblues_chezmoi_data_home="${XDG_DATA_HOME}/chezmoi"
+#winblues_chezmoi_source=/usr/share/winblues/chezmoi}
+winblues_chezmoi_source=/var/home/afidel/Projects/winblues/blue95/files/system/usr/share/winblues/chezmoi
 
 cd $winblues_chezmoi_data_home/..
 rsync -aP $winblues_chezmoi_source .
@@ -42,6 +41,8 @@ fi
 
 # At this point, we know that we need to run chezmoi
 
+git config --local user.name "Winblues User"
+git config --local user.email "user@blues.win"
 git add .
 
 booted_image_version=$(rpm-ostree status --json | jq '.deployments[] | select(.booted == true) | .version' | tr -d '"')
@@ -49,11 +50,9 @@ booted_image=$(rpm-ostree status --json | jq '.deployments[] | select(.booted ==
 
 git commit -m "bump: $booted_image_version-$booted_image"
 
-# Check if user has some changes to files we're managing. Save them in a branch and rollback
+# Check if user has changes to files we're managing. Save them in a branch and rollback
 # to a known-good state.
-git checkout HEAD~
-
-if [[ -z "$(chezmoi diff --porcelain)" ]]; then
+if [[ -z "$(chezmoi diff)" ]]; then
   echo "Dirty state of managed files. Creating a branch to preserve user's changes."
   if git rev-parse "rollback" >/dev/null 2>&1; then
     git tag -d rollback
@@ -65,7 +64,7 @@ if [[ -z "$(chezmoi diff --porcelain)" ]]; then
   git tag rollback
 fi
 
-git checkout master
+git checkout main
 
 # Allow users to ignore updates to certain files
 if [[ -f ~/.config/winblues/chezmoi_ignore ]]; then
@@ -73,4 +72,4 @@ if [[ -f ~/.config/winblues/chezmoi_ignore ]]; then
 fi
 
 chezmoi apply
-rm $winblues_chezmoi_data_home/.chezmoiignore
+rm -f $winblues_chezmoi_data_home/.chezmoiignore
