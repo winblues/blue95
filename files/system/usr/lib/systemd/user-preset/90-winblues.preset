@@ -1,1 +1,2 @@
 enable winblues-chezmoi.service
+enable fusuma.service
