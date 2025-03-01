@@ -1,16 +1,18 @@
 {
-  "X-Metadata": {
-    "version": 1,
+  "properties": {
+    "xsettings": {
+      "/Net/ThemeName": "Chicago95",
+      "/Net/IconThemeName": "Chicago95"
+    },
+    "xfwm4": {
+      "/general/theme": "Chicago95"
+    },
+    "xfce4-keyboard-shortcuts": {
+      "/commands/custom/Super_L": "/usr/bin/xfce4-popup-whiskermenu"
+    }
+  },
+  "metadata": {
     "name": "winblues-blue95"
-  },
-	"xsettings": {
-		"/Net/ThemeName": "Chicago95",
-    "/Net/IconThemeName": "Chicago95"
-	},
-  "xfwm4": {
-    "/general/theme": "Chicago95"
-  },
-  "xfce4-keyboard-shortcuts": {
-    "/commands/custom/Super_L": "/usr/bin/xfce4-popup-whiskermenu"
+    "version": 1,
   }
 }
