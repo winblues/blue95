@@ -5,6 +5,9 @@ set -exuo pipefail
 
 # TODO: check user's config to see if they don't want us to manage wallpapers
 
+# Allow setting a different wallpaper per workspace
+xfconf-query --create -c 'xfce4-desktop' -p '/backdrop/single-workspace-mode' --type 'bool' --set 'false'
+
 # Workspace 0 is solid teal
 xfconf-query --channel xfce4-desktop --list |
   grep workspace0/color-style |
