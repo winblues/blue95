@@ -47,3 +47,7 @@ cp -Rf ./Extras/Backgrounds /usr/share/backgrounds/Chicago95
 # Plymouth
 cp -Rf Plymouth/Chicago95 /usr/share/plymouth/themes/
 plymouth-set-default-theme Chicago95
+
+# Panel config
+cd /usr/share/winblues/chezmoi/dot_local/share/xfce-panel-profile
+tar cjf /usr/share/xfce4-panel-profiles/layouts/chicago-95.tar.bz2 config.txt launcher-*

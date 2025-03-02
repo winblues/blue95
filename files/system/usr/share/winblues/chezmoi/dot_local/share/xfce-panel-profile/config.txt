@@ -1,0 +1,86 @@
+/configver 2
+/panels uint32 1
+/panels/dark-mode false
+/panels/panel-0/autohide-behavior uint32 0
+/panels/panel-0/background-style uint32 0
+/panels/panel-0/enable-struts true
+/panels/panel-0/icon-size uint32 28
+/panels/panel-0/length uint32 100
+/panels/panel-0/length-adjust true
+/panels/panel-0/mode uint32 0
+/panels/panel-0/plugin-ids [<1>, <2>, <14>, <16>, <7>, <9>, <13>, <3>, <4>, <5>, <10>, <17>, <15>, <12>, <11>]
+/panels/panel-0/position 'p=8;x=960;y=1059'
+/panels/panel-0/position-locked true
+/panels/panel-0/size uint32 38
+/panels/panel-0/span-monitors false
+/panels/panel-1/position 'p=8;x=0;y=300'
+/plugins/plugin-1 'whiskermenu'
+/plugins/plugin-1/button-icon 'xfdesktop-menu'
+/plugins/plugin-1/button-title '<span size="x-large" >Start</span>'
+/plugins/plugin-1/category-icon-size 1
+/plugins/plugin-1/command-profile '/usr/libexec/blue95-greeter-settings'
+/plugins/plugin-1/command-switchuser 'dm-tool switch-to-greeter'
+/plugins/plugin-1/favorites [<'xfce4-web-browser.desktop'>, <'xfce4-mail-reader.desktop'>, <'xfce4-file-manager.desktop'>, <'xfce4-terminal-emulator.desktop'>, <'com.discordapp.Discord.desktop'>, <'org.kde.kate.desktop'>, <'md.obsidian.Obsidian.desktop'>, <'org.geany.Geany.desktop'>]
+/plugins/plugin-1/favorites-in-recent true
+/plugins/plugin-1/launcher-icon-size 2
+/plugins/plugin-1/launcher-show-description false
+/plugins/plugin-1/menu-height 600
+/plugins/plugin-1/menu-width 500
+/plugins/plugin-1/position-categories-alternate true
+/plugins/plugin-1/position-commands-alternate true
+/plugins/plugin-1/position-search-alternate true
+/plugins/plugin-1/recent [<'xfce4-terminal-emulator.desktop'>, <'xfce4-settings-editor.desktop'>, <'org.xfce.mousepad.desktop'>, <'com.discordapp.Discord.desktop'>, <'org.kde.kdiff3.desktop'>, <'virt-manager.desktop'>, <'md.obsidian.Obsidian.desktop'>, <'1password.desktop'>, <'upnote.desktop'>, <'palemoon.desktop'>]
+/plugins/plugin-1/show-button-title true
+/plugins/plugin-1/sort-categories false
+/plugins/plugin-1/view-mode 2
+/plugins/plugin-10 'pulseaudio'
+/plugins/plugin-10/enable-keyboard-shortcuts true
+/plugins/plugin-10/enable-mpris true
+/plugins/plugin-10/known-players 'audacious;firefox;mpv;spotify'
+/plugins/plugin-10/mixer-command 'pavucontrol'
+/plugins/plugin-10/mpris-players 'parole'
+/plugins/plugin-10/show-notifications true
+/plugins/plugin-11 'notification-plugin'
+/plugins/plugin-12 'clock'
+/plugins/plugin-12/digital-format '%I:%M %p'
+/plugins/plugin-12/digital-layout uint32 3
+/plugins/plugin-12/digital-time-font 'Sans 12'
+/plugins/plugin-12/digital-time-format '%I:%M %p'
+/plugins/plugin-13 'separator'
+/plugins/plugin-13/style uint32 2
+/plugins/plugin-14 'launcher'
+/plugins/plugin-14/items [<'16480889531.desktop'>]
+/plugins/plugin-15 'launcher'
+/plugins/plugin-15/items [<'16480889662.desktop'>, <'17374272442.desktop'>]
+/plugins/plugin-16 'launcher'
+/plugins/plugin-16/items [<'16480894231.desktop'>]
+/plugins/plugin-17 'power-manager-plugin'
+/plugins/plugin-2 'separator'
+/plugins/plugin-2/expand false
+/plugins/plugin-2/style uint32 2
+/plugins/plugin-3 'tasklist'
+/plugins/plugin-3/flat-buttons false
+/plugins/plugin-3/grouping false
+/plugins/plugin-3/include-all-monitors true
+/plugins/plugin-3/show-handle false
+/plugins/plugin-3/show-tooltips true
+/plugins/plugin-3/sort-order uint32 4
+/plugins/plugin-3/window-scrolling false
+/plugins/plugin-4 'separator'
+/plugins/plugin-4/expand true
+/plugins/plugin-4/style uint32 0
+/plugins/plugin-5 'systray'
+/plugins/plugin-5/hide-new-items false
+/plugins/plugin-5/icon-size 0
+/plugins/plugin-5/known-items [<'K7BazpN2jM'>, <'lNWFXXWK1e'>, <'yILeM3N11q'>, <'nm-applet'>, <'blueman'>, <'d9HT_xdvc-'>, <'steam'>, <'xHpXclXfvK'>, <'chrome_status_icon_1'>]
+/plugins/plugin-5/known-legacy-items [<'wi-fi network connection “bosque” active: bosque (79%)'>, <'wi-fi network connection “bosque” active: bosque (75%)'>, <'wi-fi network connection “bosque” active: bosque (60%)'>, <'wi-fi network connection “bosque” active: bosque (59%)'>, <'wi-fi network connection “bosque” active: bosque (61%)'>, <'wi-fi network connection “bosque” active: bosque (78%)'>, <'wi-fi network connection “bosque” active: bosque (85%)'>, <'wi-fi network connection “bosque” active: bosque (97%)'>, <'wi-fi network connection “bosque” active: bosque (90%)'>, <'wi-fi network connection “bosque” active: bosque (92%)'>, <'blueman'>, <'wi-fi network connection “bosque” active: bosque (94%)'>, <'orage'>, <'xfce4-power-manager'>, <'wi-fi network connection “bosque” active: bosque (74%)'>, <'wi-fi network connection “bosque” active: bosque (73%)'>, <'networkmanager applet'>, <'wi-fi network connection “bosque” active: bosque (57%)'>, <'thunar'>, <'ibus panel'>, <'network'>]
+/plugins/plugin-5/menu-is-primary false
+/plugins/plugin-5/names-ordered [<'network'>, <'thunar'>]
+/plugins/plugin-5/show-frame true
+/plugins/plugin-5/single-row true
+/plugins/plugin-5/size-max uint32 19
+/plugins/plugin-5/square-icons false
+/plugins/plugin-5/symbolic-icons false
+/plugins/plugin-7 'launcher'
+/plugins/plugin-7/items [<'17369867541.desktop'>]
+/plugins/plugin-9 'showdesktop'
