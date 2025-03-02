@@ -76,5 +76,5 @@ if [[ -f $user_chezmoi_ignore ]]; then
   cp $user_chezmoi_ignore $winblues_chezmoi_data_home/.chezmoiignore
 fi
 
-chezmoi apply --force
+chezmoi apply --verbose --force
 rm -f $winblues_chezmoi_data_home/.chezmoiignore
