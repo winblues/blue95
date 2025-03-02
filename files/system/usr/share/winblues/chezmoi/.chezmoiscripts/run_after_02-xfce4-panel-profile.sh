@@ -2,4 +2,4 @@
 
 set -euo pipefail
 
-xfce4-panel-profile /usr/share/xfce4-panel-profiles/layouts/chicago-95.tar.bz2
+xfce4-panel-profiles load /usr/share/xfce4-panel-profiles/layouts/chicago-95.tar.bz2
