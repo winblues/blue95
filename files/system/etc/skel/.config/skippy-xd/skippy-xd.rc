@@ -1,0 +1,203 @@
+# Copy this to ~/.config/skippy-xd/skippy-xd.rc and edit it to your liking
+#
+# File Syntax:
+# Comments must be on their own seperate lines that start with a #
+#
+# colors can be anything XAllocNamedColor can handle
+# (like "black" or "#000000")
+#
+# fonts are Xft font descriptions
+#
+# booleans are "true" or anything but "true" (-> false)
+#
+# opacity is an integer in the range of 0-255
+#
+
+# For system config options, stop and then start new skippy daemon
+# To reload config options
+# All other config options can be reloaded on the fly
+# With skippy-xd --config-reload
+
+[system]
+
+# File path for client-to-daemon communication
+daemonPath = /tmp/skippy-xd-fifo
+
+# File path for daemon-to-client communication
+clientPath = /tmp/skippy-xd-fofi
+
+# Frequency to update pixmaps
+updateFreq = 60.0
+
+# This queries the list of windows
+# Depending on your window manager, you may want to choose between
+# XQueryTree, _NET_CLIENT_LIST, _WIN_CLIENT_LIST
+# If you see missing windows, or windows that you did not expect,
+# Try a different option
+clientList = _NET_CLIENT_LIST
+
+# when compositors such as picom are not used
+# turn on pseudo-transparency
+#pseudoTrans = true
+pseudoTrans = false
+
+[layout]
+
+# After this time, pivot "locks" into toggle mode
+# And the pivot key no longer needs to be held
+# Set to 0 to disable pivot locking
+pivotLockingTime = 0
+
+# Wait time before displaying switch previews
+switchWaitDuration = 100
+
+# Set = 0 to switch off animations
+# For switch, there is never animation
+animationDuration = 200
+
+# Relative minimal distance between windows
+distance = 50
+
+# xd layout is the switch layout
+# boxy layout uses box heuristics
+# cosmos layout uses physics based modeling [EXPERIMENTAL]
+exposeLayout = boxy
+
+# Whether to show the window bigger than its original size
+allowUpscale = false
+
+[filter]
+
+# in Xinerama multi-monitor setting, whether to filter windows by Xinerama monitor
+showOnlyCurrentMonitor = false
+
+# display only windows on the current XScreen
+showOnlyCurrentScreen = true
+
+# Choose whether to show shadow windows:
+# windows that are minimized, shaded, or on other virtual desktops
+showShadow = true
+
+# Choose whether to always display sticky windows
+# Switch shows sticky windows regardless of configuration
+showSticky = true
+
+# For switch and expose,
+# Whether to limit window select on current virtual desktop
+# Or allow window selection on all virtual desktops
+# Paging always show all desktops
+switchShowAllDesktops = false
+exposeShowAllDesktops = false
+
+# Whether the filtering of window class
+# Will be persistent across activations
+persistentFiltering = false
+
+[display]
+
+# Shows _NET_WM_WINDOW_TYPE_DESKTOP windows
+# which are usually wallpaper/background related
+showDesktop = false
+
+# Background when skippy-xd is activated
+# To display background wallpaper:
+#   background = /home/richard/screenshots/256.png
+# For tinted background:
+#   background = #00000055
+# For transparent background:
+#   background = None
+background = #008080
+
+# During paging mode, preserve original desktop appearance
+# From the background being applied
+preservePages = true
+
+# Move the mouse cursor when skippy is activated
+movePointer = false
+
+# Whether to display window frames
+includeFrame = true
+
+# Show window previews with rounded corners,
+# with corner radius in pixels
+cornerRadius = 0
+
+# Icon parameters
+showIconsOnThumbnails = true
+preferredIconSize = 48
+
+# Box display when live preview is not available
+# Format: [left|mid|right] [left|mid|right] [COLOR|#FFFFFFFF]
+iconFillSpec = mid mid #333333
+# Box display when live preview is not available, and icon is not available
+# Format: [COLOR|#FFFFFFFF]
+fillSpec = #333333
+
+[normal]
+tint = black
+tintOpacity = 0
+opacity = 255
+
+[highlight]
+tint = #444444
+tintOpacity = 50
+opacity = 255
+
+[shadow]
+tint = #040404
+tintOpacity = 0
+opacity = 160
+
+[panel]
+show = true
+backgroundTinting = true
+reserveSpace = true
+
+[tooltip]
+show = true
+offsetX = 0
+offsetY = -5
+width = 0.8
+border = #0e0e0e
+background = #202020
+opacity = 128
+text = white
+textShadow = black
+font = fixed-11:weight=bold
+
+[bindings]
+
+# key* = is a list of valid XWindows KeySym identifiers, case
+# sensitive and <space> seperated list. Run the program 'xev' to find them.
+
+keysUp = Up
+keysDown = Down
+keysLeft = Left
+keysRight = Right
+
+keysSelect = Return space
+keysCancel = Escape
+keysNext = n
+keysPrev = p
+
+keysIconify = 1
+keysShade = 2
+keysClose = 3
+
+# mouse button bindings, options include
+# "no": do nothing
+# "focus": select window
+# "iconify": minimize window
+# "shade-ewmh": toggle window shade
+# "close-icccm": close window with ICCCM method
+# "close-ewmh": lcose window with EWMH method
+# "destroy": forcefully destroy window
+# "keysPrev": focus on previous window
+# "keysNext": focus on next window
+
+miwMouse1 = focus
+miwMouse2 = close-ewmh
+miwMouse3 = iconify
+miwMouse4 = keysNext
+miwMouse5 = keysPrev
+
