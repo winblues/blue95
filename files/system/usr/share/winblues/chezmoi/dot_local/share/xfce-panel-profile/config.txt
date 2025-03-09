@@ -8,7 +8,7 @@
 /panels/panel-0/length uint32 100
 /panels/panel-0/length-adjust true
 /panels/panel-0/mode uint32 0
-/panels/panel-0/plugin-ids [<1>, <2>, <14>, <16>, <7>, <9>, <13>, <3>, <4>, <5>, <10>, <17>, <15>, <12>, <11>]
+/panels/panel-0/plugin-ids [<1>, <14>, <16>, <7>, <9>, <3>, <4>, <15>, <5>, <17>, <10>, <11>, <12>]
 /panels/panel-0/position 'p=8;x=960;y=1059'
 /panels/panel-0/position-locked true
 /panels/panel-0/size uint32 38
@@ -46,8 +46,6 @@
 /plugins/plugin-12/digital-layout uint32 3
 /plugins/plugin-12/digital-time-font 'Sans 12'
 /plugins/plugin-12/digital-time-format '%I:%M %p'
-/plugins/plugin-13 'separator'
-/plugins/plugin-13/style uint32 2
 /plugins/plugin-14 'launcher'
 /plugins/plugin-14/items [<'16480889531.desktop'>]
 /plugins/plugin-15 'launcher'
@@ -55,9 +53,6 @@
 /plugins/plugin-16 'launcher'
 /plugins/plugin-16/items [<'16480894231.desktop'>]
 /plugins/plugin-17 'power-manager-plugin'
-/plugins/plugin-2 'separator'
-/plugins/plugin-2/expand false
-/plugins/plugin-2/style uint32 2
 /plugins/plugin-3 'tasklist'
 /plugins/plugin-3/flat-buttons false
 /plugins/plugin-3/grouping false
@@ -73,7 +68,6 @@
 /plugins/plugin-5/hide-new-items false
 /plugins/plugin-5/icon-size 0
 /plugins/plugin-5/known-items [<'K7BazpN2jM'>, <'lNWFXXWK1e'>, <'yILeM3N11q'>, <'nm-applet'>, <'blueman'>, <'d9HT_xdvc-'>, <'steam'>, <'xHpXclXfvK'>, <'chrome_status_icon_1'>]
-/plugins/plugin-5/known-legacy-items [<'wi-fi network connection “bosque” active: bosque (79%)'>, <'wi-fi network connection “bosque” active: bosque (75%)'>, <'wi-fi network connection “bosque” active: bosque (60%)'>, <'wi-fi network connection “bosque” active: bosque (59%)'>, <'wi-fi network connection “bosque” active: bosque (61%)'>, <'wi-fi network connection “bosque” active: bosque (78%)'>, <'wi-fi network connection “bosque” active: bosque (85%)'>, <'wi-fi network connection “bosque” active: bosque (97%)'>, <'wi-fi network connection “bosque” active: bosque (90%)'>, <'wi-fi network connection “bosque” active: bosque (92%)'>, <'blueman'>, <'wi-fi network connection “bosque” active: bosque (94%)'>, <'orage'>, <'xfce4-power-manager'>, <'wi-fi network connection “bosque” active: bosque (74%)'>, <'wi-fi network connection “bosque” active: bosque (73%)'>, <'networkmanager applet'>, <'wi-fi network connection “bosque” active: bosque (57%)'>, <'thunar'>, <'ibus panel'>, <'network'>]
 /plugins/plugin-5/menu-is-primary false
 /plugins/plugin-5/names-ordered [<'network'>, <'thunar'>]
 /plugins/plugin-5/show-frame true
