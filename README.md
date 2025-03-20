@@ -24,7 +24,7 @@ For more screenshots, see [screenshots.md](https://github.com/ledif/blue95/blob/
 
 ### From ISO
 
-Visit https://blue95.neocities.org for links to the latest ISOs.
+We are currently having issues with our ISOs. The current recommended installation path is though rebasing from a different Fedora Atomic desktop, whether that is the official Silverblue and Kinoite installations or any of the other Universal Blue images.
 
 ## From Other Atomic Desktops
 If you are currently using an atomic desktop, you can rebase to the latest blue95 image.
