@@ -1,0 +1,20 @@
+[Desktop Entry]
+Version=1.0
+Name=Terminal Emulator
+Comment=Use the command line
+GenericName=Terminal Emulator
+Keywords=terminal;command line;prompt;cli;cmd;xterm;bash;shell;dos;
+Exec=xfce4-terminal
+Icon=org.xfce.terminal
+Terminal=false
+Type=Application
+Categories=GTK;System;TerminalEmulator;
+StartupNotify=true
+Actions=preferences;
+X-Desktop-File-Install-Version=0.27
+X-XFCE-Source=file:///usr/share/applications/xfce4-terminal.desktop
+Path=
+
+[Desktop Action preferences]
+Name=Terminal Preferences
+Exec=xfce4-terminal --preferences

@@ -1,0 +1,14 @@
+[Desktop Entry]
+Type=Application
+Exec=/usr/bin/palemoon
+Terminal=false
+X-MultipleArgs=false
+Icon=firefox
+StartupWMClass=firefox
+DBusActivatable=false
+Categories=GTK;Network;WebBrowser;
+StartupNotify=true
+Name=Web Browser
+X-XFCE-Source=file:///usr/share/applications/palemoon.desktop
+Comment=Browse the web
+Path=

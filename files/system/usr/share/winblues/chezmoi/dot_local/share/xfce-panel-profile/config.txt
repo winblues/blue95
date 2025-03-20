@@ -20,7 +20,7 @@
 /plugins/plugin-1/category-icon-size 1
 /plugins/plugin-1/command-profile '/usr/libexec/blue95-greeter-settings'
 /plugins/plugin-1/command-switchuser 'dm-tool switch-to-greeter'
-/plugins/plugin-1/favorites [<'xfce4-web-browser.desktop'>, <'xfce4-mail-reader.desktop'>, <'xfce4-file-manager.desktop'>, <'xfce4-terminal-emulator.desktop'>, <'com.discordapp.Discord.desktop'>, <'org.kde.kate.desktop'>, <'md.obsidian.Obsidian.desktop'>, <'org.geany.Geany.desktop'>]
+/plugins/plugin-1/favorites [<'xfce4-web-browser.desktop'>, <'xfce4-mail-reader.desktop'>, <'xfce4-file-manager.desktop'>, <'xfce4-terminal-emulator.desktop'>]
 /plugins/plugin-1/favorites-in-recent true
 /plugins/plugin-1/launcher-icon-size 2
 /plugins/plugin-1/launcher-show-description false
@@ -29,7 +29,7 @@
 /plugins/plugin-1/position-categories-alternate true
 /plugins/plugin-1/position-commands-alternate true
 /plugins/plugin-1/position-search-alternate true
-/plugins/plugin-1/recent [<'xfce4-terminal-emulator.desktop'>, <'xfce4-settings-editor.desktop'>, <'org.xfce.mousepad.desktop'>, <'com.discordapp.Discord.desktop'>, <'org.kde.kdiff3.desktop'>, <'virt-manager.desktop'>, <'md.obsidian.Obsidian.desktop'>, <'1password.desktop'>, <'upnote.desktop'>, <'palemoon.desktop'>]
+/plugins/plugin-1/recent [<'org.xfce.PanelProfiles.desktop'>, <'xfce4-terminal-emulator.desktop'>, <'xfce4-settings-editor.desktop'>, <'org.xfce.mousepad.desktop'>, <'virt-manager.desktop'>, <'1password.desktop'>, <'palemoon.desktop'>]
 /plugins/plugin-1/show-button-title true
 /plugins/plugin-1/sort-categories false
 /plugins/plugin-1/view-mode 2
@@ -47,11 +47,11 @@
 /plugins/plugin-12/digital-time-font 'Sans 12'
 /plugins/plugin-12/digital-time-format '%I:%M %p'
 /plugins/plugin-14 'launcher'
-/plugins/plugin-14/items [<'16480889531.desktop'>]
+/plugins/plugin-14/items [<'17424724602.desktop'>]
 /plugins/plugin-15 'launcher'
-/plugins/plugin-15/items [<'16480889662.desktop'>, <'17374272442.desktop'>]
+/plugins/plugin-15/items [<'17424723401.desktop'>]
 /plugins/plugin-16 'launcher'
-/plugins/plugin-16/items [<'16480894231.desktop'>]
+/plugins/plugin-16/items [<'17424725243.desktop'>]
 /plugins/plugin-17 'power-manager-plugin'
 /plugins/plugin-3 'tasklist'
 /plugins/plugin-3/flat-buttons false
@@ -68,6 +68,7 @@
 /plugins/plugin-5/hide-new-items false
 /plugins/plugin-5/icon-size 0
 /plugins/plugin-5/known-items [<'K7BazpN2jM'>, <'lNWFXXWK1e'>, <'yILeM3N11q'>, <'nm-applet'>, <'blueman'>, <'d9HT_xdvc-'>, <'steam'>, <'xHpXclXfvK'>, <'chrome_status_icon_1'>]
+/plugins/plugin-5/known-legacy-items [<'ethernet network connection “wired connection 1” active'>]
 /plugins/plugin-5/menu-is-primary false
 /plugins/plugin-5/names-ordered [<'network'>, <'thunar'>]
 /plugins/plugin-5/show-frame true
@@ -76,5 +77,5 @@
 /plugins/plugin-5/square-icons false
 /plugins/plugin-5/symbolic-icons false
 /plugins/plugin-7 'launcher'
-/plugins/plugin-7/items [<'17369867541.desktop'>]
+/plugins/plugin-7/items [<'17424725604.desktop'>]
 /plugins/plugin-9 'showdesktop'

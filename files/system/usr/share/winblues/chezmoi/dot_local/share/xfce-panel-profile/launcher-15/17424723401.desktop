@@ -1,0 +1,17 @@
+[Desktop Entry]
+Version=1.0
+Name=Workspaces
+Comment=View other workspaces
+Keywords=workspaces;settings;preferences;virtual desktops;number;windows;screen;margins;
+Exec=/usr/bin/skippy-xd paging
+Icon=org.xfce.workspaces
+Terminal=false
+Type=Application
+Categories=XFCE;GTK;Settings;DesktopSettings;X-XFCE-SettingsDialog;X-XFCE-PersonalSettings;
+StartupNotify=true
+OnlyShowIn=XFCE;
+X-XfcePluggable=true
+X-XfceHelpComponent=xfwm4
+X-XfceHelpPage=workspaces
+X-XFCE-Source=file:///usr/share/applications/xfce-workspaces-settings.desktop
+Path=
