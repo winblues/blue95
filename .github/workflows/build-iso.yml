@@ -27,6 +27,7 @@ jobs:
         run: |
           cd titanoboa
           cat Justfile
+          id -a
           just build ghcr.io/winblues/blue95:latest 1
 
       - name: Upload ISOs and Checksum to R2
