@@ -1,0 +1,11 @@
+[Desktop Entry]
+Type=Application
+Version=1.0
+Name=Installer
+GenericName=System Installer
+Comment=Install live system to disk
+NoDisplay=True
+Icon=xfce4-logo
+Exec=/usr/libexec/blue95-installer.py
+Categories=System;
+Keywords=installer;blue95;winblues
