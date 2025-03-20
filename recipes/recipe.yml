@@ -55,6 +55,13 @@ modules:
       - wine-tahoma-fonts
       - xscreensaver-extras
       - xscreensaver-extras-gss
+      # Installer packages
+      - python3-svgwrite
+      - python3-fonttools
+      - python3-numpy
+      - python3-pillow
+      - python3-gobjec
+      - gtk3
 
   - type: script
     scripts:
