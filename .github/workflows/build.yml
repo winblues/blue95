@@ -5,6 +5,8 @@ on:
         "00 07 * * *" # build at 07:00 UTC every day
         # (1 hour after winblues/vauxite)
   push:
+    branches:
+      - main
     paths-ignore: # don't rebuild if only documentation has changed
       - "**.md"
 

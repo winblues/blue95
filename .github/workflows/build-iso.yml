@@ -15,7 +15,7 @@ jobs:
       - name: Checkout Titanoboa
         uses: actions/checkout@v4
         with:
-          repository: "ublue-os/titanoboa"
+          repository: "ledif/titanoboa"
           path: "titanoboa"
 
       - name: Install dependencies
