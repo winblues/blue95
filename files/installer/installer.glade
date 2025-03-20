@@ -5,7 +5,7 @@
   <object class="GtkWindow" id="installer">
     <property name="can_focus">False</property>
     <property name="title" translatable="yes">Blue 95 Installation</property>
-    <property name="icon_name">application-x-executable</property>
+    <property name="icon_name">mdmsetup</property>
     <signal name="destroy-event" handler="on_window_destroy" swapped="no"/>
     <child type="titlebar">
       <placeholder/>
@@ -687,7 +687,8 @@ Press the Finish button to exit this installation.</property>
   </object>
   <object class="GtkWindow" id="main window">
     <property name="can_focus">False</property>
-    <property name="title" translatable="yes">Blue 95 Installer</property>
+    <property name="title" translatable="yes">Setup Wizard</property>
+    <property name="icon_name">im-msn</property>
     <property name="resizable">False</property>
     <property name="window_position">center</property>
     <property name="destroy_with_parent">True</property>
@@ -707,7 +708,7 @@ Press the Finish button to exit this installation.</property>
   <object class="GtkWindow" id="progress">
     <property name="can_focus">False</property>
     <property name="title" translatable="yes">Installing</property>
-    <property name="icon_name">preferences-desktop-theme</property>
+    <property name="icon_name">preferences-desktop-online-accounts</property>
     <child type="titlebar">
       <placeholder/>
     </child>
