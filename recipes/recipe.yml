@@ -62,6 +62,7 @@ modules:
       - python3-pillow
       - python3-gobject
       - gtk3
+      - kmines
 
   - type: script
     scripts:
