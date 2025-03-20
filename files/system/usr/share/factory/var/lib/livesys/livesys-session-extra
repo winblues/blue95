@@ -1,3 +1,4 @@
 #!/bin/bash
 
-usermod -c "Topanga Lawrence" liveuser
+usermod -c "Chandler Bong" liveuser
+hostnamectl hostname blue95
