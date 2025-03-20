@@ -16,6 +16,9 @@
     "xfce4-notifyd": {
       "/theme": "Chicago95",
       "/notify-location": "bottom-right"
+    },
+    "xfce4-terminal": {
+      "/misc-toolbar-default": true
     }
   },
   "metadata": {
