@@ -14,11 +14,11 @@ import shutil
 
 class Config:
   def __init__(self):
-    self.glade_file = "/usr/share/winblues/installer.glade"
+    running_folder = os.path.dirname(os.path.abspath(__file__))
+    self.glade_file = Path(running_folder) / "installer.glade"
 
-    if True:
-       running_folder = os.path.dirname(os.path.abspath(__file__))
-       self.glade_file = str(Path(running_folder) / "installer.glade")
+    if not self.glade_file.exists():
+      self.glade_file = "/usr/share/winblues/installer.glade"
 
 
 config = Config()
@@ -27,11 +27,10 @@ class InstallGUI:
 	def __init__(self):
 		self.set_style()
 		self.builder = Gtk.Builder()
-		self.builder.add_from_file(config.glade_file)
+		self.builder.add_from_file(str(config.glade_file))
 		self.builder.connect_signals(self)
 		self.set_options()
 		window = self.builder.get_object('main window')
-		#window.connect('delete-event', lambda x,y: Gtk.main_quit())
 		self.window_installer = self.builder.get_object('installer')
 		self.window_installer.connect('delete-event', lambda x,y: Gtk.main_quit())
 		self.progress_window = self.builder.get_object('progress')
