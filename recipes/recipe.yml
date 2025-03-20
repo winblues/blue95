@@ -71,6 +71,7 @@ modules:
       - 10-install-appimages.sh
       - 20-chicago95.sh
       - 21-de-tweaks.sh
+      - 22-fonts.sh
 
   - type: default-flatpaks
     notify: true # Send notification after install/uninstall is finished

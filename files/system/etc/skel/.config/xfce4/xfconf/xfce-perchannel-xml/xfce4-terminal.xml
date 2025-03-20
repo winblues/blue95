@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <channel name="xfce4-terminal" version="1.0">
-  <property name="font-name" type="string" value="JetBrains Mono NL 13"/>
+  <property name="font-name" type="string" value="CaskaydiaMono Nerd Font Mono 13"/>
   <property name="color-foreground" type="string" value="#ffffff"/>
   <property name="color-background" type="string" value="#000000"/>
   <property name="color-background-vary" type="bool" value="false"/>
