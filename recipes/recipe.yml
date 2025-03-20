@@ -60,7 +60,7 @@ modules:
       - python3-fonttools
       - python3-numpy
       - python3-pillow
-      - python3-gobjec
+      - python3-gobject
       - gtk3
 
   - type: script
