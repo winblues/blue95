@@ -8,6 +8,8 @@ import os
 import subprocess
 import time
 import json
+from threading import Thread
+import random
 
 from pathlib import Path
 import shutil
@@ -18,6 +20,7 @@ class BootcInstaller:
     def __init__(self):
         self.fs_type = "btrfs"
         self.target_disk = "/dev/vda"
+        self.log_file = os.path.expanduser("~/blue95_install.log")
 
     def get_block_devices(self):
         result = subprocess.run(['lsblk', '-o', 'NAME,SIZE,TYPE', '-J'], capture_output=True, text=True)
@@ -25,7 +28,14 @@ class BootcInstaller:
         return block_devices['blockdevices']
 
     def install(self):
-        return BootcInstaller.STEP_NAMES
+        with open(self.log_file, "w") as log_file:
+            process = subprocess.Popen(
+                ["pkexec", "bootc", "install", "to-disk", self.target_disk, "--wipe", "--source-imgref", "containers-storage:ghcr.io/winblues/blue95:latest"],
+                stdout=log_file,
+                stderr=subprocess.STDOUT,
+                text=True
+            )
+            return process
 
 class Config:
   def __init__(self):
@@ -133,14 +143,27 @@ class InstallGUI:
         self.id = GLib.idle_add(self.task.__next__)
 
     def install(self):
-        progress = self.bootc_installer.install()
-        step = 0
-        for p in progress:
+        def update_progress_label():
+            while True:
+                with open(self.bootc_installer.log_file, "r") as log_file:
+                    lines = log_file.readlines()
+                    if lines:
+                        self.progress_label.set_text(lines[-1].strip())
+                time.sleep(0.2)
+
+        process = self.bootc_installer.install()
+
+        Thread(target=update_progress_label, daemon=True).start()
+
+        while True:
+            step = random.randint(0, len(BootcInstaller.STEP_NAMES) - 1)
+            if process.poll() is not None:
+                break
+
             self.progress_label_component.set_label(BootcInstaller.STEP_NAMES[step])
             self.progress_bar.set_fraction(float(step) / len(BootcInstaller.STEP_NAMES))
             yield True
-            time.sleep(1)
-            step += 1
+            time.sleep(0.2)
 
         stack = self.builder.get_object('stack')
         stack.set_visible_child(stack.get_child_by_name('page_completed'))
