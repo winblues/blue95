@@ -14,3 +14,5 @@ refresh-panel-profile:
   tar xf $tmptar
   rm $tmptar
 
+test-installer:
+  cp files/system/usr/libexec/blue95-installer.py files/system/usr/share/winblues/installer.glade ~/Public/vm-share/

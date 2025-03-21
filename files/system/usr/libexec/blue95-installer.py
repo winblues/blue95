@@ -13,12 +13,19 @@ from pathlib import Path
 import shutil
 
 class BootcInstaller:
+    STEP_NAMES = ["Wiping drive", "Partitioning drive", "Creating filesystems", "Fetching layers", "Deploying image", "Installing bootloader", "Finalizing"]
+
     def __init__(self):
         self.fs_type = "btrfs"
         self.target_disk = "/dev/vda"
 
+    def get_block_devices(self):
+        result = subprocess.run(['lsblk', '-o', 'NAME,SIZE,TYPE', '-J'], capture_output=True, text=True)
+        block_devices = json.loads(result.stdout)
+        return block_devices['blockdevices']
+
     def install(self):
-        pass
+        return BootcInstaller.STEP_NAMES
 
 class Config:
   def __init__(self):
@@ -28,15 +35,15 @@ class Config:
     if not self.glade_file.exists():
       self.glade_file = "/usr/share/winblues/installer.glade"
 
-config = Config()
 
 class InstallGUI:
     def __init__(self):
         self.bootc_installer = BootcInstaller()
+        self.config = Config()
 
         self.set_style()
         self.builder = Gtk.Builder()
-        self.builder.add_from_file(str(config.glade_file))
+        self.builder.add_from_file(str(self.config.glade_file))
         self.builder.connect_signals(self)
         window = self.builder.get_object('main window')
         self.window_installer = self.builder.get_object('installer')
@@ -77,9 +84,11 @@ class InstallGUI:
             self.show_disks()
             back_button = self.builder.get_object('back')
             back_button.set_sensitive(True)
-        else:
-            component_page = stack.get_child_by_name('page_customizations')
+        # TODO: add user stuff here
             next_button.set_label("Install")
+        #else:
+        #    component_page = stack.get_child_by_name('page_customizations')
+        #    next_button.set_label("Install")
 
         stack.set_visible_child(component_page)
 
@@ -99,8 +108,7 @@ class InstallGUI:
         stack.set_visible_child(component_page)
 
     def show_disks(self):
-        # Retrieve the list of hard disks/block devices
-        disks = self.get_block_devices()
+        disks = self.bootc_installer.get_block_devices()
         treeview = self.builder.get_object('disks_treeview')
         liststore = Gtk.ListStore(str, str, str)
 
@@ -109,23 +117,15 @@ class InstallGUI:
 
         treeview.set_model(liststore)
 
-    def get_block_devices(self):
-        # Use 'lsblk' command to get block devices
-        result = subprocess.run(['lsblk', '-o', 'NAME,SIZE,TYPE', '-J'], capture_output=True, text=True)
-        block_devices = json.loads(result.stdout)
-        return block_devices['blockdevices']
-
     def install_blue95(self):
-        self.progress_label_sections = ["Wiping drive", "Partitioning drive", "Creating filesystems", "Fetching layers", "Deploying image", "Installing bootloader", "Finalizing"]
-        self.copy_files = {}
 
-        self.progres_label_names = iter(self.progress_label_sections)
+        self.progres_label_names = iter(BootcInstaller.STEP_NAMES)
         self.window_installer.hide()
         self.progress_bar = self.builder.get_object('progress bar')
         self.progress_label = self.builder.get_object('progress file')
         self.progress_label_component = self.builder.get_object('progress label')
-        self.progress_label_component.set_label("Installing component: {}".format(next(self.progres_label_names)))
-        self.progress_label.set_label("foobar")
+        self.progress_label_component.set_label("{}".format(next(self.progres_label_names)))
+        self.progress_label.set_label("...")
         self.progress_bar.set_fraction(0.0)
         frac = 1.0 / 190
         self.progress_window.show_all()
@@ -133,6 +133,15 @@ class InstallGUI:
         self.id = GLib.idle_add(self.task.__next__)
 
     def install(self):
+        progress = self.bootc_installer.install()
+        step = 0
+        for p in progress:
+            self.progress_label_component.set_label(BootcInstaller.STEP_NAMES[step])
+            self.progress_bar.set_fraction(float(step) / len(BootcInstaller.STEP_NAMES))
+            yield True
+            time.sleep(1)
+            step += 1
+
         stack = self.builder.get_object('stack')
         stack.set_visible_child(stack.get_child_by_name('page_completed'))
         self.progress_window.hide()
@@ -143,12 +152,6 @@ class InstallGUI:
         self.window_installer.show_all()
         GLib.source_remove(self.id)
         yield False
-
-    def change_component_label(self):
-        try:
-            self.progress_label_component.set_label("Installing component: {}".format(next(self.progres_label_names)))
-        except:
-            pass
 
     def cancel_install(self, button):
         print("Cancelling Install")
