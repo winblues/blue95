@@ -12,6 +12,13 @@ import json
 from pathlib import Path
 import shutil
 
+class BootcInstaller:
+    def __init__(self):
+        self.fs_type = "btrfs"
+        self.target_disk = "/dev/vda"
+
+    def install(self):
+        pass
 
 class Config:
   def __init__(self):
@@ -25,11 +32,12 @@ config = Config()
 
 class InstallGUI:
     def __init__(self):
+        self.bootc_installer = BootcInstaller()
+
         self.set_style()
         self.builder = Gtk.Builder()
         self.builder.add_from_file(str(config.glade_file))
         self.builder.connect_signals(self)
-        self.set_options()
         window = self.builder.get_object('main window')
         self.window_installer = self.builder.get_object('installer')
         self.window_installer.connect('delete-event', lambda x,y: Gtk.main_quit())
@@ -52,56 +60,25 @@ class InstallGUI:
         Gtk.main_quit()
         return False
 
-    def set_options(self):
-        self.install_theme = True
-        self.install_icons = True
-        self.install_cursors = True
-        self.install_background = True
-        self.install_sounds = True
-        self.install_fonts = True
-        self.thunar = True
-        self.terminal_colors = True
-        self.bash = True
-        self.zsh = False
-        self.panel = True
-
     def next_clicked(self, button):
         stack = self.builder.get_object('stack')
         current_page = stack.get_visible_child_name()
         next_button = self.builder.get_object('next')
         if next_button.get_label() == "Install":
-            self.install_chicago95()
+            self.install_blue95()
             return
 
         if next_button.get_label() == "Finish":
-            print("Install Completed! Enjoy Chicago95!")
             Gtk.main_quit()
             return False
 
         if current_page == 'page_welcome':
-            # Display the hard disks/block devices page
             component_page = stack.get_child_by_name('page_disks')
-            print("foobar")
-            print(component_page)
             self.show_disks()
             back_button = self.builder.get_object('back')
             back_button.set_sensitive(True)
         else:
             component_page = stack.get_child_by_name('page_customizations')
-            thunar_check = self.builder.get_object('thunar')
-            panel_check = self.builder.get_object('panel')
-            if not self.install_theme:
-                print('[THUNAR] Warning: GTK Theme not selected, cannot install Thunar status bar image')
-                thunar_check.set_tooltip_text("Warning: GTK Theme not selected, cannot install Thunar status bar image")
-                thunar_check.set_sensitive(False)
-                thunar_check.set_active(False)
-                self.thunar = False
-            else:
-                thunar_check.set_tooltip_text("Enables the Thunar status bar image")
-                thunar_check.set_sensitive(True)
-                thunar_check.set_active(True)
-                self.thunar = True
-
             next_button.set_label("Install")
 
         stack.set_visible_child(component_page)
@@ -115,7 +92,7 @@ class InstallGUI:
             back_button = self.builder.get_object('back')
             back_button.set_sensitive(False)
         else:
-            component_page = stack.get_child_by_name('page_components')
+            component_page = stack.get_child_by_name('page_disks')
             next_button = self.builder.get_object('next')
             next_button.set_label("Next")
 
@@ -138,11 +115,8 @@ class InstallGUI:
         block_devices = json.loads(result.stdout)
         return block_devices['blockdevices']
 
-    def install_chicago95(self):
-        components = "\tTheme:\t\t{}\n\tIcons:\t\t{}\n\tCursors:\t{}\n\tBackground:\t{}\n\tSounds:\t\t{}\n\tFonts:\t\t{}".format(self.install_theme, self.install_icons, self.install_cursors, self.install_background, self.install_sounds, self.install_fonts)
-        customizations = "\tThunar Graphics:\t{}\n\tChange Terminal Colors:\t{}\n\tSet Bash Prompt:\t{}\n\tSet zsh promt/theme:\t{}\n\tCustomize Panel:\t{}".format(self.thunar, self.terminal_colors, self.bash, self.zsh, self.panel)
-        self.progress_label_sections = []
-        print("Installing Chicago 95 with the following options:\n Components:\n {}\n Customizations:\n {}".format(components, customizations))
+    def install_blue95(self):
+        self.progress_label_sections = ["Wiping drive", "Partitioning drive", "Creating filesystems", "Fetching layers", "Deploying image", "Installing bootloader", "Finalizing"]
         self.copy_files = {}
 
         self.progres_label_names = iter(self.progress_label_sections)
@@ -151,18 +125,14 @@ class InstallGUI:
         self.progress_label = self.builder.get_object('progress file')
         self.progress_label_component = self.builder.get_object('progress label')
         self.progress_label_component.set_label("Installing component: {}".format(next(self.progres_label_names)))
-        first_file_name = list(self.copy_files.keys())[0].split("/")[-1]
-        self.progress_label.set_label(first_file_name)
+        self.progress_label.set_label("foobar")
         self.progress_bar.set_fraction(0.0)
-        frac = 1.0 / len(self.copy_files)
+        frac = 1.0 / 190
         self.progress_window.show_all()
         self.task = self.install()
         self.id = GLib.idle_add(self.task.__next__)
 
     def install(self):
-        i = 0.0
-        print("Installing Chicago 95")
-
         stack = self.builder.get_object('stack')
         stack.set_visible_child(stack.get_child_by_name('page_completed'))
         self.progress_window.hide()
