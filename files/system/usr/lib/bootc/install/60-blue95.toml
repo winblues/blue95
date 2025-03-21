@@ -1,0 +1,2 @@
+[install.filesystem.root]
+type = "btrfs"
