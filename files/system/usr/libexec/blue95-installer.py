@@ -9,13 +9,21 @@ import subprocess
 import time
 import json
 from threading import Thread
-import random
+import crypt
 
 from pathlib import Path
 import shutil
 
 class BootcInstaller:
-    STEP_NAMES = ["Wiping drive", "Partitioning drive", "Creating filesystems", "Fetching layers", "Deploying image", "Installing bootloader", "Finalizing"]
+    STEP_NAMES = [
+        ("WIPE", "Wiping drive"),
+        ("PART", "Partitioning drive"),
+        ("FS", "Creating filesystems"),
+        ("FETCH", "Fetching layers"),
+        ("DEPLOY", "Deploying image"),
+        ("BOOTLOAD", "Installing bootloader"),
+        ("FINAL", "Finalizing")
+    ]
 
     def __init__(self):
         self.fs_type = "btrfs"
@@ -27,7 +35,29 @@ class BootcInstaller:
         block_devices = json.loads(result.stdout)
         return block_devices['blockdevices']
 
+    def current_step(self):
+        last_step = "WIPE"
+        with open(self.log_file, "r") as log_file:
+            for line in log_file.readlines():
+                if line.startswith("Checking that no-one is using this disk"):
+                    last_step = "PART"
+                elif line.startswith("Creating root filesystem"):
+                    last_step = "FS"
+                elif line.startswith("layers already present"):
+                    last_step = "FETCH"
+
+        return next(i for i, (key, _) in enumerate(self.STEP_NAMES) if key == last_step)
+
     def install(self):
+        # TODO: remove when no longer needed
+        # Fix up /var/tmp
+        try:
+            subprocess.run(["pkexec", "rm", "-rf", "/var/tmp"], check=True, text=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+            subprocess.run(["pkexec", "ln", "-s", "/tmp", "/var/tmp"], check=True, text=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+        except subprocess.CalledProcessError as e:
+            print(f"Command failed: {e.cmd}\nReturn code: {e.returncode}\nError: {e.stderr}")
+
+        # bootc install
         with open(self.log_file, "w") as log_file:
             process = subprocess.Popen(
                 ["pkexec", "bootc", "install", "to-disk", self.target_disk, "--wipe", "--source-imgref", "containers-storage:ghcr.io/winblues/blue95:latest"],
@@ -36,6 +66,36 @@ class BootcInstaller:
                 text=True
             )
             return process
+
+    def post_install(self):
+        root_partition = f"{self.target_disk}p3" if self.target_disk[-1].isdigit() else f"{self.target_disk}3"
+        print(f"Mounting {root_partition} to /mnt")
+        try:
+            subprocess.run(["pkexec", "mount", root_partition, "/mnt"], check=True, text=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+        except subprocess.CalledProcessError as e:
+            print(f"Command failed: {e.cmd}\nReturn code: {e.returncode}\nError: {e.stderr}")
+
+        # Find installed system root
+        candidate_roots = list(Path("/mnt/ostree/boot.1/default/").glob("*/"))
+        assert len(candidate_roots) != 0, "Could not find installed root"
+        installed_root = str(candidate_roots[0] / "0")
+
+        # Set user and password
+        username="adam"
+        password="adam"
+
+        print("Setting up user")
+        hashed_password = crypt.crypt(password, crypt.mksalt(crypt.METHOD_SHA512))
+
+        try:
+            subprocess.run(["pkexec", "chroot", installed_root, "/usr/sbin/useradd", "-m", "-d", f"/var/home/{username}", "-G", "wheel", "-s", "/bin/bash", username], check=True)
+            subprocess.run(["pkexec", "chroot", installed_root, "/usr/sbin/chpasswd", "-e"], input=f"{username}:{hashed_password}\n", text=True, check=True)
+        except subprocess.CalledProcessError as e:
+            print(f"Command failed: {e.cmd}\nReturn code: {e.returncode}\nError: {e.stderr}")
+
+
+
+
 
 class Config:
   def __init__(self):
@@ -154,16 +214,21 @@ class InstallGUI:
         process = self.bootc_installer.install()
 
         Thread(target=update_progress_label, daemon=True).start()
+        total_installation_steps = len(BootcInstaller.STEP_NAMES) + 1
 
         while True:
-            step = random.randint(0, len(BootcInstaller.STEP_NAMES) - 1)
+            step = self.bootc_installer.current_step()
             if process.poll() is not None:
                 break
 
-            self.progress_label_component.set_label(BootcInstaller.STEP_NAMES[step])
-            self.progress_bar.set_fraction(float(step) / len(BootcInstaller.STEP_NAMES))
+            self.progress_label_component.set_label(BootcInstaller.STEP_NAMES[step][1])
+            self.progress_bar.set_fraction(float(step) / total_installation_steps)
             yield True
-            time.sleep(0.2)
+            time.sleep(0.1)
+
+        self.progress_label_component.set_label("Post install")
+        self.progress_bar.set_fraction(float(len(BootcInstaller.STEP_NAMES)) / total_installation_steps)
+        self.bootc_installer.post_install()
 
         stack = self.builder.get_object('stack')
         stack.set_visible_child(stack.get_child_by_name('page_completed'))
