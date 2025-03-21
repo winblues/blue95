@@ -38,7 +38,7 @@ jobs:
           just build ghcr.io/winblues/blue95:latest 1
 
       - name: Upload ISOs and Checksum to R2
-        if: github.ref_name == 'main'
+        #        if: github.ref_name == 'main'
         shell: bash
         env:
           RCLONE_CONFIG_R2_TYPE: s3
