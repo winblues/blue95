@@ -4,7 +4,7 @@
 	<requires lib="gtk+" version="3.20"/>
 	<object class="GtkWindow" id="installer">
 		<property name="can_focus">False</property>
-		<property name="title" translatable="yes">Blue95 Installer</property>
+		<property name="title" translatable="yes">Setup Wizard</property>
 		<property name="icon_name">mdmsetup</property>
 		<signal name="destroy-event" handler="on_window_destroy" swapped="no"/>
 		<child type="titlebar">
@@ -89,7 +89,44 @@ Press the Next button to start the installation. You can press the cancel button
 									<object class="GtkBox" id="page_disks">
 										<property name="visible">True</property>
 										<property name="can_focus">False</property>
+										<property name="orientation">vertical</property>
+
+									<child>
+																	<object class="GtkLabel">
+																	<property name="visible">True</property>
+																<property name="can_focus">False</property>
+															<property name="halign">start</property>
+														<property name="label" translatable="yes">Choose disk to install to</property>
+													<attributes>
+													<attribute name="font-desc" value="Sans Bold Italic 16"/>
+													</attributes>
+													</object>
+													<packing>
+													<property name="expand">False</property>
+												<property name="fill">True</property>
+											<property name="position">0</property>
+										</packing>
+										</child>
+											<child>
+											<object class="GtkLabel">
+											<property name="visible">True</property>
+											<property name="can_focus">False</property>
+											<property name="halign">start</property>
+											<property name="margin_top">20</property>
+											<property name="margin_bottom">20</property>
+
+											<property name="label" translatable="yes">Note that the entire disk will be overwritten.</property>
+										<property name="wrap">True</property>
+										<property name="max_width_chars">50</property>
+									</object>
+									<packing>
+									<property name="expand">False</property>
+								<property name="fill">True</property>
+							<property name="position">1</property>
+						</packing>
+						</child>
 										<child>
+
 											<object class="GtkTreeView" id="disks_treeview">
 												<property name="visible">True</property>
 												<property name="can_focus">True</property>
@@ -425,7 +462,7 @@ Press the Finish button to exit this installation.</property>
 	</object>
 	<object class="GtkWindow" id="main window">
 		<property name="can_focus">False</property>
-		<property name="title" translatable="yes">Setup Wizard</property>
+		<property name="title" translatable="yes">Blue95 Installer</property>
 		<property name="icon_name">im-msn</property>
 		<property name="resizable">False</property>
 		<property name="window_position">center</property>
