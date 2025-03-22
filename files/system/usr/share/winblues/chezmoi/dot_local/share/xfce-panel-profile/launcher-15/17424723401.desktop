@@ -1,10 +1,10 @@
 [Desktop Entry]
 Version=1.0
 Name=Workspaces
-Comment=View other workspaces
+Comment=Show workspace overview
 Keywords=workspaces;settings;preferences;virtual desktops;number;windows;screen;margins;
 Exec=/usr/bin/skippy-xd paging
-Icon=org.xfce.workspaces
+Icon=xfce4-splash
 Terminal=false
 Type=Application
 Categories=XFCE;GTK;Settings;DesktopSettings;X-XFCE-SettingsDialog;X-XFCE-PersonalSettings;
