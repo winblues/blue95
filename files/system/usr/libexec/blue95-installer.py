@@ -3,16 +3,75 @@
 import gi
 import gc
 gi.require_version('Gtk', '3.0')
-from gi.repository import Gtk, Gdk, GLib
+from gi.repository import Gtk, Gdk, GLib, Pango
 import os
 import subprocess
 import time
 import json
 from threading import Thread
 import crypt
+import shutil
+import re
 
 from pathlib import Path
-import shutil
+import logging
+
+def setup_logger():
+    logger = logging.getLogger('blue95')
+    logger.setLevel(logging.DEBUG)
+
+    console_handler = logging.StreamHandler()
+    console_handler.setLevel(logging.DEBUG)
+
+    file_handler = logging.FileHandler(os.path.expanduser("~/blue95-installer.log"))
+    file_handler.setLevel(logging.DEBUG)
+
+    formatter = logging.Formatter('%(asctime)s - %(levelname)s - %(message)s')
+    console_handler.setFormatter(formatter)
+    file_handler.setFormatter(formatter)
+
+    logger.addHandler(console_handler)
+    logger.addHandler(file_handler)
+
+    return logger
+
+logger = setup_logger()
+
+
+ANSI_TO_PANGO = {
+    "30": "black", "31": "red", "32": "green", "33": "yellow",
+    "34": "blue", "35": "magenta", "36": "cyan", "37": "white",
+    "90": "gray", "91": "lightred", "92": "lightgreen", "93": "lightyellow",
+    "94": "lightblue", "95": "lightmagenta", "96": "lightcyan", "97": "lightwhite",
+}
+
+ANSI_STYLE_RE = re.compile(r'\x1B\[(\d+)(;\d+)*m')
+
+def ansi_to_pango(text):
+    """Convert ANSI escape codes to Pango markup for GTK."""
+    def replace_ansi(match):
+        codes = match.group().strip("\x1b[m").split(";")
+        pango_tags = []
+
+        for code in codes:
+            if code in ANSI_TO_PANGO:
+                pango_tags.append(f'<span foreground="{ANSI_TO_PANGO[code]}">')
+            elif code == "1":  # Bold
+                pango_tags.append("<b>")
+            elif code == "4":  # Underline
+                pango_tags.append("<u>")
+
+        return "".join(pango_tags)
+
+    # Replace ANSI codes with Pango markup
+    formatted_text = ANSI_STYLE_RE.sub(replace_ansi, text)
+
+    # Ensure all opened tags are closed
+    formatted_text += "</span>" * formatted_text.count("<span ")
+    formatted_text += "</b>" * formatted_text.count("<b>")
+    formatted_text += "</u>" * formatted_text.count("<u>")
+
+    return formatted_text
 
 class BootcInstaller:
     STEP_NAMES = [
@@ -27,12 +86,15 @@ class BootcInstaller:
 
     def __init__(self):
         self.fs_type = "btrfs"
-        self.target_disk = "/dev/vda"
-        self.log_file = os.path.expanduser("~/blue95_install.log")
+        self.target_disk = ""
+        self.log_file = os.path.expanduser("~/bootc-install.log")
+        self.raw_log_file = os.path.expanduser("~/bootc-install.log.ansi")
 
     def get_block_devices(self):
         result = subprocess.run(['lsblk', '-o', 'NAME,SIZE,TYPE', '-J'], capture_output=True, text=True)
         block_devices = json.loads(result.stdout)
+        logger.debug("Block devices")
+        logger.debug(block_devices)
         return block_devices['blockdevices']
 
     def current_step(self):
@@ -51,16 +113,18 @@ class BootcInstaller:
     def install(self):
         # TODO: remove when no longer needed
         # Fix up /var/tmp
+        logger.info("Work around for /var/tmp")
         try:
             subprocess.run(["pkexec", "rm", "-rf", "/var/tmp"], check=True, text=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
             subprocess.run(["pkexec", "ln", "-s", "/tmp", "/var/tmp"], check=True, text=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
         except subprocess.CalledProcessError as e:
-            print(f"Command failed: {e.cmd}\nReturn code: {e.returncode}\nError: {e.stderr}")
+            logger.error(f"Command failed: {e.cmd}\nReturn code: {e.returncode}\nError: {e.stderr}")
 
         # bootc install
+        logger.info(f"Calling bootc install to-disk {self.target_disk}")
         with open(self.log_file, "w") as log_file:
             process = subprocess.Popen(
-                ["pkexec", "bootc", "install", "to-disk", self.target_disk, "--wipe", "--source-imgref", "containers-storage:ghcr.io/winblues/blue95:latest"],
+                ["script", "-q", "-c", f"pkexec bootc install to-disk {self.target_disk} --wipe --source-imgref containers-storage:ghcr.io/winblues/blue95:latest", self.raw_log_file],
                 stdout=log_file,
                 stderr=subprocess.STDOUT,
                 text=True
@@ -69,11 +133,11 @@ class BootcInstaller:
 
     def post_install(self):
         root_partition = f"{self.target_disk}p3" if self.target_disk[-1].isdigit() else f"{self.target_disk}3"
-        print(f"Mounting {root_partition} to /mnt")
+        logger.info(f"Mounting {root_partition} to /mnt")
         try:
             subprocess.run(["pkexec", "mount", root_partition, "/mnt"], check=True, text=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
         except subprocess.CalledProcessError as e:
-            print(f"Command failed: {e.cmd}\nReturn code: {e.returncode}\nError: {e.stderr}")
+            logger.error(f"Command failed: {e.cmd}\nReturn code: {e.returncode}\nError: {e.stderr}")
 
         # Find installed system root
         candidate_roots = list(Path("/mnt/ostree/boot.1/default/").glob("*/"))
@@ -81,20 +145,17 @@ class BootcInstaller:
         installed_root = str(candidate_roots[0] / "0")
 
         # Set user and password
-        username="adam"
-        password="adam"
+        username="cory"
+        password="topanga"
 
-        print("Setting up user")
+        logger.info(f"Setting up user {username}")
         hashed_password = crypt.crypt(password, crypt.mksalt(crypt.METHOD_SHA512))
 
         try:
             subprocess.run(["pkexec", "chroot", installed_root, "/usr/sbin/useradd", "-m", "-d", f"/var/home/{username}", "-G", "wheel", "-s", "/bin/bash", username], check=True)
             subprocess.run(["pkexec", "chroot", installed_root, "/usr/sbin/chpasswd", "-e"], input=f"{username}:{hashed_password}\n", text=True, check=True)
         except subprocess.CalledProcessError as e:
-            print(f"Command failed: {e.cmd}\nReturn code: {e.returncode}\nError: {e.stderr}")
-
-
-
+            logger.error(f"Command failed: {e.cmd}\nReturn code: {e.returncode}\nError: {e.stderr}")
 
 
 class Config:
@@ -115,6 +176,12 @@ class InstallGUI:
         self.builder = Gtk.Builder()
         self.builder.add_from_file(str(self.config.glade_file))
         self.builder.connect_signals(self)
+
+        treeview = self.builder.get_object("disks_treeview")
+        selection = treeview.get_selection()
+        selection.connect("changed", self.on_disk_selection_changed)
+
+        # Window setup
         window = self.builder.get_object('main window')
         self.window_installer = self.builder.get_object('installer')
         self.window_installer.connect('delete-event', lambda x,y: Gtk.main_quit())
@@ -133,7 +200,7 @@ class InstallGUI:
         Gtk.StyleContext.add_provider_for_screen(screen, provider, GTK_STYLE_PROVIDER_PRIORITY_APPLICATION)
 
     def on_window_destroy(self, window):
-        print("Closing Window")
+        logger.info("Closing Window")
         Gtk.main_quit()
         return False
 
@@ -177,6 +244,13 @@ class InstallGUI:
 
         stack.set_visible_child(component_page)
 
+    def on_disk_selection_changed(self, selection):
+        model, treeiter = selection.get_selected()
+        if treeiter is not None:
+            disk_name = model[treeiter][0]
+            logger.info(f"Selected disk: {disk_name}")
+            self.bootc_installer.target_disk = f"/dev/{disk_name}"
+
     def show_disks(self):
         disks = self.bootc_installer.get_block_devices()
         treeview = self.builder.get_object('disks_treeview')
@@ -196,6 +270,10 @@ class InstallGUI:
         self.progress_label_component = self.builder.get_object('progress label')
         self.progress_label_component.set_label("{}".format(next(self.progres_label_names)))
         self.progress_label.set_label("...")
+        self.progress_label.set_line_wrap(True)  # Enable wrapping
+        self.progress_label.set_line_wrap_mode(Pango.WrapMode.WORD_CHAR)  # Wrap at words & characters
+        self.progress_label.set_max_width_chars(50)  # Optional: Limit width for readability
+        self.progress_label.set_ellipsize(Pango.EllipsizeMode.NONE)  # Prevent truncation
         self.progress_bar.set_fraction(0.0)
         frac = 1.0 / 190
         self.progress_window.show_all()
@@ -205,10 +283,14 @@ class InstallGUI:
     def install(self):
         def update_progress_label():
             while True:
-                with open(self.bootc_installer.log_file, "r") as log_file:
-                    lines = log_file.readlines()
-                    if lines:
-                        self.progress_label.set_text(lines[-1].strip())
+                if Path(self.bootc_installer.raw_log_file).exists():
+                    with open(self.bootc_installer.raw_log_file, "rb") as log_file:
+                        raw_data = log_file.read()
+                        decoded_text = raw_data.decode("utf-8", errors="replace")
+                        lines = decoded_text.split("\n")
+                        if len(lines) > 1:
+                            last_line = ansi_to_pango(lines[-1].strip())
+                            self.progress_label.set_markup(f'<span font_desc="CaskaydiaMono Nerd Font 13">{last_line}</span>')
                 time.sleep(0.2)
 
         process = self.bootc_installer.install()
@@ -242,7 +324,7 @@ class InstallGUI:
         yield False
 
     def cancel_install(self, button):
-        print("Cancelling Install")
+        logger.info("Cancelling Install")
         Gtk.main_quit()
         return False
 
