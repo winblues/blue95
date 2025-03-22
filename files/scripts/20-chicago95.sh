@@ -23,11 +23,12 @@ ln -s /usr/share/icons/Chicago95/apps/48/stock_keyring.png /usr/share/icons/Chic
 ln -s /usr/share/icons/Chicago95/apps/scalable/internet-mail.svg /usr/share/icons/Chicago95/apps/scalable/epyrus.svg
 ln -s /usr/share/icons/Chicago95/apps/scalable/xfwm4.svg /usr/share/icons/Chicago95/apps/scalable/virt-manager.svg
 ln -s /usr/share/icons/Chicago95/apps/scalable/multimedia-video-player.svg /usr/share/icons/Chicago95/apps/scalable/io.mpv.Mpv.svg
+ln -s /usr/share/icons/Chicago95/apps/scalable/com.visualstudio.code.svg /usr/share/icons/Chicago95/apps/scalable/org.kde.kate.svg
 
 # TODO: upstream these?
 cp /usr/share/winblues/icons/napster.svg /usr/share/icons/Chicago95/apps/scalable/com.spotify.Client.svg
 cp /usr/share/winblues/icons/obsidian.png /usr/share/icons/Chicago95/apps/scalable/md.obsidian.Obsidian.svg
-cp /usr/share/winblues/icons/mirc.png /usr/share/icons/Chicago95/apps/scalable/com.discordapp.Discord.svg
+cp /usr/share/winblues/icons/mirc.svg /usr/share/icons/Chicago95/apps/scalable/com.discordapp.Discord.svg
 
 # All of the palemoon icons are different for different sizes - just keep the scalable one
 find /usr/share/icons/Chicago95/apps/ -name "palemoon*" -not -path "*/scalable/*" -delete
