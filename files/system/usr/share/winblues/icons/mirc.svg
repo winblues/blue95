@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+<svg xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://web.resource.org/cc/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:svg="http://www.w3.org/2000/svg" xmlns="http://www.w3.org/2000/svg" xmlns:sodipodi="http://inkscape.sourceforge.net/DTD/sodipodi-0.dtd" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" width="100.00000pt" height="100.00000pt" id="svg2" sodipodi:version="0.32" inkscape:version="0.42.2" sodipodi:docbase="D:\" sodipodi:docname="mIRC_logo.svg">
+  <defs id="defs4"/>
+  <sodipodi:namedview id="base" pagecolor="#ffffff" bordercolor="#666666" borderopacity="1.0" inkscape:pageopacity="0.0" inkscape:pageshadow="2" inkscape:zoom="1.0000000" inkscape:cx="363.75262" inkscape:cy="-118.52245" inkscape:document-units="px" inkscape:current-layer="layer1" inkscape:showpageshadow="false" showborder="true" inkscape:window-width="1152" inkscape:window-height="817" inkscape:window-x="-4" inkscape:window-y="-4"/>
+  <metadata id="metadata7">
+    <rdf:RDF>
+      <cc:Work rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+        <dc:title>mIRC logo</dc:title>
+        <dc:date>November 3rd, 2005</dc:date>
+        <dc:creator>
+          <cc:Agent>
+            <dc:title>Lucas V. Barbosa (SVG version)</dc:title>
+          </cc:Agent>
+        </dc:creator>
+        <dc:rights>
+          <cc:Agent>
+            <dc:title>Khaled Mardam-Bey (original)</dc:title>
+          </cc:Agent>
+        </dc:rights>
+        <dc:subject>
+          <rdf:Bag>
+            <rdf:li>mIRC</rdf:li>
+            <rdf:li>logo</rdf:li>
+            <rdf:li>icon</rdf:li>
+            <rdf:li>IRC client</rdf:li>
+          </rdf:Bag>
+        </dc:subject>
+        <dc:description>SVG version of mIRC icon for Wikipedia
+http://en.wikipedia.org/</dc:description>
+        <cc:license rdf:resource="http://creativecommons.org/licenses/GPL/2.0/"/>
+      </cc:Work>
+      <cc:License rdf:about="http://creativecommons.org/licenses/GPL/2.0/">
+        <cc:permits rdf:resource="http://web.resource.org/cc/Reproduction"/>
+        <cc:permits rdf:resource="http://web.resource.org/cc/Distribution"/>
+        <cc:requires rdf:resource="http://web.resource.org/cc/Notice"/>
+        <cc:permits rdf:resource="http://web.resource.org/cc/DerivativeWorks"/>
+        <cc:requires rdf:resource="http://web.resource.org/cc/ShareAlike"/>
+        <cc:requires rdf:resource="http://web.resource.org/cc/SourceCode"/>
+      </cc:License>
+    </rdf:RDF>
+  </metadata>
+  <g inkscape:label="Layer 1" inkscape:groupmode="layer" id="layer1">
+    <path style="fill:#043292;fill-opacity:1.0000000;stroke:#000000;stroke-width:2.9999995;stroke-miterlimit:4.0000000;stroke-dasharray:none;stroke-opacity:1.0000000" d="M 13.656250,6.4375000 L 13.656250,63.718750 L 39.000000,63.718750 L 39.000000,33.062500 C 39.999326,32.564338 41.594881,32.121913 44.500000,32.218750 C 49.500001,32.385417 48.812499,35.031251 48.812500,35.031250 L 48.812500,64.031250 L 74.312500,64.031250 L 74.312500,32.218750 C 75.238261,32.054627 76.353954,31.950340 77.843750,32.000000 C 82.843751,32.166667 82.156253,34.843751 82.156250,34.843750 L 82.156250,63.843750 L 107.65625,63.843750 L 107.65625,30.343750 C 107.65625,30.343750 108.94724,9.7103880 90.656250,6.8437500 C 74.161877,4.2586847 70.656253,14.656249 70.656250,14.656250 L 70.656250,15.656250 C 68.196387,11.654080 64.110329,8.0966340 57.312500,7.0312500 C 46.152455,5.2822030 41.205229,9.4105740 39.000000,12.312500 L 39.000000,6.4375000 L 13.656250,6.4375000 z " id="rect2123"/>
+    <g id="g2878" transform="translate(41.31029,-3.767767)">
+      <path sodipodi:nodetypes="cccccccc" id="path2869" d="M 76.198150,113.33584 C 69.640340,122.46029 57.617850,127.44551 46.566628,124.83217 C 34.531767,122.26226 25.264435,111.56359 23.137467,99.627108 C 20.508191,86.761950 25.885319,72.374618 37.051816,65.184937 C 46.296852,58.971522 59.188220,58.971871 68.395050,65.263319 C 73.679730,68.745113 77.863940,73.849018 80.205190,79.732535 C 73.192350,99.321690 54.346177,96.910843 45.833333,90.166664 C 51.343833,115.94528 66.020990,104.80722 76.198150,113.33584 z " style="fill:#fff508;fill-opacity:1.0000000;stroke:#000000;stroke-width:3.0000000;stroke-miterlimit:4.0000000;stroke-dasharray:none;stroke-opacity:1.0000000"/>
+      <path transform="matrix(1.126669,-0.689494,0.669083,1.217169,9.677508,-19.13880)" d="M -3.4999998 79.916664 A 0.91666669 3.4166667 0 1 1  -5.3333332,79.916664 A 0.91666669 3.4166667 0 1 1  -3.4999998 79.916664 z" sodipodi:ry="3.4166667" sodipodi:rx="0.91666669" sodipodi:cy="79.916664" sodipodi:cx="-4.4166665" id="path2874" style="fill:#ffff08;fill-opacity:1.0000000;stroke:#000000;stroke-width:2.2160449;stroke-miterlimit:4.0000000;stroke-dasharray:none;stroke-opacity:1.0000000" sodipodi:type="arc"/>
+      <path transform="matrix(1.126669,-0.689494,0.669083,1.217169,17.19665,-23.16540)" d="M -3.4999998 79.916664 A 0.91666669 3.4166667 0 1 1  -5.3333332,79.916664 A 0.91666669 3.4166667 0 1 1  -3.4999998 79.916664 z" sodipodi:ry="3.4166667" sodipodi:rx="0.91666669" sodipodi:cy="79.916664" sodipodi:cx="-4.4166665" id="path2876" style="fill:#ffff08;fill-opacity:1.0000000;stroke:#000000;stroke-width:2.2160449;stroke-miterlimit:4.0000000;stroke-dasharray:none;stroke-opacity:1.0000000" sodipodi:type="arc"/>
+    </g>
+    <g id="g2862" transform="translate(-6.000000,-4.000000)">
+      <rect y="63.717358" x="11.087770" height="22.398653" width="29.991146" id="rect2105" style="fill:#e10000;fill-opacity:1.0000000;stroke:#000000;stroke-width:3.0000010;stroke-miterlimit:4.0000000;stroke-dasharray:none;stroke-opacity:1.0000000"/>
+      <rect y="86.872940" x="11.004427" height="35.920876" width="29.991146" id="rect2109" style="fill:#e10000;fill-opacity:1.0000000;stroke:#000000;stroke-width:3.0000014;stroke-miterlimit:4.0000000;stroke-dasharray:none;stroke-opacity:1.0000000"/>
+      <path id="rect2111" d="M 41.468759,63.531250 L 41.468759,90.468750 L 41.656259,90.468750 L 41.656259,122.84375 L 68.343759,122.84375 L 68.343759,90.468750 L 85.343759,90.468750 L 85.343759,63.531250 L 41.468759,63.531250 z " style="fill:#e10000;fill-opacity:1.0000000;stroke:#000000;stroke-width:3.0000000;stroke-miterlimit:4.0000000;stroke-dasharray:none;stroke-opacity:1.0000000"/>
+    </g>
+  </g>
+</svg>
