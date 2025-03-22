@@ -25,6 +25,9 @@ ln -s /usr/share/icons/Chicago95/apps/scalable/xfwm4.svg /usr/share/icons/Chicag
 cp /usr/share/winblues/icons/napster.svg /usr/share/icons/Chicago95/apps/scalable/com.spotify.Client.svg
 cp /usr/share/winblues/icons/obsidian.png md.obsidian.Obsidian.svg
 
+# All of the palemoon icons are different for different sizes - just keep the scalable one
+find /usr/share/icons/Chicago95/apps/ -name "palemoon*" -not -path "*/scalable/*" -delete
+
 # Fonts
 cp Fonts/vga_font/LessPerfectDOSVGA.ttf /usr/share/fonts
 cp -r Fonts/bitmap/cronyx-cyrillic /usr/share/fonts
