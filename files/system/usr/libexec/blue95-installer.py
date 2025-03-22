@@ -37,42 +37,6 @@ def setup_logger():
 
 logger = setup_logger()
 
-
-ANSI_TO_PANGO = {
-    "30": "black", "31": "red", "32": "green", "33": "yellow",
-    "34": "blue", "35": "magenta", "36": "cyan", "37": "white",
-    "90": "gray", "91": "lightred", "92": "lightgreen", "93": "lightyellow",
-    "94": "lightblue", "95": "lightmagenta", "96": "lightcyan", "97": "lightwhite",
-}
-
-ANSI_STYLE_RE = re.compile(r'\x1B\[(\d+)(;\d+)*m')
-
-def ansi_to_pango(text):
-    """Convert ANSI escape codes to Pango markup for GTK."""
-    def replace_ansi(match):
-        codes = match.group().strip("\x1b[m").split(";")
-        pango_tags = []
-
-        for code in codes:
-            if code in ANSI_TO_PANGO:
-                pango_tags.append(f'<span foreground="{ANSI_TO_PANGO[code]}">')
-            elif code == "1":  # Bold
-                pango_tags.append("<b>")
-            elif code == "4":  # Underline
-                pango_tags.append("<u>")
-
-        return "".join(pango_tags)
-
-    # Replace ANSI codes with Pango markup
-    formatted_text = ANSI_STYLE_RE.sub(replace_ansi, text)
-
-    # Ensure all opened tags are closed
-    formatted_text += "</span>" * formatted_text.count("<span ")
-    formatted_text += "</b>" * formatted_text.count("<b>")
-    formatted_text += "</u>" * formatted_text.count("<u>")
-
-    return formatted_text
-
 class BootcInstaller:
     STEP_NAMES = [
         ("WIPE", "Wiping drive"),
@@ -284,13 +248,16 @@ class InstallGUI:
         def update_progress_label():
             while True:
                 if Path(self.bootc_installer.raw_log_file).exists():
-                    with open(self.bootc_installer.raw_log_file, "rb") as log_file:
+                    with open(self.bootc_installer.log_file, "rb") as log_file:
                         raw_data = log_file.read()
                         decoded_text = raw_data.decode("utf-8", errors="replace")
                         lines = decoded_text.split("\n")
                         if len(lines) > 1:
-                            last_line = ansi_to_pango(lines[-1].strip())
-                            self.progress_label.set_markup(f'<span font_desc="CaskaydiaMono Nerd Font 13">{last_line}</span>')
+                            last_line = lines[-1].strip()
+                            GLib.idle_add(
+                                self.progress_label.set_markup,
+                                f'<span font_desc="CaskaydiaMono Nerd Font 13">{last_line}</span>'
+                            )
                 time.sleep(0.2)
 
         process = self.bootc_installer.install()
