@@ -16,24 +16,25 @@ done
 
 # Fix Wifi icons in NetworkManager applet (nm-applet)
 for i in 16 24 32 48; do
-    j=$i
-    if [[ ! -f /usr/share/icons/Chicago95/status/$j/network-cellular-signal-good-symbolic.png  ]]; then
-      j=32
-    fi
-    cd /usr/share/icons/Chicago95/status/$j
+  j=$i
+  if [[ ! -f /usr/share/icons/Chicago95/status/$j/network-cellular-signal-good-symbolic.png ]]; then
+    j=32
+  fi
+  cd /usr/share/icons/Chicago95/status/$j
 
-    cp network-cellular-signal-none-symbolic.png ../../panel/$i/nm-signal-00.png
-    cp network-cellular-signal-none-symbolic.png ../../panel/$i/nm-signal-0.png
-    cp network-cellular-signal-none-symbolic.png ../../panel/$i/nm-signal-0-secure.png
-    cp network-cellular-signal-weak-symbolic.png ../../panel/$i/nm-signal-25.png
-    cp network-cellular-signal-weak-symbolic.png ../../panel/$i/nm-signal-25-secure.png
-    cp network-cellular-signal-ok-symbolic.png ../../panel/$i/nm-signal-50.png
-    cp network-cellular-signal-ok-symbolic.png ../../panel/$i/nm-signal-50-secure.png
-    cp network-cellular-signal-good-symbolic.png ../../panel/$i/nm-signal-75.png
-    cp network-cellular-signal-good-symbolic.png ../../panel/$i/nm-signal-75-secure.png
-    cp network-cellular-signal-excellent-symbolic.png ../../panel/$i/nm-signal-100.png
-    cp network-cellular-signal-excellent-symbolic.png ../../panel/$i/nm-signal-100-secure.png
+  cp network-cellular-signal-none-symbolic.png ../../panel/$i/nm-signal-00.png
+  cp network-cellular-signal-none-symbolic.png ../../panel/$i/nm-signal-0.png
+  cp network-cellular-signal-none-symbolic.png ../../panel/$i/nm-signal-0-secure.png
+  cp network-cellular-signal-weak-symbolic.png ../../panel/$i/nm-signal-25.png
+  cp network-cellular-signal-weak-symbolic.png ../../panel/$i/nm-signal-25-secure.png
+  cp network-cellular-signal-ok-symbolic.png ../../panel/$i/nm-signal-50.png
+  cp network-cellular-signal-ok-symbolic.png ../../panel/$i/nm-signal-50-secure.png
+  cp network-cellular-signal-good-symbolic.png ../../panel/$i/nm-signal-75.png
+  cp network-cellular-signal-good-symbolic.png ../../panel/$i/nm-signal-75-secure.png
+  cp network-cellular-signal-excellent-symbolic.png ../../panel/$i/nm-signal-100.png
+  cp network-cellular-signal-excellent-symbolic.png ../../panel/$i/nm-signal-100-secure.png
 done
 
 update-mime-database /usr/share/mime
 gdk-pixbuf-query-loaders-64 --update-cache
+gtk-update-icon-cache --force --ignore-theme-index /usr/share/icons/Chicago95
