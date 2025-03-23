@@ -1,4 +1,7 @@
-test-local:
+build:
+  bluebuild build --tempdir /var/tmp recipes/recipe.yml
+
+rebase:
   bluebuild rebase --tempdir /var/tmp recipes/recipe.yml
 
 generate-iso:
