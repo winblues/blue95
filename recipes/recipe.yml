@@ -53,6 +53,7 @@ modules:
       - vorbis-tools
       - wine-ms-sans-serif-fonts
       - wine-tahoma-fonts
+      - xorg-x11-server-Xephyr # to test lightdm
       - xscreensaver-extras
       - xscreensaver-extras-gss
       # Installer packages
