@@ -60,34 +60,25 @@ jobs:
         env:
           OUTPUT_PATH: ${{ steps.build.outputs.iso-dest }}
           IMAGE_NAME: ${{ env.IMAGE_NAME }}-live
-          PLATFORM: ${{ matrix.platform }}
           DEFAULT_TAG: ${{ env.DEFAULT_TAG }}
-          FLAVOR: ${{ matrix.flavor }}
         run: |
           set -x
           mkdir -p output
           OUTPUT_DIRECTORY="$(realpath output)"
-          if [ "${FLAVOR}" != "" ] ; then
-            IMAGE_NAME="${IMAGE_NAME}-${FLAVOR}"
-          fi
-          if [ $PLATFORM == "amd64" ]; then
-            sha256sum "${OUTPUT_PATH}" | tee "${OUTPUT_DIRECTORY}/${IMAGE_NAME}-${DEFAULT_TAG}.iso-CHECKSUM"
-            mv "${OUTPUT_PATH}" "${OUTPUT_DIRECTORY}/${IMAGE_NAME}-${DEFAULT_TAG}.iso"
-          else
-            sha256sum "${OUTPUT_PATH}" | tee "${OUTPUT_DIRECTORY}/${IMAGE_NAME}-${DEFAULT_TAG}-${PLATFORM}.iso-CHECKSUM"
-            mv "${OUTPUT_PATH}" "${OUTPUT_DIRECTORY}/${IMAGE_NAME}-${DEFAULT_TAG}-${PLATFORM}.iso"
-          fi
+          sha256sum "${OUTPUT_PATH}" | tee "${OUTPUT_DIRECTORY}/${IMAGE_NAME}-${DEFAULT_TAG}.iso-CHECKSUM"
+          mv "${OUTPUT_PATH}" "${OUTPUT_DIRECTORY}/${IMAGE_NAME}-${DEFAULT_TAG}.iso"
           echo "output_directory=$OUTPUT_DIRECTORY" >> "${GITHUB_OUTPUT}"
 
-      - name: Upload to Job Artifacts
-        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
-        with:
-          name: ${{ env.IMAGE_NAME }}-${{ env.DEFAULT_TAG }}-${{ matrix.platform }}-iso
-          if-no-files-found: error
-          path: ${{ steps.build.outputs.iso-dest }}
+      #- name: Upload to Job Artifacts
+        #  uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
+        #with:
+        #  name: ${{ env.IMAGE_NAME }}-${{ env.DEFAULT_TAG }}-iso
+        #  if-no-files-found: error
+        #  path: ${{ steps.build.outputs.iso-dest }}
 
       - name: Upload to CloudFlare
-        if: inputs.upload-to-cloudflare == true && github.event_name != 'pull_request'
+        # TODO: uncomment when PR is merged
+        #if: github.event_name != 'pull_request'
         shell: bash
         env:
           RCLONE_CONFIG_R2_TYPE: s3
