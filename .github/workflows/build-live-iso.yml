@@ -6,10 +6,8 @@ on:
     - cron:
         "00 10 * * 1" # build at 10:00 UTC every Monday
   workflow_dispatch:
-  pull_request: # TODO: remove before merging
 
 env:
-  #IMAGE_REGISTRY: "ghcr.io/${{ github.repository_owner }}"
   IMAGE_REGISTRY: "ghcr.io/winblues"
   IMAGE_NAME: "blue95"
   DEFAULT_TAG: "latest"
@@ -77,8 +75,7 @@ jobs:
         #  path: ${{ steps.build.outputs.iso-dest }}
 
       - name: Upload to CloudFlare
-        # TODO: uncomment when PR is merged
-        #if: github.event_name != 'pull_request'
+        if: github.event_name != 'pull_request'
         shell: bash
         env:
           RCLONE_CONFIG_R2_TYPE: s3
