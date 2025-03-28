@@ -1,6 +1,6 @@
 ## Main Desktop
 
-![https://blue95.neocities.org/screenshot.png](https://blue95.neocities.org/screenshot.png)
+![https://blue95.neocities.org/screenshot-orig.png](https://blue95.neocities.org/screenshot-orig.png)
 
 ## Mail Client
 
