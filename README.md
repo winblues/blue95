@@ -10,23 +10,29 @@ Based on Fedora Atomic Xfce with the [Chicago95](https://github.com/grassmunk/Ch
 
 For more screenshots, see [screenshots.md](https://github.com/ledif/blue95/blob/main/docs/screenshots.md).
 
-## Project Goals
 
-- Match upstream Fedora Xfce in terms of core system components and update schedule.
-- Pull in tweaks from [Universal Blue](https://github.com/ublue-os) (e.g. codecs, automatic updates, etc) to produce a more usable out-of-the box experience.
-- Provide an aesthetic rooted in a bygone era of computing.
+## Try It Out
 
-**Non goals**:
-- Faithful reproduction of design elements from decades old operating systems. Whenever usability and exact replication are at odds, usability and accessibility will generally be preferred.
+> [!NOTE]  
+> Live CD is a new feature and is still in testing.
 
+We are now creating a [Live ISO](https://pub-969fbc86b5f24e4d81c6d022e8fd8dde.r2.dev/blue95-live-latest.iso) that can be used to boot into a Blue95 live environment. Test it out without needing to install anything.
+
+Note that the included installer is an alpha version and it is recommended to instead install Blue95 via the other methods listed below.
 
 ## Installation
 
 ### From ISO
 
-We are currently having issues with our ISOs. The current recommended installation path is though rebasing from a different Fedora Atomic desktop, whether that is the official Silverblue and Kinoite installations or any of the other Universal Blue images.
+We are currently having issues with our installer ISOs. The current recommended installation path is though rebasing from a different Fedora Atomic desktop, preferably from an Xfce-based image such as [winblues/vauxite](https://github.com/winblues/vauxite).
 
-## From Other Atomic Desktops
+After installing vauixite, you can rebase directly to this image with:
+
+  ```
+  rpm-ostree rebase ostree-image-signed:docker://ghcr.io/winblues/blue95:latest
+  ```
+
+### From Other Atomic Desktops
 If you are currently using an atomic desktop, you can rebase to the latest blue95 image.
 
 - First rebase to the unsigned image, to get the proper signing keys and policies installed:
@@ -39,6 +45,17 @@ If you are currently using an atomic desktop, you can rebase to the latest blue9
   ```
 
 It is recommended to create a new user after rebasing.
+
+
+## Project Goals
+
+- Match upstream Fedora Xfce in terms of core system components and update schedule.
+- Pull in tweaks from [Universal Blue](https://github.com/ublue-os) (e.g. codecs, automatic updates, etc) to produce a more usable out-of-the box experience.
+- Provide an aesthetic rooted in a bygone era of computing.
+
+**Non goals**:
+- Faithful reproduction of design elements from decades old operating systems. Whenever usability and exact replication are at odds, usability and accessibility will generally be preferred.
+
 
 ## Shoutouts
 - [@grassmunk](https://github.com/grassmunk)/[@dominichayesferen](https://github.com/dominichayesferen) for [Chicago95](https://github.com/grassmunk/Chicago95) and [Chicagofier](https://github.com/dominichayesferen/Chicagofier) respectively
