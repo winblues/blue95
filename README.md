@@ -10,6 +10,17 @@ Based on Fedora Atomic Xfce with the [Chicago95](https://github.com/grassmunk/Ch
 
 For more screenshots, see [screenshots.md](https://github.com/ledif/blue95/blob/main/docs/screenshots.md).
 
+
+## Try It Out
+
+> [!NOTE]  
+> Live CDs are a new feature and is still in testing.
+
+We are now creating a [Live ISO](https://pub-969fbc86b5f24e4d81c6d022e8fd8dde.r2.dev/blue95-live-latest.iso) that can be used to boot into a Blue95 live environment. Test it out without needing to install anything.
+
+Note that the included installer is an alpha version and it is recommended to instead install Blue95 via the other methods listed below.
+
+
 ## Project Goals
 
 - Match upstream Fedora Xfce in terms of core system components and update schedule.
@@ -19,12 +30,11 @@ For more screenshots, see [screenshots.md](https://github.com/ledif/blue95/blob/
 **Non goals**:
 - Faithful reproduction of design elements from decades old operating systems. Whenever usability and exact replication are at odds, usability and accessibility will generally be preferred.
 
-
 ## Installation
 
 ### From ISO
 
-We are currently having issues with our ISOs. The current recommended installation path is though rebasing from a different Fedora Atomic desktop, whether that is the official Silverblue and Kinoite installations or any of the other Universal Blue images.
+We are currently having issues with our installer ISOs. The current recommended installation path is though rebasing from a different Fedora Atomic desktop, preferabbly from 
 
 ## From Other Atomic Desktops
 If you are currently using an atomic desktop, you can rebase to the latest blue95 image.
