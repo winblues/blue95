@@ -1,7 +1,7 @@
 #!/bin/bash
 set -exuo pipefail
 
-. "${WINBLUES_CHEZMOI_ORIGINAL_ENV_FILE}"
+[[ -n "${WINBLUES_CHEZMOI_ORIGINAL_ENV_FILE-}" ]] && source "${WINBLUES_CHEZMOI_ORIGINAL_ENV_FILE}"
 
 # TODO: check user's config to see if they don't want us to manage wallpapers
 
