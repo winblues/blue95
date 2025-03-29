@@ -13,7 +13,7 @@ used sparingly. If you want more control over the appearance of the desktop envi
 
 To disable `winblues-chezmoi` completely, run the following:
 ```bash
-systemctl --user disable winblues-chezmoi.service
+systemctl --user mask winblues-chezmoi.service
 ```
 
 ### Excluding Files
@@ -35,4 +35,28 @@ The format of this file can be found in chezmoi's documentation for [.chezmoiign
 
 ### Excluding Properties
 
-TODO: xfconf-proile
+[xfconf-profile](https://github.com/winblues/xfconf-profile) is a command-line tool developed specifically for Blue95 and other Xfce-based desktop images in the Winblues organization. The JSON profile that Blue95 uses is stored at `/usr/share/xfconf-profile/default.json` and defines properties for the Blue95 environment, such as:
+```json
+{
+  "properties": {
+    "xsettings": {
+      "/Net/ThemeName": "Chicago95",
+      "/Net/IconThemeName": "Chicago95",
+      "/Net/EnableEventSounds": true,
+      "/Net/EnableInputFeedbackSounds": true,
+      "/Net/SoundThemeName": "Chicago95"
+    },
+    "xfwm4": {
+      "/general/theme": "Chicago95"
+    },
+    "xfce4-keyboard-shortcuts": {
+      "/commands/custom/Super_L": "/usr/bin/xfce4-popup-whiskermenu"
+    },
+    "xfce4-notifyd": {
+      "/theme": "Chicago95",
+      "/notify-location": "bottom-right"
+    }
+}
+```
+
+The final step of `winblues-chezmoi` is to call `xfconf-profile` on this JSON profile to update the user's Xfce settings (i.e., `xfconf` properties). You can configure `xfconf-profile` to ignore changes to specific properties and specify the merge strategy between the user's current properties and the defined properties in Blue95. See [Configuration of xfconf-profile](https://github.com/winblues/xfconf-profile/tree/main?tab=readme-ov-file#configuration) for more information.
