@@ -1,7 +1,13 @@
 #!/bin/bash
 set -exuo pipefail
 
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+source "${SCRIPT_DIR}/zz-library.sh"
+
 [[ -n "${WINBLUES_CHEZMOI_ORIGINAL_ENV_FILE-}" ]] && source "${WINBLUES_CHEZMOI_ORIGINAL_ENV_FILE}"
+
+CHECK_PATHS=("$HOME/.config/xfce4/xfconf/xfce-perchannel-xml/xfce4-desktop.xml")
+exit_if_paths_in_chezmoiignore "$CHECK_PATHS"
 
 # TODO: check user's config to see if they don't want us to manage wallpapers
 
