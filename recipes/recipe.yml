@@ -79,6 +79,7 @@ modules:
     system:
       # Flathub will be used by default
       install:
+        - org.gtk.Gtk3theme.Chicago95
         - com.tomjwatson.Emote
         - org.geany.Geany
         - org.libreoffice.LibreOffice
