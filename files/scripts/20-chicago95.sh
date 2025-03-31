@@ -56,6 +56,28 @@ cp -f ./sounds/chicago95-startup.desktop /etc/skel/.config/autostart
 # Backgrounds
 cp -Rf ./Extras/Backgrounds /usr/share/backgrounds/Chicago95
 
+# LibreOffice
+function install_libreoffice_extension() {
+  TOPDIR=/usr/src/chicago95/Extras/libreoffice-chicago95-iconset
+  IMAGES_ZIP_SDIR="${TOPDIR}"/iconsets/c95
+  EXT_ZIP_SDIR="${TOPDIR}"/Chicago95-theme
+  OUTDIR="${TOPDIR}"
+
+  pushd "${IMAGES_ZIP_SDIR}"
+  zip -r "${OUTDIR}/images_chicago95.zip" *
+  mkdir -p "${EXT_ZIP_SDIR}/iconsets"
+  mv -f "${OUTDIR}/images_chicago95.zip" "${EXT_ZIP_SDIR}/iconsets/"
+  cd "${EXT_ZIP_SDIR}"
+  zip -r "${OUTDIR}/Chicago95-theme-0.0.oxt" *
+
+  mkdir -p /usr/share/libreoffice/extensions
+  mv "${OUTDIR}/Chicago95-theme-0.0.oxt" /usr/share/libreoffice/extensions
+  rm -rf "${EXT_ZIP_SDIR}/iconsets"
+  popd
+}
+
+install_libreoffice_extension
+
 # Plymouth
 cp -Rf Plymouth/Chicago95 /usr/share/plymouth/themes/
 plymouth-set-default-theme Chicago95

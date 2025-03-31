@@ -2,6 +2,8 @@
 
 set -oeux pipefail
 
+# TODO: see if we can upstream any of this
+
 # Battery panel icon tweaks (stay on full icon from 100% to 90%)
 cd /usr/share/icons/Chicago95
 for f in $(find . -name "battery-level-90*"); do
@@ -12,6 +14,27 @@ for f in $(find . -name "battery-level-90*"); do
     rm $icon_name
     ln -s ${icon_name/90/100} $icon_name
   fi
+done
+
+# Add LibreOffice Flatpak icons
+cd /usr/share/icons/Chicago95
+declare -A icon_map=(
+  ["libreoffice-base"]="org.libreoffice.LibreOffice.base"
+  ["libreoffice-calc"]="org.libreoffice.LibreOffice.calc"
+  ["libreoffice-draw"]="org.libreoffice.LibreOffice.draw"
+  ["libreoffice-impress"]="org.libreoffice.LibreOffice.impress"
+  ["libreoffice-main"]="org.libreoffice.LibreOffice"
+  ["libreoffice-math"]="org.libreoffice.LibreOffice.math"
+  ["libreoffice-writer"]="org.libreoffice.LibreOffice.writer"
+)
+
+for old_name in "${!icon_map[@]}"; do
+  for icon_path in $(find . -name "${old_name}.png"); do
+    new_icon_path="${icon_path%/*}/${icon_map[$old_name]}.png"
+    if [[ ! -f "$new_icon_path" ]]; then
+      ln -s "$(basename "$icon_path")" "$new_icon_path"
+    fi
+  done
 done
 
 # Fix Wifi icons in NetworkManager applet (nm-applet)
