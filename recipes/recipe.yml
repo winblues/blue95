@@ -80,8 +80,9 @@ modules:
       # Flathub will be used by default
       install:
         - com.tomjwatson.Emote
-        - org.mozilla.firefox
         - org.geany.Geany
+        - org.libreoffice.LibreOffice
+        - org.mozilla.firefox
 
   # Regenerate initramfs because of plymouth
   - type: initramfs
