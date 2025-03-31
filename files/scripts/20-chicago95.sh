@@ -24,6 +24,7 @@ ln -s /usr/share/icons/Chicago95/apps/scalable/internet-mail.svg /usr/share/icon
 ln -s /usr/share/icons/Chicago95/apps/scalable/xfwm4.svg /usr/share/icons/Chicago95/apps/scalable/virt-manager.svg
 ln -s /usr/share/icons/Chicago95/apps/scalable/multimedia-video-player.svg /usr/share/icons/Chicago95/apps/scalable/io.mpv.Mpv.svg
 ln -s /usr/share/icons/Chicago95/apps/scalable/com.visualstudio.code.svg /usr/share/icons/Chicago95/apps/scalable/org.kde.kate.svg
+ln -s /usr/share/icons/Chicago95/emotes/32/face-cool.png /usr/share/icons/Chicago95/apps/scalable/com.tomjwatson.Emote.png
 
 # TODO: upstream these?
 cp /usr/share/winblues/icons/napster.svg /usr/share/icons/Chicago95/apps/scalable/com.spotify.Client.svg
