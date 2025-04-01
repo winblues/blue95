@@ -23,7 +23,7 @@ declare -A icon_map=(
   ["libreoffice-calc"]="org.libreoffice.LibreOffice.calc"
   ["libreoffice-draw"]="org.libreoffice.LibreOffice.draw"
   ["libreoffice-impress"]="org.libreoffice.LibreOffice.impress"
-  ["libreoffice-main"]="org.libreoffice.LibreOffice"
+  ["libreoffice-main"]="org.libreoffice.LibreOffice.startcenter"
   ["libreoffice-math"]="org.libreoffice.LibreOffice.math"
   ["libreoffice-writer"]="org.libreoffice.LibreOffice.writer"
 )
