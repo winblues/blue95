@@ -1,7 +1,6 @@
 #!/bin/bash
 
 usermod -c "Chandler Bong" liveuser
-hostnamectl hostname blue95
 
 function create_desktop_icon {
   app=$1
