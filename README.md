@@ -8,7 +8,7 @@
 Blue95 is a modern and lightweight desktop experience that is reminiscent of a bygone era of computing.
 Based on Fedora Atomic Xfce with the [Chicago95](https://github.com/grassmunk/Chicago95) theme.
 
-For more screenshots, see [screenshots.md](https://github.com/ledif/blue95/blob/main/docs/screenshots.md).
+[Screenshots](./SCREENSHOTS.md) | [Documentation](https://blues.win/95/docs)
 
 
 ## Try It Out
@@ -18,34 +18,11 @@ For more screenshots, see [screenshots.md](https://github.com/ledif/blue95/blob/
 
 We are now creating a [Live ISO](https://pub-969fbc86b5f24e4d81c6d022e8fd8dde.r2.dev/blue95-live-latest.iso) that can be used to boot into a Blue95 live environment. Test it out without needing to install anything.
 
-Note that the included installer is an alpha version and it is recommended to instead install Blue95 via the other methods listed below.
+Note that the included installer is an alpha version with many missing features. It is recommended to install Blue95 via the methods listed in the [Install Guide](https://blues.win/95/docs/install).
 
 ## Installation
 
-### From ISO
-
-We are currently having issues with our installer ISOs. The current recommended installation path is though rebasing from a different Fedora Atomic desktop, preferably from an Xfce-based image such as [winblues/vauxite](https://github.com/winblues/vauxite).
-
-After installing vauixite, you can rebase directly to this image with:
-
-  ```
-  rpm-ostree rebase ostree-image-signed:docker://ghcr.io/winblues/blue95:latest
-  ```
-
-### From Other Atomic Desktops
-If you are currently using an atomic desktop, you can rebase to the latest blue95 image.
-
-- First rebase to the unsigned image, to get the proper signing keys and policies installed:
-  ```
-  rpm-ostree rebase ostree-unverified-registry:ghcr.io/winblues/blue95:latest
-  ```
-- Reboot and then rebase to the signed image, like so:
-  ```
-  rpm-ostree rebase ostree-image-signed:docker://ghcr.io/winblues/blue95:latest
-  ```
-
-It is recommended to create a new user after rebasing.
-
+Please follow the [Install Guide](https://blues.win/95/docs/install) in the documentation.
 
 ## Project Goals
 
