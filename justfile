@@ -7,7 +7,7 @@ rebase:
 generate-iso:
   sudo bluebuild generate-iso --iso-name blue95-latest.iso image ghcr.io/ledif/blue95:latest
 
-generate-live-iso:
+generate-live-iso tag="":
   #!/bin/bash
   if [ ! -d scratch/titanoboa ]; then
     mkdir -p scratch
@@ -20,9 +20,17 @@ generate-live-iso:
     cd ../../
   fi
 
-  sudo bluebuild build --tempdir /var/tmp recipes/recipe.yml
+  if [[ -z {{ tag }} ]]; then
+    image=localhost/blue95:latest
+    cp files/system/etc/ublue-os/system-flatpaks.list scratch/titanoboa/src/flatpaks.example.txt
+    sudo bluebuild build --tempdir /var/tmp recipes/recipe.yml
+  else
+    image=ghcr.io/winblues/blue95:{{ tag }}
+    sudo podman pull $image
+    sudo podman run cat /etc/ublue-os/system-flatpaks.list > scratch/titanoboa/src/flatpaks.example.txt
+  fi
   cd scratch/titanoboa
-  just build localhost/blue95:latest 1 1
+  just build $image 1 1
 
 # Overwrite xfce4-panel-profile in repo based on current profile
 refresh-panel-profile:
