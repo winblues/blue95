@@ -5,7 +5,7 @@ set -xueo pipefail
 # Fetch
 cd /tmp
 # TODO: add renovate
-CHICAGO95_SHA=3f81fedb7626e69cf6ba32e2e0e6a01c5929e9f9
+CHICAGO95_SHA=9d9f9bcf8c5f35a8ddd5d5e8b764adf547a17c29
 wget https://github.com/grassmunk/Chicago95/archive/${CHICAGO95_SHA}.zip
 unzip -q *.zip
 mv Chicago95* /usr/src/chicago95

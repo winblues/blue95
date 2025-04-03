@@ -5,3 +5,4 @@ cosign.private
 *swp
 *.iso
 *.iso-CHECKSUM
+scratch/
