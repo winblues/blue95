@@ -10,7 +10,7 @@ HOME_URL="https://blues.win/95"
 DOCUMENTATION_URL="https://blues.win/95/docs"
 SUPPORT_URL="https://github.com/winblues/blue95/issues"
 BUG_SUPPORT_URL="https://github.com/winblues/blue95/issues"
-VERSION_CODENAME="Ross"
+VERSION_CODENAME="Topanga"
 
 IMAGE_INFO="/usr/share/ublue-os/image-info.json"
 IMAGE_REF="ostree-image-signed:docker://ghcr.io/$IMAGE_VENDOR/$IMAGE_NAME"
