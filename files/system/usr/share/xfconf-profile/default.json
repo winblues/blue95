@@ -8,7 +8,10 @@
       "/Net/SoundThemeName": "Chicago95"
     },
     "xfwm4": {
-      "/general/theme": "Chicago95"
+      "/general/theme": "Chicago95",
+      "/general/show_dock_shadow": false,
+      "/general/show_frame_shadow": false,
+      "/general/show_popup_shadow": false
     },
     "xfce4-keyboard-shortcuts": {
       "/commands/custom/Super_L": "/usr/bin/xfce4-popup-whiskermenu"
