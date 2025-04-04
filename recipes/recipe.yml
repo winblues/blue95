@@ -46,6 +46,7 @@ modules:
       - qemu-user-static
       - qemu
       - qt5ct
+      - qt6ct
       - qt5-qtstyleplugins
       - sox
       - strace
