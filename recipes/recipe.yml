@@ -32,6 +32,7 @@ modules:
       - menulibre
       - neovim
       - orage
+      - patch
       - podman-compose
       - podman-machine
       - python3-cairosvg
