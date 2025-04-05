@@ -14,7 +14,7 @@ mv Chicago95* /usr/src/chicago95
 cd /usr/src/chicago95
 
 # TODO: upstream this patch
-patch -p0 <$diff
+patch -p1 <$diff
 
 # Themes
 cp -r Theme/Chicago95 /usr/share/themes
