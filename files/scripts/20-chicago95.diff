@@ -1,0 +1,21 @@
+diff --git a/Plus/PlusGUI.py b/Plus/PlusGUI.py
+index 6ca60e3..4109ff8 100755
+--- a/Plus/PlusGUI.py
++++ b/Plus/PlusGUI.py
+@@ -42,7 +42,8 @@ for index, font in enumerate(fonts):
+ 			fonts[index+2].split(":")[0].strip() : fonts[index+2].split(":")[1].strip(), 
+ 			fonts[index+3].split(":")[0].strip() : fonts[index+3].split(":")[1].strip(), 
+ 			fonts[index+4].split(":")[0].strip() : fonts[index+4].split(":")[1].strip(), 
+-			fonts[index+5].split(":")[0].strip() : fonts[index+5].split(":")[1].strip()
++			fonts[index+5].split(":")[0].strip() : fonts[index+5].split(":")[1].strip(),
++			fonts[index+6].split(":")[0].strip() : fonts[index+6].split(":")[1].strip()
+ 		}
+ #print("OK", end='\n', flush=True)
+ sys.stdout.flush()
+@@ -1379,4 +1380,4 @@ def main():
+ 	#plus = plusGTK()
+ 	Gtk.main()	
+ 
+-main()
+\ No newline at end of file
++main()

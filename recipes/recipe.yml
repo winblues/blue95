@@ -56,10 +56,10 @@ modules:
       - xorg-x11-server-Xephyr # to test lightdm
       - xscreensaver-extras
       - xscreensaver-extras-gss
+      # Chicago95 Plus!
+      - inkscape
+      - xcursorgen
       # Installer packages
-      - python3-svgwrite
-      - python3-fonttools
-      - python3-numpy
       - python3-pillow
       - python3-gobject
       - gtk3

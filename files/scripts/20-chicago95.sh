@@ -2,6 +2,8 @@
 
 set -xueo pipefail
 
+diff=$(realpath 20-chicago95.diff)
+
 # Fetch
 cd /tmp
 # TODO: add renovate
@@ -10,6 +12,9 @@ wget https://github.com/grassmunk/Chicago95/archive/${CHICAGO95_SHA}.zip
 unzip -q *.zip
 mv Chicago95* /usr/src/chicago95
 cd /usr/src/chicago95
+
+# TODO: upstream this patch
+patch -p0 <$diff
 
 # Themes
 cp -r Theme/Chicago95 /usr/share/themes
