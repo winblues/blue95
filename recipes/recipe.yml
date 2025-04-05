@@ -60,6 +60,9 @@ modules:
       # Chicago95 Plus!
       - inkscape
       - xcursorgen
+      - python3-svgwrite
+      - python3-fonttools
+      - python3-numpy
       # Installer packages
       - python3-pillow
       - python3-gobject
