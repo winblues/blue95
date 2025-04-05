@@ -32,6 +32,7 @@ modules:
       - menulibre
       - neovim
       - orage
+      - patch
       - podman-compose
       - podman-machine
       - python3-cairosvg
@@ -56,10 +57,13 @@ modules:
       - xorg-x11-server-Xephyr # to test lightdm
       - xscreensaver-extras
       - xscreensaver-extras-gss
-      # Installer packages
+      # Chicago95 Plus!
+      - inkscape
+      - xcursorgen
       - python3-svgwrite
       - python3-fonttools
       - python3-numpy
+      # Installer packages
       - python3-pillow
       - python3-gobject
       - gtk3

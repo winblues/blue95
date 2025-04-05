@@ -1,0 +1,139 @@
+diff --git a/Plus/PlusGUI.py b/Plus/PlusGUI.py
+index 6ca60e3..4109ff8 100755
+--- a/Plus/PlusGUI.py
++++ b/Plus/PlusGUI.py
+@@ -42,7 +42,8 @@ for index, font in enumerate(fonts):
+ 			fonts[index+2].split(":")[0].strip() : fonts[index+2].split(":")[1].strip(), 
+ 			fonts[index+3].split(":")[0].strip() : fonts[index+3].split(":")[1].strip(), 
+ 			fonts[index+4].split(":")[0].strip() : fonts[index+4].split(":")[1].strip(), 
+-			fonts[index+5].split(":")[0].strip() : fonts[index+5].split(":")[1].strip()
++			fonts[index+5].split(":")[0].strip() : fonts[index+5].split(":")[1].strip(),
++			fonts[index+6].split(":")[0].strip() : fonts[index+6].split(":")[1].strip()
+ 		}
+ #print("OK", end='\n', flush=True)
+ sys.stdout.flush()
+@@ -1379,4 +1380,4 @@ def main():
+ 	#plus = plusGTK()
+ 	Gtk.main()	
+ 
+-main()
+\ No newline at end of file
++main()
+diff --git a/Plus/pluslib.py b/Plus/pluslib.py
+index 2af69b3..9faa421 100644
+--- a/Plus/pluslib.py
++++ b/Plus/pluslib.py
+@@ -26,6 +26,7 @@ import struct
+ import shutil
+ import logging
+ import svgwrite
++import tempfile
+ import PIL.Image
+ import subprocess
+ import configparser
+@@ -38,7 +39,8 @@ from fontTools import ttLib
+ from configparser import ConfigParser
+ from PIL import BmpImagePlugin, PngImagePlugin, Image
+ 
+-running_folder = os.path.dirname(os.path.abspath(__file__))
++
++running_folder = tempfile.mkdtemp(prefix='chicago95-plus-', dir='/tmp')
+ share_dir = running_folder
+ libexec_dir = running_folder
+ work_dir = running_folder
+@@ -102,12 +104,19 @@ while sleep $(((sleep_time+999)/1000)); do
+ class ChicagoPlus:
+ 	def __init__(self, themefile, colors=32, overlap=1, 
+ 			squaresize=20, installdir=os.getcwd(), 
+-			chicago95_cursor_path=str(Path.home())+"/.icons/Chicago95_Cursor_Black",
+-			chicago95_theme_path=str(Path.home())+"/.themes/Chicago95",
+-			chicago95_icons_path=str(Path.home())+"/.icons/Chicago95",
++			chicago95_cursor_path="/usr/share/icons/Chicago95_Cursor_Black",
++			chicago95_theme_path="/usr/share/themes/Chicago95",
++			chicago95_icons_path="/usr/share/icons/Chicago95",
+ 			loglevel=logging.WARNING,
+ 			logfile='plus.log'):
+ 
++		if not os.path.exists(chicago95_cursor_path):
++				chicago95_cursor_path=str(Path.home())+"/.icons/Chicago95_Cursor_Black"
++		if not os.path.exists(chicago95_theme_path):
++				chicago95_theme_path=str(Path.home())+"/.themes/Chicago95"
++		if not os.path.exists(chicago95_icons_path):
++				chicago95_icons_path=str(Path.home())+"/.icons/Chicago95"
++
+ 		self.theme_file = themefile
+ 		self.max_colors = colors
+ 		self.overlap = overlap
+@@ -2907,8 +2916,8 @@ class ChicagoPlus:
+ 	def install_cursors(self, cursor_dir=False, os_cursor_dir=str(Path.home())+"/.icons/"):
+ 		self.logger.info("Installing cursors")
+ 		if not os.path.exists(os_cursor_dir):
+-			self.logger.error("Cursor install directory does not exists: {}".format(os_cursor_dir))
+-			return
++			self.logger.info("Cursor install directory does not exists: {}".format(os_cursor_dir))
++			os.makedirs(os_cursor_dir)
+ 
+ 		if not cursor_dir:
+ 			cursor_dir = self.folder_names['cursors']
+@@ -2924,8 +2933,8 @@ class ChicagoPlus:
+ 		self.logger.info("Installing icons")
+ 		
+ 		if not os.path.exists(os_icons_dir):
+-			self.logger.error("Icons install directory does not exists: {}".format(os_icons_dir))
+-			return
++			self.logger.info("Icons install directory does not exists: {}".format(os_icons_dir))
++			os.makedirs(os_icons_dir)
+ 
+ 		if not icons_dir:
+ 			icons_dir = self.folder_names['icons']
+@@ -2942,8 +2951,8 @@ class ChicagoPlus:
+ 		self.logger.info("Installing color theme")
+ 		
+ 		if not os.path.exists(os_theme_dir):
+-			self.logger.error("Theme install directory does not exists: {}".format(os_theme_dir))
+-			return
++			self.logger.info("Theme install directory does not exists: {}".format(os_theme_dir))
++			os.makedirs(os_theme_dir)
+ 
+ 		if not color_theme_dir:
+ 			color_theme_dir = self.folder_names['theme']
+@@ -2959,8 +2968,8 @@ class ChicagoPlus:
+ 		self.logger.info("Installing fonts")
+ 		
+ 		if not os.path.exists(os_fonts_dir):
+-			self.logger.error("Theme install directory does not exists: {}".format(os_fonts_dir))
+-			return
++			self.logger.info("Theme install directory does not exists: {}".format(os_fonts_dir))
++			os.makedirs(os_fonts_dir)
+ 
+ 		if not fonts_dir:
+ 			fonts_dir = self.folder_names['fonts']
+@@ -2976,8 +2985,8 @@ class ChicagoPlus:
+ 		self.logger.info("Installing sounds")
+ 
+ 		if not os.path.exists(os_sounds_dir):
+-			self.logger.error("Theme install directory does not exists: {}".format(os_sounds_dir))
+-			return
++			self.logger.info("Theme install directory does not exists: {}".format(os_sounds_dir))
++			os.makedirs(os_sounds_dir)
+ 
+ 		if not sounds_dir:
+ 			sounds_dir = self.folder_names['sounds']
+@@ -3190,7 +3199,9 @@ class ChicagoPlus:
+ 						"-v", '-l', '-c', 'xsettings',
+ 						"-p", '/Xft/DPI'
+ 						]
+-					dpi = subprocess.check_output(args).split()[1]
++
++					tokens = subprocess.check_output(args).split()
++					dpi = tokens[1] if len(tokens) > 0 else 1
+ 				
+ 				except subprocess.CalledProcessError:
+ 					self.logger.info("xfconf not installed, enable theme manually")
+@@ -3322,4 +3333,4 @@ class ChicagoPlus:
+ class inkscape_info:
+ 	def __init__(self, path, version):
+ 		self.path = path
+-		self.version = version
+\ No newline at end of file
++		self.version = version
