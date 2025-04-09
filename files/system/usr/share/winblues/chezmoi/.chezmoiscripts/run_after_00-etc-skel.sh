@@ -10,6 +10,8 @@ marker_file="$state_dir/chezmoi-blue95"
 if [[ ! -f "$marker_file" ]]; then
   systemctl --user mask winblues-chezmoi.service
 
+  rsync -av --progress /etc/skel/ $HOME
+
   # Remove old state files from other Winblues variants
   rm -f "$state_dir"/chezmoi-*
 
