@@ -35,6 +35,7 @@ ln -s /usr/share/icons/Chicago95/emotes/32/face-cool.png /usr/share/icons/Chicag
 cp /usr/share/winblues/icons/napster.svg /usr/share/icons/Chicago95/apps/scalable/com.spotify.Client.svg
 cp /usr/share/winblues/icons/obsidian.png /usr/share/icons/Chicago95/apps/scalable/md.obsidian.Obsidian.svg
 cp /usr/share/winblues/icons/mirc.svg /usr/share/icons/Chicago95/apps/scalable/com.discordapp.Discord.svg
+cp /usr/share/winblues/icons/bob.png /usr/share/icons/Chicago95/apps/scalable/win.blues.Bob.png
 
 # All of the palemoon icons are different for different sizes - just keep the scalable one
 find /usr/share/icons/Chicago95/apps/ -name "palemoon*" -not -path "*/scalable/*" -delete
