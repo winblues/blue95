@@ -15,7 +15,7 @@ VERSION_CODENAME="Topanga"
 IMAGE_INFO="/usr/share/ublue-os/image-info.json"
 IMAGE_REF="ostree-image-signed:docker://ghcr.io/$IMAGE_VENDOR/$IMAGE_NAME"
 
-FEDORA_MAJOR_VERSION=41
+FEDORA_MAJOR_VERSION=42
 BASE_IMAGE_NAME="Xfce Atomic $FEDORA_MAJOR_VERSION"
 BASE_IMAGE="quay.io/fedora-ostree-desktops/xfce-atomic"
 
