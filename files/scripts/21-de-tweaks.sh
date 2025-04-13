@@ -2,6 +2,9 @@
 
 set -oeux pipefail
 
+# Logo for the "About Xfce" app
+cp /usr/share/winblues/icons/blue95.png /usr/share/icons/Chicago95/apps/scalable/fedora-logo-icon.png
+
 # TODO: see if we can upstream any of this
 
 # Battery panel icon tweaks (stay on full icon from 100% to 90%)
@@ -57,6 +60,9 @@ for i in 16 24 32 48; do
   cp network-cellular-signal-excellent-symbolic.png ../../panel/$i/nm-signal-100.png
   cp network-cellular-signal-excellent-symbolic.png ../../panel/$i/nm-signal-100-secure.png
 done
+
+# Small MenuLibre icons fix
+ln -s /usr/share/icons/Chicago95/places/scalable/folder_open.svg /usr/share/icons/Chicago95/status/scalable/folder-open-symbolic.svg
 
 update-mime-database /usr/share/mime
 gdk-pixbuf-query-loaders-64 --update-cache
