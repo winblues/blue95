@@ -2,10 +2,12 @@
 
 set -xueo pipefail
 
-curl -Lo /usr/bin/bauh https://github.com/vinifmor/bauh/releases/download/0.10.7/bauh-0.10.7-x86_64.AppImage
-chmod +x /usr/bin/bauh
-
+curl -Lo /tmp/flatpost.tgz https://github.com/GloriousEggroll/flatpost/archive/refs/tags/1.0.1.tar.gz
 cd /tmp
+tar xf flatpost.tgz
+cd flatpost-1.0.1
+make DESTDIR=/usr install
+
 curl -Lo palemoon.tar.xz "https://www.palemoon.org/download.php?mirror=us&bits=64&type=linuxgtk3"
 mkdir -p /usr/opt
 cd /usr/opt
