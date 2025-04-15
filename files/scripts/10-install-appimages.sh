@@ -2,8 +2,12 @@
 
 set -xueo pipefail
 
-curl -Lo /usr/bin/bauh https://github.com/vinifmor/bauh/releases/download/0.10.7/bauh-0.10.7-x86_64.AppImage
-chmod +x /usr/bin/bauh
+cd $(mktemp -d)
+curl -Lo flatpost.zip https://github.com/GloriousEggroll/flatpost/archive/refs/heads/main.zip
+unzip flatpost.zip
+cd flatpost-main
+PYTHON_SITE_PACKAGES=$(python3 -c "import site; print(site.getsitepackages()[-1].replace('lib64', 'lib'))")
+make PYTHON_SITE_PACKAGES=$PYTHON_SITE_PACKAGES DESTDIR=/ install
 
 cd /tmp
 curl -Lo palemoon.tar.xz "https://www.palemoon.org/download.php?mirror=us&bits=64&type=linuxgtk3"

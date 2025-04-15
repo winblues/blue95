@@ -81,6 +81,7 @@ modules:
 
   - type: default-flatpaks
     notify: true # Send notification after install/uninstall is finished
+    user: {} # Just add Flathub
     system:
       # Flathub will be used by default
       install:
