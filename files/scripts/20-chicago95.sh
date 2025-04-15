@@ -23,7 +23,7 @@ cp -r Theme/Chicago95 /usr/share/themes
 cp -r Icons/* Cursors/* /usr/share/icons/
 
 # Custom app icons
-ln -s /usr/share/icons/Chicago95/apps/48/{software,bauh}.png
+ln -s /usr/share/icons/Chicago95/apps/48/{software,com.flatpost.flatpostapp}.png
 ln -s /usr/share/icons/Chicago95/apps/48/stock_keyring.png /usr/share/icons/Chicago95/apps/scalable/1password.png
 ln -s /usr/share/icons/Chicago95/apps/scalable/internet-mail.svg /usr/share/icons/Chicago95/apps/scalable/epyrus.svg
 ln -s /usr/share/icons/Chicago95/apps/scalable/xfwm4.svg /usr/share/icons/Chicago95/apps/scalable/virt-manager.svg
