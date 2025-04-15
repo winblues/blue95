@@ -4,7 +4,7 @@ name: blue95
 description: A desktop for your childhood home's computer room
 
 base-image: ghcr.io/winblues/vauxite
-image-version: 42
+image-version: latest
 
 modules:
   - type: bling
