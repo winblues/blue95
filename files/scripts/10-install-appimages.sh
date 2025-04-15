@@ -2,8 +2,8 @@
 
 set -xueo pipefail
 
-curl -Lo /tmp/flatpost.zip https://github.com/GloriousEggroll/flatpost/archive/refs/heads/main.zip
-cd /tmp
+cd $(mktemp -d)
+curl -Lo flatpost.zip https://github.com/GloriousEggroll/flatpost/archive/refs/heads/main.zip
 unzip flatpost.zip
 cd flatpost-main
 make DESTDIR=/ install
