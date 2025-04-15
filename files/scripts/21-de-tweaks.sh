@@ -5,6 +5,9 @@ set -oeux pipefail
 # Logo for the "About Xfce" app
 cp /usr/share/winblues/icons/blue95.png /usr/share/icons/Chicago95/apps/scalable/fedora-logo-icon.png
 
+# Make the taskbar icons smaller
+echo ".tasklist button box image { -gtk-icon-transform: scale(0.8); }" >>/usr/share/themes/Chicago95/gtk-3.0/apps/xfce-panel-hacks.css
+
 # TODO: see if we can upstream any of this
 
 # Battery panel icon tweaks (stay on full icon from 100% to 90%)
