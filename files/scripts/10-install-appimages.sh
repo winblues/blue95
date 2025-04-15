@@ -6,7 +6,8 @@ cd $(mktemp -d)
 curl -Lo flatpost.zip https://github.com/GloriousEggroll/flatpost/archive/refs/heads/main.zip
 unzip flatpost.zip
 cd flatpost-main
-make DESTDIR=/ install
+PYTHON_SITE_PACKAGES=$(python3 -c "import site; print(site.getsitepackages()[-1].replace('lib64', 'lib'))")
+make PYTHON_SITE_PACKAGES=$PYTHON_SITE_PACKAGES DESTDIR=/ install
 
 cd /tmp
 curl -Lo palemoon.tar.xz "https://www.palemoon.org/download.php?mirror=us&bits=64&type=linuxgtk3"
