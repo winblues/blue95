@@ -2,12 +2,13 @@
 
 set -xueo pipefail
 
-curl -Lo /tmp/flatpost.tgz https://github.com/GloriousEggroll/flatpost/archive/refs/tags/1.0.1.tar.gz
+curl -Lo /tmp/flatpost.zip https://github.com/GloriousEggroll/flatpost/archive/refs/heads/main.zip
 cd /tmp
-tar xf flatpost.tgz
-cd flatpost-1.0.1
-make DESTDIR=/usr install
+unzip flatpost.zip
+cd flatpost-main
+make DESTDIR=/ install
 
+cd /tmp
 curl -Lo palemoon.tar.xz "https://www.palemoon.org/download.php?mirror=us&bits=64&type=linuxgtk3"
 mkdir -p /usr/opt
 cd /usr/opt
