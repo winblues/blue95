@@ -4,7 +4,7 @@ name: blue95
 description: A desktop for your childhood home's computer room
 
 base-image: ghcr.io/winblues/vauxite
-image-version: 41
+image-version: 42
 
 modules:
   - type: bling
@@ -68,6 +68,8 @@ modules:
       - python3-gobject
       - gtk3
       - kmines
+      # Fix taskbar icons for Xfce 4.20
+      - gdk-pixbuf2-modules-extra
 
   - type: script
     scripts:
