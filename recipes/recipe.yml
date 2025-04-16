@@ -87,6 +87,7 @@ modules:
     system:
       # Flathub will be used by default
       install:
+        - com.github.k4zmu2a.spacecadetpinball
         - org.gtk.Gtk3theme.Chicago95
         - com.tomjwatson.Emote
         - org.geany.Geany
