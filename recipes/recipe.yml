@@ -21,7 +21,6 @@ modules:
       - audacious
       - btop
       - catfish
-      - deepin-qt5platform-plugins # for bauh
       - edk2-ovmf
       - libvirt
       - libvirt-nss
@@ -70,18 +69,13 @@ modules:
       - kmines
       # Fix taskbar icons for Xfce 4.20
       - gdk-pixbuf2-modules-extra
+      # TODO: this is for Paint and we should package it properly and not
+      # install its deps directly on the image here
+      - webkit2gtk3
 
   - type: script
-    scripts:
-      - 00-image-info.sh
-      - 01-main.sh
-      - 10-install-appimages.sh
-      - 20-chicago95.sh
-      - 21-de-tweaks.sh
-      - 22-fonts.sh
-      - 23-b00merang.sh
-      - 24-wallpapers.sh
-
+    snippets:
+      - 'cd $CONFIG_DIRECTORY/scripts && for script in *.sh; do [ -f "$script" ] && bash "$script"; done'
 
   - type: default-flatpaks
     notify: true # Send notification after install/uninstall is finished

@@ -68,10 +68,6 @@ done
 # Small MenuLibre icons fix
 ln -s /usr/share/icons/Chicago95/places/scalable/folder_open.svg /usr/share/icons/Chicago95/status/scalable/folder-open-symbolic.svg
 
-update-mime-database /usr/share/mime
-gdk-pixbuf-query-loaders-64 --update-cache
-gtk-update-icon-cache --force --ignore-theme-index /usr/share/icons/Chicago95
-
 # Extra wallpapers
 mkdir -p /usr/share/backgrounds/Chicago95/Extras
 curl -Lo /usr/share/backgrounds/Chicago95/Extras/clouds.jpg https://i.imgur.com/98qaCGo.jpeg
