@@ -74,16 +74,8 @@ modules:
       - webkit2gtk3
 
   - type: script
-    scripts:
-      - 00-image-info.sh
-      - 01-main.sh
-      - 10-install-appimages.sh
-      - 20-chicago95.sh
-      - 21-de-tweaks.sh
-      - 22-fonts.sh
-      - 23-b00merang.sh
-      - 24-wallpapers.sh
-      - 25-custom-apps.sh
+    snippets:
+      - 'cd $CONFIG_DIRECTORY/scripts && for script in *.sh; do [ -f "$script" ] && bash "$script"; done'
 
   - type: default-flatpaks
     notify: true # Send notification after install/uninstall is finished
