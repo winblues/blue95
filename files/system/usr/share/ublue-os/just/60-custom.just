@@ -7,6 +7,19 @@
 # fix-       = apply fix/patch/workaround for something
 # foo        = no verb is used for shortcuts or something deemed important enough to use a super memorable name
 
+# Install old PowerPoint templates
+[group('Documents')]
+install-ppt-templates:
+  #!/bin/bash
+  set -euxo pipefail
+  cd $(mktemp -d)
+
+  mkdir -p ~/Documents/Presentations/Templates
+  pwd
+  curl -Lo templates.7z https://archive.org/download/powerpoint-templates/Microsoft%20PowerPoint%20templates.7z
+  7z x templates.7z -o$HOME/Documents/Presentations/Templates
+  echo "PowerPoint templates available in $HOME/Documents/Presentations/Templates"
+
 [group('Apps')]
 configure-palemoon:
     echo "Opening Pale Moon to install Netscape theme"
