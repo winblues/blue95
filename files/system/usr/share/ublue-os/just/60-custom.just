@@ -20,17 +20,9 @@ install-ppt-templates:
   7z x templates.7z -o$HOME/Documents/Presentations/Templates
   echo "PowerPoint templates available in $HOME/Documents/Presentations/Templates"
 
+# Install Netscape theme
 [group('Apps')]
 configure-palemoon:
     echo "Opening Pale Moon to install Netscape theme"
     palemoon "https://addons.palemoon.org/addon/moonscape/" >/dev/null 2>&1 &
-
-[group('Apps')]
-configure-audacious:
-    mkdir -p ~/.var/app/org.atheme.audacious/data/audacious/Skins
-    cd ~/.var/app/org.atheme.audacious/data/audacious/Skins
-    mkdir Winamp
-    cd Winamp
-    wget https://archive.org/download/winampskin_Winamp_Classic_CM/Winamp_Classic_CM.wsz
-    unzip *.wsz && rm *.wsz
 
