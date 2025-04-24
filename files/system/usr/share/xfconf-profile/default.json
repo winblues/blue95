@@ -14,7 +14,10 @@
       "/general/show_popup_shadow": false
     },
     "xfce4-keyboard-shortcuts": {
-      "/commands/custom/Super_L": "/usr/bin/xfce4-popup-whiskermenu"
+      "/commands/custom/Super_L": "/usr/bin/xfce4-popup-whiskermenu",
+      "/commands/custom/XF86AudioRaiseVolume": "/usr/libexec/volume-change up",
+      "/commands/custom/XF86AudioLowerVolume": "/usr/libexec/volume-change down",
+      "/commands/custom/XF86AudioMute": "/usr/libexec/volume-change mute"
     },
     "xfce4-notifyd": {
       "/theme": "Chicago95",
