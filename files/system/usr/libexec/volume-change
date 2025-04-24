@@ -1,0 +1,22 @@
+#!/bin/bash
+
+SINK="@DEFAULT_AUDIO_SINK@"
+STEP="5%"
+
+case "$1" in
+    up)
+        wpctl set-volume "$SINK" "$STEP+"
+        ;;
+    down)
+        wpctl set-volume "$SINK" "$STEP-"
+        ;;
+    mute)
+        wpctl set-mute "$SINK" toggle
+        ;;
+    *)
+        echo "Usage: $0 {up|down|mute}"
+        exit 1
+        ;;
+esac
+
+canberra-gtk-play -i audio-volume-change -d "volume"

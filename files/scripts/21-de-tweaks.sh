@@ -71,3 +71,6 @@ ln -s /usr/share/icons/Chicago95/places/scalable/folder_open.svg /usr/share/icon
 # Extra wallpapers
 mkdir -p /usr/share/backgrounds/Chicago95/Extras
 curl -Lo /usr/share/backgrounds/Chicago95/Extras/clouds.jpg https://i.imgur.com/98qaCGo.jpeg
+
+rm /usr/share/sounds/Chicago95/stereo/audio-volume-change.disabled
+ln -s /usr/share/sounds/Chicago95/stereo/trash-empty.wav /usr/share/sounds/Chicago95/stereo/audio-volume-change.wav
