@@ -19,4 +19,6 @@ case "$1" in
         ;;
 esac
 
-canberra-gtk-play -i audio-volume-change -d "volume"
+if ! wpctl get-volume "$SINK" | grep -q MUTED; then
+    canberra-gtk-play -i audio-volume-change -d "volume"
+fi
