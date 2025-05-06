@@ -12,11 +12,6 @@ modules:
     install:
       - 1password
 
-  - type: files
-    files:
-      - source: system
-        destination: /
-
   - type: dnf
     install:
       packages:
@@ -76,6 +71,11 @@ modules:
       - webkit2gtk3
       # Raw RPMs
       - https://github.com/felixrieseberg/clippy/releases/download/v0.4.0/Clippy-0.4.0-1.x86_64.rpm
+
+  - type: files
+    files:
+      - source: system
+        destination: /
 
   - type: script
     snippets:

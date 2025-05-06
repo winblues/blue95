@@ -1,0 +1,12 @@
+[Desktop Entry]
+Version=1.1
+Type=Application
+Name=Clippy
+GenericName=AI Assistant
+Comment=Chat with local LLMs through a nostalgic 1990s interface
+Icon=mail-attachment
+Exec=/usr/bin/Clippy %U
+Terminal=false
+StartupNotify=true
+Categories=Utility;Education;ArtificialIntelligence;
+
