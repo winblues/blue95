@@ -7,17 +7,14 @@ base-image: ghcr.io/winblues/vauxite
 image-version: 42
 
 modules:
+
   - type: bling
     install:
       - 1password
 
-  - type: files
-    files:
-      - source: system
-        destination: /
-
-  - type: rpm-ostree
+  - type: dnf
     install:
+      packages:
       - audacious
       - btop
       - catfish
@@ -72,6 +69,13 @@ modules:
       # TODO: this is for Paint and we should package it properly and not
       # install its deps directly on the image here
       - webkit2gtk3
+      # Raw RPMs
+      - https://github.com/felixrieseberg/clippy/releases/download/v0.4.0/Clippy-0.4.0-1.x86_64.rpm
+
+  - type: files
+    files:
+      - source: system
+        destination: /
 
   - type: script
     snippets:
