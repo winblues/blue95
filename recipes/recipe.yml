@@ -13,6 +13,9 @@ modules:
       - 1password
 
   - type: dnf
+    repos:
+      files:
+        - https://copr.fedorainfracloud.org/coprs/ublue-os/staging/repo/fedora-%OS_VERSION%/ublue-os-staging-fedora-%OS_VERSION%.repo
     install:
       packages:
       - audacious
@@ -46,6 +49,7 @@ modules:
       - qt5-qtstyleplugins
       - sox
       - strace
+      - taidan
       - virt-manager
       - vorbis-tools
       - wine-ms-sans-serif-fonts
