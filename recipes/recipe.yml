@@ -13,6 +13,9 @@ modules:
       - 1password
 
   - type: dnf
+    repos:
+      copr:
+        - ublue-os/staging
     install:
       packages:
       - audacious
@@ -46,6 +49,7 @@ modules:
       - qt5-qtstyleplugins
       - sox
       - strace
+      - taidan
       - virt-manager
       - vorbis-tools
       - wine-ms-sans-serif-fonts
