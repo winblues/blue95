@@ -13,9 +13,6 @@ modules:
       - 1password
 
   - type: dnf
-    repos:
-      copr:
-        - ublue-os/staging
     install:
       packages:
       - audacious
@@ -49,7 +46,6 @@ modules:
       - qt5-qtstyleplugins
       - sox
       - strace
-      - taidan
       - virt-manager
       - vorbis-tools
       - wine-ms-sans-serif-fonts
@@ -83,7 +79,7 @@ modules:
 
   - type: script
     snippets:
-      - 'cd $CONFIG_DIRECTORY/scripts && for script in *.sh; do [ -f "$script" ] && bash "$script"; done'
+      - 'cd $CONFIG_DIRECTORY/scripts && for script in *.sh; do [ -f "$script" ] && bash "$script" || exit 1; done'
 
   - type: default-flatpaks
     notify: true # Send notification after install/uninstall is finished
