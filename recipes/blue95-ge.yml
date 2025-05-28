@@ -1,0 +1,17 @@
+---
+# yaml-language-server: $schema=https://schema.blue-build.org/recipe-v1.json
+name: blue95-ge
+description: A desktop for your childhood home's computer room
+
+base-image: ghcr.io/winblues/blue95
+image-version: 42
+
+modules:
+
+  - type: files
+    files:
+      - source: ge
+        destination: /
+
+  - type: signing
+
