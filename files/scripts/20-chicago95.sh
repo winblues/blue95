@@ -7,7 +7,7 @@ diff=$(realpath 20-chicago95.diff)
 # Fetch
 cd /tmp
 # TODO: add renovate
-CHICAGO95_SHA=9d9f9bcf8c5f35a8ddd5d5e8b764adf547a17c29
+CHICAGO95_SHA=6b6ef76c58e2078c913420278b5e17e0aa566374
 wget https://github.com/grassmunk/Chicago95/archive/${CHICAGO95_SHA}.zip
 unzip -q *.zip
 mv Chicago95* /usr/src/chicago95
