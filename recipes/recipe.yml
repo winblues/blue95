@@ -82,15 +82,16 @@ modules:
       - 'cd $CONFIG_DIRECTORY/scripts && for script in *.sh; do [ -f "$script" ] && bash "$script"; done'
 
   - type: default-flatpaks
-    notify: true # Send notification after install/uninstall is finished
-    scope: system
-    install:
-      - com.github.k4zmu2a.spacecadetpinball
-      - org.gtk.Gtk3theme.Chicago95
-      - com.tomjwatson.Emote
-      - org.geany.Geany
-      - org.libreoffice.LibreOffice
-      - org.mozilla.firefox
+    configurations:
+      - notify: true # Send notification after install/uninstall is finished
+        scope: system
+        install:
+          - com.github.k4zmu2a.spacecadetpinball
+          - org.gtk.Gtk3theme.Chicago95
+          - com.tomjwatson.Emote
+          - org.geany.Geany
+          - org.libreoffice.LibreOffice
+          - org.mozilla.firefox
 
   # Regenerate initramfs because of plymouth
   - type: initramfs
