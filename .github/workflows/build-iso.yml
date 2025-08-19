@@ -18,9 +18,9 @@ jobs:
           image_name: blue95
           image_repo: ghcr.io/winblues
           image_tag: latest
-          version: 41
-          variant: xfce
-          iso_name: blue95-latest-41.iso
+          version: 42
+          variant: kinoite
+          iso_name: blue95-latest-42.iso
 
       - name: Upload ISOs and Checksum to R2
         if: github.ref_name == 'main'
