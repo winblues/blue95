@@ -1,6 +1,5 @@
 # blue95 &nbsp; [![bluebuild build badge](https://github.com/ledif/blue95/actions/workflows/build.yml/badge.svg)](https://github.com/ledif/blue95/actions/workflows/build.yml) ![b](https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fgithub.com%2Fipitio%2Fbackage%2Fraw%2Findex%2Fwinblues%2Fblue95%2Fblue95.json&query=%24.downloads&label=total%20pulls)
 
-
 > A desktop for your childhood home's computer room.
 
 ![main-screenshot](https://blue95.neocities.org/screenshot-winamp.png)
@@ -8,7 +7,7 @@
 Blue95 is a modern and lightweight desktop experience that is reminiscent of a bygone era of computing.
 Based on Fedora Atomic Xfce with the [Chicago95](https://github.com/grassmunk/Chicago95) theme.
 
-[Screenshots](./SCREENSHOTS.md) | [Documentation](https://blues.win/95/docs)
+[Screenshots](./SCREENSHOTS.md) | [YouTube](https://www.youtube.com/watch?v=AFS0PiBUObA) | [Documentation](https://blues.win/95/docs) 
 
 
 ## Try It Out
