@@ -1,0 +1,11 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=Paint
+Comment=Create, edit, and view pictures and drawings with this easy-to-use paint program.
+Exec=jspaint
+Icon=jspaint
+Terminal=false
+Categories=Graphics;GTK;
+StartupWMClass=Paint
+StartupNotify=true
