@@ -10,7 +10,7 @@ HOME_URL="https://blues.win/95"
 DOCUMENTATION_URL="https://blues.win/95/docs"
 SUPPORT_URL="https://github.com/winblues/blue95/issues"
 BUG_SUPPORT_URL="https://github.com/winblues/blue95/issues"
-VERSION_CODENAME="Topanga"
+VERSION_CODENAME="Carlton"
 
 IMAGE_INFO="/usr/share/ublue-os/image-info.json"
 IMAGE_REF="ostree-image-signed:docker://ghcr.io/$IMAGE_VENDOR/$IMAGE_NAME"
@@ -32,7 +32,7 @@ EOF
 
 # OS Release File
 sed -i "s/^VARIANT_ID=.*/VARIANT_ID=$IMAGE_NAME/" /usr/lib/os-release
-sed -i "s/^PRETTY_NAME=.*/PRETTY_NAME=\"${IMAGE_PRETTY_NAME} $VERSION_CODENAME (FROM Fedora ${BASE_IMAGE_NAME^})\"/" /usr/lib/os-release
+sed -i "s/^PRETTY_NAME=.*/PRETTY_NAME=\"${IMAGE_PRETTY_NAME} $VERSION_CODENAME\"/" /usr/lib/os-release
 sed -i "s/^NAME=.*/NAME=\"$IMAGE_PRETTY_NAME\"/" /usr/lib/os-release
 sed -i "s/^ID=.*/ID=\"$IMAGE_NAME\"/" /usr/lib/os-release
 sed -i "s|^HOME_URL=.*|HOME_URL=\"$HOME_URL\"|" /usr/lib/os-release
