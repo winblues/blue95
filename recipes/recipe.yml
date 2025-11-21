@@ -44,6 +44,7 @@ modules:
       - qemu
       - qt5ct
       - qt5-qtstyleplugins
+      - script
       - sox
       - strace
       - virt-manager
