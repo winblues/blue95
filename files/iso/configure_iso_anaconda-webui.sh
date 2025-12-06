@@ -86,7 +86,7 @@ EOF
 echo "blue95 release $VERSION_ID ($VERSION_CODENAME)" >/etc/system-release
 
 sed -i 's/ANACONDA_PRODUCTVERSION=.*/ANACONDA_PRODUCTVERSION=""/' /usr/{,s}bin/liveinst || true
-sed -i 's|^Icon=.*|Icon=/usr/share/anaconda/pixmaps/fedora-logo-icon.png|' /usr/share/applications/liveinst.desktop || true
+#sed -i 's|^Icon=.*|Icon=/usr/share/anaconda/pixmaps/fedora-logo-icon.png|' /usr/share/applications/liveinst.desktop || true
 
 # Interactive Kickstart
 tee -a /usr/share/anaconda/interactive-defaults.ks <<EOF
