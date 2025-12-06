@@ -5,7 +5,8 @@ set -xueo pipefail
 diff=$(realpath 20-chicago95.diff)
 
 # Fetch
-cd /tmp
+TMPDIR=$(mktemp -d)
+cd "$TMPDIR"
 # TODO: add renovate
 CHICAGO95_SHA=6b6ef76c58e2078c913420278b5e17e0aa566374
 wget https://github.com/grassmunk/Chicago95/archive/${CHICAGO95_SHA}.zip
@@ -93,3 +94,6 @@ plymouth-set-default-theme Chicago95
 # Panel config
 cd /usr/share/winblues/chezmoi/dot_local/share/xfce-panel-profile
 tar cjf /usr/share/xfce4-panel-profiles/layouts/chicago-95.tar.bz2 config.txt launcher-*
+
+
+rm -rf "$TMPDIR"
