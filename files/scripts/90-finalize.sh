@@ -15,6 +15,8 @@ find /var/tmp -mindepth 1 -maxdepth 1 -exec rm -rf {} + 2>/dev/null || true
 rm -rf /var/cache/dnf/* 2>/dev/null || true
 rm -rf /var/lib/dnf/* 2>/dev/null || true
 
+rm -rf /run/* 2>/dev/null || true
+
 # No idea where these come from, but try to remove them here to fix broken installer
 rm -f /nvim.root 2>/dev/null || true
 rm -f /dnf 2>/dev/null || true
