@@ -20,9 +20,9 @@ generate-live-iso:
     cd ../../
   fi
 
-  sudo bluebuild build --tempdir /var/tmp recipes/recipe.yml
+  #sudo bluebuild build --tempdir /var/tmp recipes/recipe.yml
   cd scratch/titanoboa
-  just build localhost/blue95:latest 1 1
+  sudo env HOOK_post_rootfs=$(realpath ../../files/iso/configure_iso_anaconda-webui.sh) just build ghcr.io/winblues/blue95:latest 1 /dev/null
 
 # Overwrite xfce4-panel-profile in repo based on current profile
 refresh-panel-profile:
