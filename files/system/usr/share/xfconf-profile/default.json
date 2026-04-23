@@ -25,6 +25,10 @@
     },
     "xfce4-terminal": {
       "/misc-toolbar-default": true
+    },
+    "xfce4-helpers": {
+      "/WebBrowser": "org.mozilla.firefox.desktop",
+      "/MailReader": "epyrus.desktop"
     }
   },
   "metadata": {

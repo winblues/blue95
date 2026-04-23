@@ -20,7 +20,7 @@
 /plugins/plugin-1/category-icon-size 1
 /plugins/plugin-1/command-profile '/usr/libexec/blue95-greeter-settings'
 /plugins/plugin-1/command-switchuser 'dm-tool switch-to-greeter'
-/plugins/plugin-1/favorites [<'xfce4-web-browser.desktop'>, <'xfce4-mail-reader.desktop'>, <'xfce4-file-manager.desktop'>, <'xfce4-terminal-emulator.desktop'>]
+/plugins/plugin-1/favorites [<'xfce4-web-browser.desktop'>, <'epyrus.desktop'>, <'xfce4-file-manager.desktop'>, <'xfce4-terminal-emulator.desktop'>, <'org.xfce.mousepad.desktop'>]
 /plugins/plugin-1/favorites-in-recent true
 /plugins/plugin-1/launcher-icon-size 2
 /plugins/plugin-1/launcher-show-description false
@@ -29,7 +29,7 @@
 /plugins/plugin-1/position-categories-alternate true
 /plugins/plugin-1/position-commands-alternate true
 /plugins/plugin-1/position-search-alternate true
-/plugins/plugin-1/recent [<'org.xfce.PanelProfiles.desktop'>, <'xfce4-terminal-emulator.desktop'>, <'xfce4-settings-editor.desktop'>, <'org.xfce.mousepad.desktop'>, <'virt-manager.desktop'>, <'1password.desktop'>, <'palemoon.desktop'>]
+/plugins/plugin-1/recent [<'org.xfce.PanelProfiles.desktop'>, <'xfce4-terminal-emulator.desktop'>, <'xfce4-settings-editor.desktop'>, <'org.xfce.mousepad.desktop'>, <'virt-manager.desktop'>, <'1password.desktop'>]
 /plugins/plugin-1/show-button-title true
 /plugins/plugin-1/sort-categories false
 /plugins/plugin-1/view-mode 2
