@@ -1,0 +1,1130 @@
+diff --git a/Theme/Chicago95/xfwm4/close-active.xpm b/Theme/Chicago95/xfwm4/close-active.xpm
+index 5491cdf..2baf1ee 100644
+--- a/Theme/Chicago95/xfwm4/close-active.xpm
++++ b/Theme/Chicago95/xfwm4/close-active.xpm
+@@ -1,6 +1,6 @@
+ /* XPM */
+ static char * close_active_xpm[] = {
+-"18 24 8 1",
++"20 28 8 1",
+ "       c None",
+ "^      c #8CB754 s active_color_1",
+ ".      c #000000 s active_mid_2",
+@@ -9,27 +9,31 @@ static char * close_active_xpm[] = {
+ "S      c #FFFFFF s active_hilight_1",
+ "@      c #C0C0C0 s active_mid_1",
+ "#      c #808080 s active_shadow_2",
+-"                  ",
+-"                  ",
+-"                  ",
+-"                  ",
+-"^^^^^^^^^^^^^^^^^^",
+-"^^^^^^^^^^^^^^^^^^",
+-"^^+++++++++++++++&",
+-"^^+SSSSSSSSSSSSS#&",
+-"^^+S@@@@@@@@@@@@#&",
+-"^^+S@@..@@@@..@@#&",
+-"^^+S@@@..@@..@@@#&",
+-"^^+S@@@@....@@@@#&",
+-"^^+S@@@@@..@@@@@#&",
+-"^^+S@@@@....@@@@#&",
+-"^^+S@@@..@@..@@@#&",
+-"^^+S@@..@@@@..@@#&",
+-"^^+S@@@@@@@@@@@@#&",
+-"^^+S@@@@@@@@@@@@#&",
+-"^^+##############&",
+-"^^&&&&&&&&&&&&&&&&",
+-"^^^^^^^^^^^^^^^^^^",
+-"^^^^^^^^^^^^^^^^^^",
+-"                  ",
+-"                  "};
++"                    ",
++"                    ",
++"                    ",
++"                    ",
++"^^^^^^^^^^^^^^^^^^^^",
++"^^^^^^^^^^^^^^^^^^^^",
++"^^+++++++++++++++++&",
++"^^+SSSSSSSSSSSSSSS#&",
++"^^+S@@@@@@@@@@@@@@#&",
++"^^+S@@@@@@@@@@@@@@#&",
++"^^+S@@@@@@@@@@@@@@#&",
++"^^+S@@@..@@@@..@@@#&",
++"^^+S@@@@..@@..@@@@#&",
++"^^+S@@@@@....@@@@@#&",
++"^^+S@@@@@@..@@@@@@#&",
++"^^+S@@@@@....@@@@@#&",
++"^^+S@@@@..@@..@@@@#&",
++"^^+S@@@..@@@@..@@@#&",
++"^^+S@@@@@@@@@@@@@@#&",
++"^^+S@@@@@@@@@@@@@@#&",
++"^^+S@@@@@@@@@@@@@@#&",
++"^^+S@@@@@@@@@@@@@@#&",
++"^^+################&",
++"^^&&&&&&&&&&&&&&&&&&",
++"^^^^^^^^^^^^^^^^^^^^",
++"^^^^^^^^^^^^^^^^^^^^",
++"                    ",
++"                    "};
+diff --git a/Theme/Chicago95/xfwm4/close-inactive.xpm b/Theme/Chicago95/xfwm4/close-inactive.xpm
+index a625f55..f9d9885 100644
+--- a/Theme/Chicago95/xfwm4/close-inactive.xpm
++++ b/Theme/Chicago95/xfwm4/close-inactive.xpm
+@@ -1,6 +1,6 @@
+ /* XPM */
+ static char * close_inactive_xpm[] = {
+-"18 24 8 1",
++"20 28 8 1",
+ "       c None",
+ "^      c #8CB754 s inactive_color_1",
+ ".      c #000000 s inactive_mid_2",
+@@ -9,27 +9,31 @@ static char * close_inactive_xpm[] = {
+ "S      c #FFFFFF s inactive_hilight_1",
+ "@      c #C0C0C0 s inactive_mid_1",
+ "#      c #808080 s inactive_shadow_2",
+-"                  ",
+-"                  ",
+-"                  ",
+-"                  ",
+-"^^^^^^^^^^^^^^^^^^",
+-"^^^^^^^^^^^^^^^^^^",
+-"^^+++++++++++++++&",
+-"^^+SSSSSSSSSSSSS#&",
+-"^^+S@@@@@@@@@@@@#&",
+-"^^+S@@..@@@@..@@#&",
+-"^^+S@@@..@@..@@@#&",
+-"^^+S@@@@....@@@@#&",
+-"^^+S@@@@@..@@@@@#&",
+-"^^+S@@@@....@@@@#&",
+-"^^+S@@@..@@..@@@#&",
+-"^^+S@@..@@@@..@@#&",
+-"^^+S@@@@@@@@@@@@#&",
+-"^^+S@@@@@@@@@@@@#&",
+-"^^+##############&",
+-"^^&&&&&&&&&&&&&&&&",
+-"^^^^^^^^^^^^^^^^^^",
+-"^^^^^^^^^^^^^^^^^^",
+-"                  ",
+-"                  "};
++"                    ",
++"                    ",
++"                    ",
++"                    ",
++"^^^^^^^^^^^^^^^^^^^^",
++"^^^^^^^^^^^^^^^^^^^^",
++"^^+++++++++++++++++&",
++"^^+SSSSSSSSSSSSSSS#&",
++"^^+S@@@@@@@@@@@@@@#&",
++"^^+S@@@@@@@@@@@@@@#&",
++"^^+S@@@@@@@@@@@@@@#&",
++"^^+S@@@..@@@@..@@@#&",
++"^^+S@@@@..@@..@@@@#&",
++"^^+S@@@@@....@@@@@#&",
++"^^+S@@@@@@..@@@@@@#&",
++"^^+S@@@@@....@@@@@#&",
++"^^+S@@@@..@@..@@@@#&",
++"^^+S@@@..@@@@..@@@#&",
++"^^+S@@@@@@@@@@@@@@#&",
++"^^+S@@@@@@@@@@@@@@#&",
++"^^+S@@@@@@@@@@@@@@#&",
++"^^+S@@@@@@@@@@@@@@#&",
++"^^+################&",
++"^^&&&&&&&&&&&&&&&&&&",
++"^^^^^^^^^^^^^^^^^^^^",
++"^^^^^^^^^^^^^^^^^^^^",
++"                    ",
++"                    "};
+diff --git a/Theme/Chicago95/xfwm4/close-pressed.xpm b/Theme/Chicago95/xfwm4/close-pressed.xpm
+index cbe4c6b..6901bd4 100644
+--- a/Theme/Chicago95/xfwm4/close-pressed.xpm
++++ b/Theme/Chicago95/xfwm4/close-pressed.xpm
+@@ -1,6 +1,6 @@
+ /* XPM */
+ static char * close_pressed_xpm[] = {
+-"18 24 8 1",
++"20 28 8 1",
+ "       c None",
+ "^      c #8CB754 s active_color_1",
+ "+      c #000000 s active_shadow_1",
+@@ -9,27 +9,31 @@ static char * close_pressed_xpm[] = {
+ "@      c #C0C0C0 s active_mid_1",
+ ".      c #FF00FF s active_mid_2",
+ "S      c #808080 s active_shadow_2",
+-"                  ",
+-"                  ",
+-"                  ",
+-"                  ",
+-"^^^^^^^^^^^^^^^^^^",
+-"^^^^^^^^^^^^^^^^^^",
+-"^^+++++++++++++++&",
+-"^^+SSSSSSSSSSSSS#&",
+-"^^+S@@@@@@@@@@@@#&",
+-"^^+S@@@@@@@@@@@@#&",
+-"^^+S@@@..@@@@..@#&",
+-"^^+S@@@@..@@..@@#&",
+-"^^+S@@@@@....@@@#&",
+-"^^+S@@@@@@..@@@@#&",
+-"^^+S@@@@@....@@@#&",
+-"^^+S@@@@..@@..@@#&",
+-"^^+S@@@..@@@@..@#&",
+-"^^+S@@@@@@@@@@@@#&",
+-"^^+##############&",
+-"^^&&&&&&&&&&&&&&&&",
+-"^^^^^^^^^^^^^^^^^^",
+-"^^^^^^^^^^^^^^^^^^",
+-"                  ",
+-"                  "};
++"                    ",
++"                    ",
++"                    ",
++"                    ",
++"^^^^^^^^^^^^^^^^^^^^",
++"^^^^^^^^^^^^^^^^^^^^",
++"^^+++++++++++++++++&",
++"^^+SSSSSSSSSSSSSSS#&",
++"^^+S@@@@@@@@@@@@@@#&",
++"^^+S@@@@@@@@@@@@@@#&",
++"^^+S@@@@@@@@@@@@@@#&",
++"^^+S@@@@@@@@@@@@@@#&",
++"^^+S@@@@..@@@@..@@#&",
++"^^+S@@@@@..@@..@@@#&",
++"^^+S@@@@@@....@@@@#&",
++"^^+S@@@@@@@..@@@@@#&",
++"^^+S@@@@@@....@@@@#&",
++"^^+S@@@@@..@@..@@@#&",
++"^^+S@@@@..@@@@..@@#&",
++"^^+S@@@@@@@@@@@@@@#&",
++"^^+S@@@@@@@@@@@@@@#&",
++"^^+S@@@@@@@@@@@@@@#&",
++"^^+################&",
++"^^&&&&&&&&&&&&&&&&&&",
++"^^^^^^^^^^^^^^^^^^^^",
++"^^^^^^^^^^^^^^^^^^^^",
++"                    ",
++"                    "};
+diff --git a/Theme/Chicago95/xfwm4/hide-active.xpm b/Theme/Chicago95/xfwm4/hide-active.xpm
+index da80724..1a75c5c 100644
+--- a/Theme/Chicago95/xfwm4/hide-active.xpm
++++ b/Theme/Chicago95/xfwm4/hide-active.xpm
+@@ -1,6 +1,6 @@
+ /* XPM */
+ static char * hide_active_xpm[] = {
+-"16 24 8 1",
++"18 28 8 1",
+ "       c None",
+ "^      c #8CB754 s active_color_1",
+ "&      c #000000 s active_shadow_1",
+@@ -9,28 +9,32 @@ static char * hide_active_xpm[] = {
+ "@      c #C0C0C0 s active_mid_1",
+ ".      c #FF00FF s inactive_mid_2",
+ "#      c #808080 s active_shadow_2",
+-"                ",
+-"                ",
+-"                ",
+-"                ",
+-"^^^^^^^^^^^^^^^^",
+-"^^^^^^^^^^^^^^^^",
+-"+++++++++++++++&",
+-"+SSSSSSSSSSSSS#&",
+-"+S@@@@@@@@@@@@#&",
+-"+S@@@@@@@@@@@@#&",
+-"+S@@@@@@@@@@@@#&",
+-"+S@@@@@@@@@@@@#&",
+-"+S@@@@@@@@@@@@#&",
+-"+S@@@@@@@@@@@@#&",
+-"+S@@@@@@@@@@@@#&",
+-"+S@@......@@@@#&",
+-"+S@@......@@@@#&",
+-"+S@@@@@@@@@@@@#&",
+-"+##############&",
+-"&&&&&&&&&&&&&&&&",
+-"^^^^^^^^^^^^^^^^",
+-"^^^^^^^^^^^^^^^^",
+-"                ",
+-"                "};
++"                  ",
++"                  ",
++"                  ",
++"                  ",
++"^^^^^^^^^^^^^^^^^^",
++"^^^^^^^^^^^^^^^^^^",
++"+++++++++++++++++&",
++"+SSSSSSSSSSSSSSS#&",
++"+S@@@@@@@@@@@@@@#&",
++"+S@@@@@@@@@@@@@@#&",
++"+S@@@@@@@@@@@@@@#&",
++"+S@@@@@@@@@@@@@@#&",
++"+S@@@@@@@@@@@@@@#&",
++"+S@@@@@@@@@@@@@@#&",
++"+S@@@@@@@@@@@@@@#&",
++"+S@@@@@@@@@@@@@@#&",
++"+S@@@@@@@@@@@@@@#&",
++"+S@@@......@@@@@#&",
++"+S@@@......@@@@@#&",
++"+S@@@@@@@@@@@@@@#&",
++"+S@@@@@@@@@@@@@@#&",
++"+S@@@@@@@@@@@@@@#&",
++"+################&",
++"&&&&&&&&&&&&&&&&&&",
++"^^^^^^^^^^^^^^^^^^",
++"^^^^^^^^^^^^^^^^^^",
++"                  ",
++"                  "};
+ 
+diff --git a/Theme/Chicago95/xfwm4/hide-inactive.xpm b/Theme/Chicago95/xfwm4/hide-inactive.xpm
+index 2e7fb0d..17ecf76 100644
+--- a/Theme/Chicago95/xfwm4/hide-inactive.xpm
++++ b/Theme/Chicago95/xfwm4/hide-inactive.xpm
+@@ -1,6 +1,6 @@
+ /* XPM */
+ static char * hide_inactive_xpm[] = {
+-"16 24 8 1",
++"18 28 8 1",
+ "       c None",
+ "^      c #8CB754 s inactive_color_1",
+ "&      c #000000 s inactive_shadow_1",
+@@ -9,28 +9,32 @@ static char * hide_inactive_xpm[] = {
+ "@      c #C0C0C0 s inactive_mid_1",
+ "#      c #808080 s inactive_shadow_2",
+ ".      c #FF00FF s inactive_mid_2",
+-"                ",
+-"                ",
+-"                ",
+-"                ",
+-"^^^^^^^^^^^^^^^^",
+-"^^^^^^^^^^^^^^^^",
+-"+++++++++++++++&",
+-"+SSSSSSSSSSSSS#&",
+-"+S@@@@@@@@@@@@#&",
+-"+S@@@@@@@@@@@@#&",
+-"+S@@@@@@@@@@@@#&",
+-"+S@@@@@@@@@@@@#&",
+-"+S@@@@@@@@@@@@#&",
+-"+S@@@@@@@@@@@@#&",
+-"+S@@@@@@@@@@@@#&",
+-"+S@@......@@@@#&",
+-"+S@@......@@@@#&",
+-"+S@@@@@@@@@@@@#&",
+-"+##############&",
+-"&&&&&&&&&&&&&&&&",
+-"^^^^^^^^^^^^^^^^",
+-"^^^^^^^^^^^^^^^^",
+-"                ",
+-"                "};
++"                  ",
++"                  ",
++"                  ",
++"                  ",
++"^^^^^^^^^^^^^^^^^^",
++"^^^^^^^^^^^^^^^^^^",
++"+++++++++++++++++&",
++"+SSSSSSSSSSSSSSS#&",
++"+S@@@@@@@@@@@@@@#&",
++"+S@@@@@@@@@@@@@@#&",
++"+S@@@@@@@@@@@@@@#&",
++"+S@@@@@@@@@@@@@@#&",
++"+S@@@@@@@@@@@@@@#&",
++"+S@@@@@@@@@@@@@@#&",
++"+S@@@@@@@@@@@@@@#&",
++"+S@@@@@@@@@@@@@@#&",
++"+S@@@@@@@@@@@@@@#&",
++"+S@@@......@@@@@#&",
++"+S@@@......@@@@@#&",
++"+S@@@@@@@@@@@@@@#&",
++"+S@@@@@@@@@@@@@@#&",
++"+S@@@@@@@@@@@@@@#&",
++"+################&",
++"&&&&&&&&&&&&&&&&&&",
++"^^^^^^^^^^^^^^^^^^",
++"^^^^^^^^^^^^^^^^^^",
++"                  ",
++"                  "};
+ 
+diff --git a/Theme/Chicago95/xfwm4/hide-pressed.xpm b/Theme/Chicago95/xfwm4/hide-pressed.xpm
+index c3b6339..3bc02b4 100644
+--- a/Theme/Chicago95/xfwm4/hide-pressed.xpm
++++ b/Theme/Chicago95/xfwm4/hide-pressed.xpm
+@@ -1,6 +1,6 @@
+ /* XPM */
+ static char * hide_pressed_xpm[] = {
+-"16 24 8 1",
++"18 28 8 1",
+ "       c None",
+ "^      c #8CB754 s active_color_1",
+ "&      c #000000 s active_shadow_1",
+@@ -9,28 +9,32 @@ static char * hide_pressed_xpm[] = {
+ "@      c #C0C0C0 s active_mid_1",
+ ".      c #FF00FF s active_mid_2",
+ "#      c #808080 s active_hilight_2",
+-"                ",
+-"                ",
+-"                ",
+-"                ",
+-"^^^^^^^^^^^^^^^^",
+-"^^^^^^^^^^^^^^^^",
+-"&&&&&&&&&&&&&&&#",
+-"&+++++++++++++S#",
+-"&+@@@@@@@@@@@@S#",
+-"&+@@@@@@@@@@@@S#",
+-"&+@@@@@@@@@@@@S#",
+-"&+@@@@@@@@@@@@S#",
+-"&+@@@@@@@@@@@@S#",
+-"&+@@@@@@@@@@@@S#",
+-"&+@@@@@@@@@@@@S#",
+-"&+@@@@@@@@@@@@S#",
+-"&+@@@......@@@S#",
+-"&+@@@......@@@S#",
+-"&SSSSSSSSSSSSSS#",
+-"################",
+-"^^^^^^^^^^^^^^^^",
+-"^^^^^^^^^^^^^^^^",
+-"                ",
+-"                "};
++"                  ",
++"                  ",
++"                  ",
++"                  ",
++"^^^^^^^^^^^^^^^^^^",
++"^^^^^^^^^^^^^^^^^^",
++"&&&&&&&&&&&&&&&&&#",
++"&+++++++++++++++S#",
++"&+@@@@......@@@@S#",
++"&+@@@@......@@@@S#",
++"&+@@@@@@@@@@@@@@S#",
++"&+@@@@@@@@@@@@@@S#",
++"&+@@@@@@@@@@@@@@S#",
++"&+@@@@@@@@@@@@@@S#",
++"&+@@@@@@@@@@@@@@S#",
++"&+@@@@@@@@@@@@@@S#",
++"&+@@@@@@@@@@@@@@S#",
++"&+@@@@@@@@@@@@@@S#",
++"&+@@@@......@@@@S#",
++"&+@@@@......@@@@S#",
++"&+@@@@......@@@@S#",
++"&+@@@@......@@@@S#",
++"&SSSSSSSSSSSSSSSS#",
++"##################",
++"^^^^^^^^^^^^^^^^^^",
++"^^^^^^^^^^^^^^^^^^",
++"                  ",
++"                  "};
+ 
+diff --git a/Theme/Chicago95/xfwm4/maximize-active.xpm b/Theme/Chicago95/xfwm4/maximize-active.xpm
+index 5cc53c7..7c895ad 100644
+--- a/Theme/Chicago95/xfwm4/maximize-active.xpm
++++ b/Theme/Chicago95/xfwm4/maximize-active.xpm
+@@ -1,6 +1,6 @@
+ /* XPM */
+ static char * maximize_active_xpm[] = {
+-"16 24 8 1",
++"18 28 8 1",
+ "       c None",
+ "^      c #8CB754 s active_color_1",
+ "&      c #000000 s active_shadow_1",
+@@ -9,28 +9,32 @@ static char * maximize_active_xpm[] = {
+ "@      c #C0C0C0 s active_mid_1",
+ ".      c #C0C0C0 s active_mid_2",
+ "#      c #808080 s active_shadow_2",
+-"                ",
+-"                ",
+-"                ",
+-"                ",
+-"^^^^^^^^^^^^^^^^",
+-"^^^^^^^^^^^^^^^^",
+-"+++++++++++++++&",
+-"+SSSSSSSSSSSSS#&",
+-"+S@.........@@#&",
+-"+S@.........@@#&",
+-"+S@.@@@@@@@.@@#&",
+-"+S@.@@@@@@@.@@#&",
+-"+S@.@@@@@@@.@@#&",
+-"+S@.@@@@@@@.@@#&",
+-"+S@.@@@@@@@.@@#&",
+-"+S@.@@@@@@@.@@#&",
+-"+S@.........@@#&",
+-"+S@@@@@@@@@@@@#&",
+-"+##############&",
+-"&&&&&&&&&&&&&&&&",
+-"^^^^^^^^^^^^^^^^",
+-"^^^^^^^^^^^^^^^^",
+-"                ",
+-"                "};
++"                  ",
++"                  ",
++"                  ",
++"                  ",
++"^^^^^^^^^^^^^^^^^^",
++"^^^^^^^^^^^^^^^^^^",
++"+++++++++++++++++&",
++"+SSSSSSSSSSSSSSS#&",
++"+S@@@@@@@@@@@@@@#&",
++"+S@@@@@@@@@@@@@@#&",
++"+S@@.........@@@#&",
++"+S@@.........@@@#&",
++"+S@@.@@@@@@@.@@@#&",
++"+S@@.@@@@@@@.@@@#&",
++"+S@@.@@@@@@@.@@@#&",
++"+S@@.@@@@@@@.@@@#&",
++"+S@@.@@@@@@@.@@@#&",
++"+S@@.@@@@@@@.@@@#&",
++"+S@@.........@@@#&",
++"+S@@@@@@@@@@@@@@#&",
++"+S@@@@@@@@@@@@@@#&",
++"+S@@@@@@@@@@@@@@#&",
++"+################&",
++"&&&&&&&&&&&&&&&&&&",
++"^^^^^^^^^^^^^^^^^^",
++"^^^^^^^^^^^^^^^^^^",
++"                  ",
++"                  "};
+ 
+diff --git a/Theme/Chicago95/xfwm4/maximize-inactive.xpm b/Theme/Chicago95/xfwm4/maximize-inactive.xpm
+index ea35c9e..68a3365 100644
+--- a/Theme/Chicago95/xfwm4/maximize-inactive.xpm
++++ b/Theme/Chicago95/xfwm4/maximize-inactive.xpm
+@@ -1,6 +1,6 @@
+ /* XPM */
+ static char * maximize_inactive_xpm[] = {
+-"16 24 8 1",
++"18 28 8 1",
+ "       c None",
+ "^      c #8CB754 s inactive_color_1",
+ "&      c #000000 s inactive_shadow_1",
+@@ -9,29 +9,33 @@ static char * maximize_inactive_xpm[] = {
+ "@      c #C0C0C0 s inactive_mid_1",
+ ".      c #C0C0C0 s inactive_mid_2",
+ "#      c #808080 s inactive_shadow_2",
+-"                ",
+-"                ",
+-"                ",
+-"                ",
+-"^^^^^^^^^^^^^^^^",
+-"^^^^^^^^^^^^^^^^",
+-"+++++++++++++++&",
+-"+SSSSSSSSSSSSS#&",
+-"+S@.........@@#&",
+-"+S@.........@@#&",
+-"+S@.@@@@@@@.@@#&",
+-"+S@.@@@@@@@.@@#&",
+-"+S@.@@@@@@@.@@#&",
+-"+S@.@@@@@@@.@@#&",
+-"+S@.@@@@@@@.@@#&",
+-"+S@.@@@@@@@.@@#&",
+-"+S@.........@@#&",
+-"+S@@@@@@@@@@@@#&",
+-"+##############&",
+-"&&&&&&&&&&&&&&&&",
+-"^^^^^^^^^^^^^^^^",
+-"^^^^^^^^^^^^^^^^",
+-"                ",
+-"                "};
++"                  ",
++"                  ",
++"                  ",
++"                  ",
++"^^^^^^^^^^^^^^^^^^",
++"^^^^^^^^^^^^^^^^^^",
++"+++++++++++++++++&",
++"+SSSSSSSSSSSSSSS#&",
++"+S@@@@@@@@@@@@@@#&",
++"+S@@@@@@@@@@@@@@#&",
++"+S@@.........@@@#&",
++"+S@@.........@@@#&",
++"+S@@.@@@@@@@.@@@#&",
++"+S@@.@@@@@@@.@@@#&",
++"+S@@.@@@@@@@.@@@#&",
++"+S@@.@@@@@@@.@@@#&",
++"+S@@.@@@@@@@.@@@#&",
++"+S@@.@@@@@@@.@@@#&",
++"+S@@.........@@@#&",
++"+S@@@@@@@@@@@@@@#&",
++"+S@@@@@@@@@@@@@@#&",
++"+S@@@@@@@@@@@@@@#&",
++"+################&",
++"&&&&&&&&&&&&&&&&&&",
++"^^^^^^^^^^^^^^^^^^",
++"^^^^^^^^^^^^^^^^^^",
++"                  ",
++"                  "};
+ 
+ 
+diff --git a/Theme/Chicago95/xfwm4/maximize-pressed.xpm b/Theme/Chicago95/xfwm4/maximize-pressed.xpm
+index 54446c5..4efec4a 100644
+--- a/Theme/Chicago95/xfwm4/maximize-pressed.xpm
++++ b/Theme/Chicago95/xfwm4/maximize-pressed.xpm
+@@ -1,6 +1,6 @@
+ /* XPM */
+ static char * maximize_pressed_xpm[] = {
+-"16 24 8 1",
++"18 28 8 1",
+ "       c None",
+ "^      c #8CB754 s active_color_1",
+ "&      c #000000 s active_shadow_1",
+@@ -9,28 +9,32 @@ static char * maximize_pressed_xpm[] = {
+ "@      c #C0C0C0 s active_mid_1",
+ ".      c #FF00FF s active_mid_2",
+ "#      c #FFFFFF s active_hilight_2",
+-"                ",
+-"                ",
+-"                ",
+-"                ",
+-"^^^^^^^^^^^^^^^^",
+-"^^^^^^^^^^^^^^^^",
+-"&&&&&&&&&&&&&&&#",
+-"&+++++++++++++S#",
+-"&+@@@@@@@@@@@@S#",
+-"&+@@.........@S#",
+-"&+@@.........@S#",
+-"&+@@.@@@@@@@.@S#",
+-"&+@@.@@@@@@@.@S#",
+-"&+@@.@@@@@@@.@S#",
+-"&+@@.@@@@@@@.@S#",
+-"&+@@.@@@@@@@.@S#",
+-"&+@@.@@@@@@@.@S#",
+-"&+@@.........@S#",
+-"&SSSSSSSSSSSSSS#",
+-"################",
+-"^^^^^^^^^^^^^^^^",
+-"^^^^^^^^^^^^^^^^",
+-"                ",
+-"                "};
++"                  ",
++"                  ",
++"                  ",
++"                  ",
++"^^^^^^^^^^^^^^^^^^",
++"^^^^^^^^^^^^^^^^^^",
++"&&&&&&&&&&&&&&&&&#",
++"&+++++++++++++++S#",
++"&+@@@.........@@S#",
++"&+@@@.........@@S#",
++"&+@@@@@@@@@@@@@@S#",
++"&+@@@.........@@S#",
++"&+@@@.........@@S#",
++"&+@@@.@@@@@@@.@@S#",
++"&+@@@.@@@@@@@.@@S#",
++"&+@@@.@@@@@@@.@@S#",
++"&+@@@.@@@@@@@.@@S#",
++"&+@@@.@@@@@@@.@@S#",
++"&+@@@.@@@@@@@.@@S#",
++"&+@@@.........@@S#",
++"&+@@@.........@@S#",
++"&+@@@.........@@S#",
++"&SSSSSSSSSSSSSSSS#",
++"##################",
++"^^^^^^^^^^^^^^^^^^",
++"^^^^^^^^^^^^^^^^^^",
++"                  ",
++"                  "};
+ 
+diff --git a/Theme/Chicago95/xfwm4/maximize-toggled-active.xpm b/Theme/Chicago95/xfwm4/maximize-toggled-active.xpm
+index afe9cd5..01a7a47 100644
+--- a/Theme/Chicago95/xfwm4/maximize-toggled-active.xpm
++++ b/Theme/Chicago95/xfwm4/maximize-toggled-active.xpm
+@@ -1,6 +1,6 @@
+ /* XPM */
+ static char * maximize_toggled_active_xpm[] = {
+-"16 24 8 1",
++"18 28 8 1",
+ "       c None",
+ "^      c #8CB754 s active_color_1",
+ "&      c #000000 s active_shadow_1",
+@@ -9,28 +9,32 @@ static char * maximize_toggled_active_xpm[] = {
+ "@      c #C0C0C0 s active_mid_1",
+ ".      c #C0C0C0 s active_mid_2",
+ "#      c #808080 s active_shadow_2",
+-"                ",
+-"                ",
+-"                ",
+-"                ",
+-"^^^^^^^^^^^^^^^^",
+-"^^^^^^^^^^^^^^^^",
+-"+++++++++++++++&",
+-"+SSSSSSSSSSSSS#&",
+-"+S@@@......@@@#&",
+-"+S@@@......@@@#&",
+-"+S@@@.@@@@.@@@#&",
+-"+S@......@.@@@#&",
+-"+S@......@.@@@#&",
+-"+S@.@@@@...@@@#&",
+-"+S@.@@@@.@@@@@#&",
+-"+S@.@@@@.@@@@@#&",
+-"+S@......@@@@@#&",
+-"+S@@@@@@@@@@@@#&",
+-"+##############&",
+-"&&&&&&&&&&&&&&&&",
+-"^^^^^^^^^^^^^^^^",
+-"^^^^^^^^^^^^^^^^",
+-"                ",
+-"                "};
++"                  ",
++"                  ",
++"                  ",
++"                  ",
++"^^^^^^^^^^^^^^^^^^",
++"^^^^^^^^^^^^^^^^^^",
++"+++++++++++++++++&",
++"+SSSSSSSSSSSSSSS#&",
++"+S@@@@@@@@@@@@@@#&",
++"+S@@@@@@@@@@@@@@#&",
++"+S@@@@......@@@@#&",
++"+S@@@@......@@@@#&",
++"+S@@@@.@@@@.@@@@#&",
++"+S@@......@.@@@@#&",
++"+S@@......@.@@@@#&",
++"+S@@.@@@@...@@@@#&",
++"+S@@.@@@@.@@@@@@#&",
++"+S@@.@@@@.@@@@@@#&",
++"+S@@......@@@@@@#&",
++"+S@@@@@@@@@@@@@@#&",
++"+S@@@@@@@@@@@@@@#&",
++"+S@@@@@@@@@@@@@@#&",
++"+################&",
++"&&&&&&&&&&&&&&&&&&",
++"^^^^^^^^^^^^^^^^^^",
++"^^^^^^^^^^^^^^^^^^",
++"                  ",
++"                  "};
+ 
+diff --git a/Theme/Chicago95/xfwm4/maximize-toggled-inactive.xpm b/Theme/Chicago95/xfwm4/maximize-toggled-inactive.xpm
+index be8fde0..40318ff 100644
+--- a/Theme/Chicago95/xfwm4/maximize-toggled-inactive.xpm
++++ b/Theme/Chicago95/xfwm4/maximize-toggled-inactive.xpm
+@@ -1,6 +1,6 @@
+ /* XPM */
+ static char * maximize_toggled_inactive_xpm[] = {
+-"16 24 8 1",
++"18 28 8 1",
+ "       c None",
+ "^      c #8CB754 s inactive_color_1",
+ "&      c #000000 s active_shadow_1",
+@@ -9,28 +9,32 @@ static char * maximize_toggled_inactive_xpm[] = {
+ "@      c #C0C0C0 s active_mid_1",
+ ".      c #C0C0C0 s active_mid_2",
+ "#      c #808080 s active_shadow_2",
+-"                ",
+-"                ",
+-"                ",
+-"                ",
+-"^^^^^^^^^^^^^^^^",
+-"^^^^^^^^^^^^^^^^",
+-"+++++++++++++++&",
+-"+SSSSSSSSSSSSS#&",
+-"+S@@@......@@@#&",
+-"+S@@@......@@@#&",
+-"+S@@@.@@@@.@@@#&",
+-"+S@......@.@@@#&",
+-"+S@......@.@@@#&",
+-"+S@.@@@@...@@@#&",
+-"+S@.@@@@.@@@@@#&",
+-"+S@.@@@@.@@@@@#&",
+-"+S@......@@@@@#&",
+-"+S@@@@@@@@@@@@#&",
+-"+##############&",
+-"&&&&&&&&&&&&&&&&",
+-"^^^^^^^^^^^^^^^^",
+-"^^^^^^^^^^^^^^^^",
+-"                ",
+-"                "};
++"                  ",
++"                  ",
++"                  ",
++"                  ",
++"^^^^^^^^^^^^^^^^^^",
++"^^^^^^^^^^^^^^^^^^",
++"+++++++++++++++++&",
++"+SSSSSSSSSSSSSSS#&",
++"+S@@@@@@@@@@@@@@#&",
++"+S@@@@@@@@@@@@@@#&",
++"+S@@@@......@@@@#&",
++"+S@@@@......@@@@#&",
++"+S@@@@.@@@@.@@@@#&",
++"+S@@......@.@@@@#&",
++"+S@@......@.@@@@#&",
++"+S@@.@@@@...@@@@#&",
++"+S@@.@@@@.@@@@@@#&",
++"+S@@.@@@@.@@@@@@#&",
++"+S@@......@@@@@@#&",
++"+S@@@@@@@@@@@@@@#&",
++"+S@@@@@@@@@@@@@@#&",
++"+S@@@@@@@@@@@@@@#&",
++"+################&",
++"&&&&&&&&&&&&&&&&&&",
++"^^^^^^^^^^^^^^^^^^",
++"^^^^^^^^^^^^^^^^^^",
++"                  ",
++"                  "};
+ 
+diff --git a/Theme/Chicago95/xfwm4/maximize-toggled-pressed.xpm b/Theme/Chicago95/xfwm4/maximize-toggled-pressed.xpm
+index 16d795e..8be40d5 100644
+--- a/Theme/Chicago95/xfwm4/maximize-toggled-pressed.xpm
++++ b/Theme/Chicago95/xfwm4/maximize-toggled-pressed.xpm
+@@ -1,6 +1,6 @@
+ /* XPM */
+ static char * maximize_toggled_pressed_xpm[] = {
+-"16 24 8 1",
++"18 28 8 1",
+ "       c None",
+ "^      c #8CB754 s active_color_1",
+ "&      c #000000 s active_shadow_1",
+@@ -9,28 +9,32 @@ static char * maximize_toggled_pressed_xpm[] = {
+ "@      c #C0C0C0 s active_mid_1",
+ ".      c #ff00ff s active_mid_2",
+ "#      c #0000ff s active_hilight_2",
+-"                ",
+-"                ",
+-"                ",
+-"                ",
+-"^^^^^^^^^^^^^^^^",
+-"^^^^^^^^^^^^^^^^",
+-"&&&&&&&&&&&&&&&#",
+-"&+++++++++++++S#",
+-"&+@@@@@@@@@@@@S#",
+-"&+@@@@......@@S#",
+-"&+@@@@......@@S#",
+-"&+@@@@.@@@@.@@S#",
+-"&+@@......@.@@S#",
+-"&+@@......@.@@S#",
+-"&+@@.@@@@...@@S#",
+-"&+@@.@@@@.@@@@S#",
+-"&+@@.@@@@.@@@@S#",
+-"&+@@......@@@@S#",
+-"&SSSSSSSSSSSSSS#",
+-"################",
+-"^^^^^^^^^^^^^^^^",
+-"^^^^^^^^^^^^^^^^",
+-"                ",
+-"                "};
++"                  ",
++"                  ",
++"                  ",
++"                  ",
++"^^^^^^^^^^^^^^^^^^",
++"^^^^^^^^^^^^^^^^^^",
++"&&&&&&&&&&&&&&&&&#",
++"&+++++++++++++++S#",
++"&+@@@......@@@@@S#",
++"&+@@@......@@@@@S#",
++"&+@@@@@@@@@@@@@@S#",
++"&+@@@@@......@@@S#",
++"&+@@@@@......@@@S#",
++"&+@@@@@.@@@@.@@@S#",
++"&+@@@......@.@@@S#",
++"&+@@@......@.@@@S#",
++"&+@@@.@@@@...@@@S#",
++"&+@@@.@@@@.@@@@@S#",
++"&+@@@.@@@@.@@@@@S#",
++"&+@@@......@@@@@S#",
++"&+@@@......@@@@@S#",
++"&+@@@......@@@@@S#",
++"&SSSSSSSSSSSSSSSS#",
++"##################",
++"^^^^^^^^^^^^^^^^^^",
++"^^^^^^^^^^^^^^^^^^",
++"                  ",
++"                  "};
+ 
+diff --git a/Theme/Chicago95/xfwm4/title-1-active.xpm b/Theme/Chicago95/xfwm4/title-1-active.xpm
+index 25813d7..e83b86c 100644
+--- a/Theme/Chicago95/xfwm4/title-1-active.xpm
++++ b/Theme/Chicago95/xfwm4/title-1-active.xpm
+@@ -1,6 +1,6 @@
+ /* XPM */
+ static char * title_middle_active_xpm[] = {
+-"5 24 6 1",
++"5 28 6 1",
+ " 	c None",
+ "+	c #FFFFFF s active_hilight_2",
+ "@	c #C0C0C0 s active_mid_1",
+@@ -29,5 +29,9 @@ static char * title_middle_active_xpm[] = {
+ "$$$$$",
+ "$$$$$",
+ "$$$$$",
++"$$$$$",
++"$$$$$",
++"$$$$$",
++"$$$$$",
+ "@@@@@",
+ "@@@@@"};
+diff --git a/Theme/Chicago95/xfwm4/title-1-inactive.xpm b/Theme/Chicago95/xfwm4/title-1-inactive.xpm
+index 22da62c..dbb9779 100644
+--- a/Theme/Chicago95/xfwm4/title-1-inactive.xpm
++++ b/Theme/Chicago95/xfwm4/title-1-inactive.xpm
+@@ -1,6 +1,6 @@
+ /* XPM */
+ static char * title_middle_inactive_xpm[] = {
+-"5 24 6 1",
++"5 28 6 1",
+ " 	c None",
+ "+	c #FFFFFF s inactive_hilight_2",
+ "@	c #C0C0C0 s inactive_mid_1",
+@@ -29,5 +29,9 @@ static char * title_middle_inactive_xpm[] = {
+ "$$$$$",
+ "$$$$$",
+ "$$$$$",
++"$$$$$",
++"$$$$$",
++"$$$$$",
++"$$$$$",
+ "@@@@@",
+ "@@@@@"};
+diff --git a/Theme/Chicago95/xfwm4/title-2-active.xpm b/Theme/Chicago95/xfwm4/title-2-active.xpm
+index d85bfa2..f35c685 100644
+--- a/Theme/Chicago95/xfwm4/title-2-active.xpm
++++ b/Theme/Chicago95/xfwm4/title-2-active.xpm
+@@ -1,6 +1,6 @@
+ /* XPM */
+ static char * title_middle_active_xpm[] = {
+-"2 24 6 1",
++"2 28 6 1",
+ " 	c None",
+ "+	c #FFFFFF s active_hilight_2",
+ "@	c #C0C0C0 s active_mid_1",
+@@ -29,5 +29,9 @@ static char * title_middle_active_xpm[] = {
+ "$$",
+ "$$",
+ "$$",
++"$$",
++"$$",
++"$$",
++"$$",
+ "@@",
+ "@@"};
+diff --git a/Theme/Chicago95/xfwm4/title-2-inactive.xpm b/Theme/Chicago95/xfwm4/title-2-inactive.xpm
+index 314943d..1ca2aef 100644
+--- a/Theme/Chicago95/xfwm4/title-2-inactive.xpm
++++ b/Theme/Chicago95/xfwm4/title-2-inactive.xpm
+@@ -1,6 +1,6 @@
+ /* XPM */
+ static char * title_middle_inactive_xpm[] = {
+-"2 24 6 1",
++"2 28 6 1",
+ " 	c None",
+ "+	c #FFFFFF s inactive_hilight_2",
+ "@	c #C0C0C0 s inactive_mid_1",
+@@ -29,5 +29,9 @@ static char * title_middle_inactive_xpm[] = {
+ "$$",
+ "$$",
+ "$$",
++"$$",
++"$$",
++"$$",
++"$$",
+ "@@",
+ "@@"};
+diff --git a/Theme/Chicago95/xfwm4/title-3-active.xpm b/Theme/Chicago95/xfwm4/title-3-active.xpm
+index 25813d7..e83b86c 100644
+--- a/Theme/Chicago95/xfwm4/title-3-active.xpm
++++ b/Theme/Chicago95/xfwm4/title-3-active.xpm
+@@ -1,6 +1,6 @@
+ /* XPM */
+ static char * title_middle_active_xpm[] = {
+-"5 24 6 1",
++"5 28 6 1",
+ " 	c None",
+ "+	c #FFFFFF s active_hilight_2",
+ "@	c #C0C0C0 s active_mid_1",
+@@ -29,5 +29,9 @@ static char * title_middle_active_xpm[] = {
+ "$$$$$",
+ "$$$$$",
+ "$$$$$",
++"$$$$$",
++"$$$$$",
++"$$$$$",
++"$$$$$",
+ "@@@@@",
+ "@@@@@"};
+diff --git a/Theme/Chicago95/xfwm4/title-3-inactive.xpm b/Theme/Chicago95/xfwm4/title-3-inactive.xpm
+index 22da62c..dbb9779 100644
+--- a/Theme/Chicago95/xfwm4/title-3-inactive.xpm
++++ b/Theme/Chicago95/xfwm4/title-3-inactive.xpm
+@@ -1,6 +1,6 @@
+ /* XPM */
+ static char * title_middle_inactive_xpm[] = {
+-"5 24 6 1",
++"5 28 6 1",
+ " 	c None",
+ "+	c #FFFFFF s inactive_hilight_2",
+ "@	c #C0C0C0 s inactive_mid_1",
+@@ -29,5 +29,9 @@ static char * title_middle_inactive_xpm[] = {
+ "$$$$$",
+ "$$$$$",
+ "$$$$$",
++"$$$$$",
++"$$$$$",
++"$$$$$",
++"$$$$$",
+ "@@@@@",
+ "@@@@@"};
+diff --git a/Theme/Chicago95/xfwm4/title-4-active.xpm b/Theme/Chicago95/xfwm4/title-4-active.xpm
+index d85bfa2..f35c685 100644
+--- a/Theme/Chicago95/xfwm4/title-4-active.xpm
++++ b/Theme/Chicago95/xfwm4/title-4-active.xpm
+@@ -1,6 +1,6 @@
+ /* XPM */
+ static char * title_middle_active_xpm[] = {
+-"2 24 6 1",
++"2 28 6 1",
+ " 	c None",
+ "+	c #FFFFFF s active_hilight_2",
+ "@	c #C0C0C0 s active_mid_1",
+@@ -29,5 +29,9 @@ static char * title_middle_active_xpm[] = {
+ "$$",
+ "$$",
+ "$$",
++"$$",
++"$$",
++"$$",
++"$$",
+ "@@",
+ "@@"};
+diff --git a/Theme/Chicago95/xfwm4/title-4-inactive.xpm b/Theme/Chicago95/xfwm4/title-4-inactive.xpm
+index 314943d..1ca2aef 100644
+--- a/Theme/Chicago95/xfwm4/title-4-inactive.xpm
++++ b/Theme/Chicago95/xfwm4/title-4-inactive.xpm
+@@ -1,6 +1,6 @@
+ /* XPM */
+ static char * title_middle_inactive_xpm[] = {
+-"2 24 6 1",
++"2 28 6 1",
+ " 	c None",
+ "+	c #FFFFFF s inactive_hilight_2",
+ "@	c #C0C0C0 s inactive_mid_1",
+@@ -29,5 +29,9 @@ static char * title_middle_inactive_xpm[] = {
+ "$$",
+ "$$",
+ "$$",
++"$$",
++"$$",
++"$$",
++"$$",
+ "@@",
+ "@@"};
+diff --git a/Theme/Chicago95/xfwm4/title-5-active.xpm b/Theme/Chicago95/xfwm4/title-5-active.xpm
+index 25813d7..e83b86c 100644
+--- a/Theme/Chicago95/xfwm4/title-5-active.xpm
++++ b/Theme/Chicago95/xfwm4/title-5-active.xpm
+@@ -1,6 +1,6 @@
+ /* XPM */
+ static char * title_middle_active_xpm[] = {
+-"5 24 6 1",
++"5 28 6 1",
+ " 	c None",
+ "+	c #FFFFFF s active_hilight_2",
+ "@	c #C0C0C0 s active_mid_1",
+@@ -29,5 +29,9 @@ static char * title_middle_active_xpm[] = {
+ "$$$$$",
+ "$$$$$",
+ "$$$$$",
++"$$$$$",
++"$$$$$",
++"$$$$$",
++"$$$$$",
+ "@@@@@",
+ "@@@@@"};
+diff --git a/Theme/Chicago95/xfwm4/title-5-inactive.xpm b/Theme/Chicago95/xfwm4/title-5-inactive.xpm
+index 22da62c..dbb9779 100644
+--- a/Theme/Chicago95/xfwm4/title-5-inactive.xpm
++++ b/Theme/Chicago95/xfwm4/title-5-inactive.xpm
+@@ -1,6 +1,6 @@
+ /* XPM */
+ static char * title_middle_inactive_xpm[] = {
+-"5 24 6 1",
++"5 28 6 1",
+ " 	c None",
+ "+	c #FFFFFF s inactive_hilight_2",
+ "@	c #C0C0C0 s inactive_mid_1",
+@@ -29,5 +29,9 @@ static char * title_middle_inactive_xpm[] = {
+ "$$$$$",
+ "$$$$$",
+ "$$$$$",
++"$$$$$",
++"$$$$$",
++"$$$$$",
++"$$$$$",
+ "@@@@@",
+ "@@@@@"};
+diff --git a/Theme/Chicago95/xfwm4/top-left-active.xpm b/Theme/Chicago95/xfwm4/top-left-active.xpm
+index a1d6da6..813280e 100644
+--- a/Theme/Chicago95/xfwm4/top-left-active.xpm
++++ b/Theme/Chicago95/xfwm4/top-left-active.xpm
+@@ -1,6 +1,6 @@
+ /* XPM */
+ static char * top_left_active_xpm[] = {
+-"4 24 6 1",
++"4 28 6 1",
+ "       c None",
+ "$	c #FFFFFF s active_hilight_1",
+ "+	c #DFDFDF s active_hilight_2",
+@@ -30,4 +30,8 @@ static char * top_left_active_xpm[] = {
+ "$+&@",
+ "$+&@",
+ "$+&@",
++"$+&@",
++"$+&@",
++"$+&@",
++"$+&@",
+ "$+&@"};
+diff --git a/Theme/Chicago95/xfwm4/top-left-inactive.xpm b/Theme/Chicago95/xfwm4/top-left-inactive.xpm
+index fcdb2fd..1a05f70 100644
+--- a/Theme/Chicago95/xfwm4/top-left-inactive.xpm
++++ b/Theme/Chicago95/xfwm4/top-left-inactive.xpm
+@@ -1,6 +1,6 @@
+ /* XPM */
+ static char * top_left_inactive_xpm[] = {
+-"4 24 6 1",
++"4 28 6 1",
+ "       c None",
+ "$	c #FFFFFF s inactive_hilight_1",
+ "+	c #DFDFDF s inactive_hilight_2",
+@@ -30,4 +30,8 @@ static char * top_left_inactive_xpm[] = {
+ "$+&@",
+ "$+&@",
+ "$+&@",
++"$+&@",
++"$+&@",
++"$+&@",
++"$+&@",
+ "$+&@"};
+diff --git a/Theme/Chicago95/xfwm4/top-right-active.xpm b/Theme/Chicago95/xfwm4/top-right-active.xpm
+index cc751ce..c97c812 100644
+--- a/Theme/Chicago95/xfwm4/top-right-active.xpm
++++ b/Theme/Chicago95/xfwm4/top-right-active.xpm
+@@ -1,6 +1,6 @@
+ /* XPM */
+ static char * top_right_active_xpm[] = {
+-"4 24 7 1",
++"4 28 7 1",
+ " 	c None",
+ ".	c #000000 s active_shadow_1",
+ "+	c #FFFFFF s active_hilight_2",
+@@ -31,4 +31,8 @@ static char * top_right_active_xpm[] = {
+ "@&#.",
+ "@&#.",
+ "@&#.",
++"@&#.",
++"@&#.",
++"@&#.",
++"@&#.",
+ "@&#."};
+diff --git a/Theme/Chicago95/xfwm4/top-right-inactive.xpm b/Theme/Chicago95/xfwm4/top-right-inactive.xpm
+index c985b5f..137b4ee 100644
+--- a/Theme/Chicago95/xfwm4/top-right-inactive.xpm
++++ b/Theme/Chicago95/xfwm4/top-right-inactive.xpm
+@@ -1,6 +1,6 @@
+ /* XPM */
+ static char * top_right_inactive_xpm[] = {
+-"4 24 7 1",
++"4 28 7 1",
+ " 	c None",
+ ".	c #000000 s inactive_shadow_1",
+ "+	c #FFFFFF s inactive_hilight_2",
+@@ -31,4 +31,8 @@ static char * top_right_inactive_xpm[] = {
+ "@&#.",
+ "@&#.",
+ "@&#.",
++"@&#.",
++"@&#.",
++"@&#.",
++"@&#.",
+ "@&#."};
