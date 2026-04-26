@@ -3,6 +3,7 @@
 set -xueo pipefail
 
 diff=$(realpath 20-chicago95.diff)
+xfwm4_diff=$(realpath 20-chicago95-xfwm4.diff)
 
 # Fetch
 TMPDIR=$(mktemp -d)
@@ -16,6 +17,9 @@ cd /usr/src/chicago95
 
 # TODO: upstream this patch
 patch -p1 <$diff
+
+# Resize xfwm4 title bar to 28 px with square buttons
+patch -p1 <$xfwm4_diff
 
 # Themes
 cp -r Theme/Chicago95 /usr/share/themes
@@ -94,6 +98,5 @@ plymouth-set-default-theme Chicago95
 # Panel config
 cd /usr/share/winblues/chezmoi/dot_local/share/xfce-panel-profile
 tar cjf /usr/share/xfce4-panel-profiles/layouts/chicago-95.tar.bz2 config.txt launcher-*
-
 
 rm -rf "$TMPDIR"

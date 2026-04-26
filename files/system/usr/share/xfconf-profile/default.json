@@ -27,7 +27,7 @@
       "/misc-toolbar-default": true
     },
     "xfce4-helpers": {
-      "/WebBrowser": "org.mozilla.firefox.desktop",
+      "/WebBrowser": "firefox.desktop",
       "/MailReader": "epyrus.desktop"
     }
   },

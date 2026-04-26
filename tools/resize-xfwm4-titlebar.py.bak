@@ -1,0 +1,251 @@
+#!/usr/bin/env python3
+"""resize-xfwm4-titlebar.py
+
+Resizes Chicago95 xfwm4 window-decoration XPMs to match a target title-bar
+height, keeping the Win95 aesthetic intact.
+
+LIVE TEST (iterate quickly):
+    python3 tools/resize-xfwm4-titlebar.py \\
+        --src /usr/share/themes/Chicago95/xfwm4 \\
+        --dst ~/.themes/Chicago95/xfwm4 \\
+        --height 28
+    xfwm4 --replace &
+
+GENERATE DIFF (for committing to the blue95 repo):
+    python3 tools/resize-xfwm4-titlebar.py \\
+        --src ~/Projects/winblues/Chicago95/Theme/Chicago95/xfwm4 \\
+        --height 28          # edits files in-place
+    git -C ~/Projects/winblues/Chicago95 diff \\
+        > files/scripts/20-chicago95-xfwm4.diff
+
+XPM families handled
+--------------------
+title-{1-5}-{active,inactive}     Title bar background tiles.
+                                   Extra rows inserted before last 2 footer rows.
+
+top-{left,right}-{active,inactive} Top-corner frame pieces.
+                                   Same strategy as title XPMs.
+
+close / hide / maximize / maximize-toggled  (× active, inactive, pressed)
+                                   Button face XPMs.
+                                   Structure (original 24 px):
+                                     rows  0-3  transparent   (preamble)
+                                     rows  4-5  titlebar colour
+                                     rows  6-7  button top edge
+                                     rows  8-17 button body   ← resized here
+                                     rows 18-19 button bottom edge
+                                     rows 20-21 titlebar colour
+                                     rows 22-23 transparent   (postamble)
+                                   extra/2 plain body rows are inserted at the
+                                   top AND bottom of the body section so the
+                                   icon artwork stays centred.
+
+Skipped
+-------
+menu-*          17 px non-standard icon; xfwm4 centres it independently.
+shade-* stick-* 1×1 dummy placeholders.
+"""
+
+import argparse
+import os
+import re
+import sys
+
+DEFAULT_HEIGHT = 28
+
+# Button XPM layout constants (rows, 0-indexed from first pixel row).
+# These hold true for any overall height: the preamble is always 8 rows and
+# the postamble is always 6 rows, regardless of how many body rows there are.
+BTN_PREAMBLE  = 8   # transparent(4) + titlebar(2) + edge_top(2)
+BTN_POSTAMBLE = 6   # edge_bot(2)    + titlebar(2) + transparent(2)
+
+
+# ---------------------------------------------------------------------------
+# XPM I/O helpers
+# ---------------------------------------------------------------------------
+
+def read_xpm(path: str) -> list[str]:
+    with open(path) as f:
+        return f.readlines()
+
+
+def write_xpm(path: str, lines: list[str]) -> None:
+    with open(path, "w") as f:
+        f.writelines(lines)
+
+
+def parse_dims(lines: list[str]) -> tuple[int, int, int, int, int, int]:
+    """Return (dim_idx, width, height, num_colors, cpp, pixel_start)."""
+    for i, line in enumerate(lines):
+        m = re.search(r'"(\d+) (\d+) (\d+) (\d+)"', line)
+        if m:
+            w, h, nc, cpp = map(int, m.groups())
+            return i, w, h, nc, cpp, i + 1 + nc
+    raise ValueError("No XPM dimensions line found")
+
+
+def bump_height(lines: list[str], dim_idx: int,
+                w: int, old_h: int, nc: int, cpp: int, new_h: int) -> list[str]:
+    lines = list(lines)
+    lines[dim_idx] = lines[dim_idx].replace(
+        f'"{w} {old_h} {nc} {cpp}"',
+        f'"{w} {new_h} {nc} {cpp}"',
+    )
+    return lines
+
+
+# ---------------------------------------------------------------------------
+# Title / top-corner XPMs
+# ---------------------------------------------------------------------------
+
+def resize_title_or_top(lines: list[str], extra: int, is_top: bool) -> list[str]:
+    """Insert `extra` body rows before the last 2 footer rows."""
+    dim_idx, w, old_h, nc, cpp, pixel_start = parse_dims(lines)
+    lines = bump_height(lines, dim_idx, w, old_h, nc, cpp, old_h + extra)
+
+    # First repeating body row:
+    #   title XPMs: 4-row header (shadow / hilight / border / mid), body at +4
+    #   top   XPMs: 3-row header (3 special corner rows),           body at +3
+    header_rows = 3 if is_top else 4
+    body_row = lines[pixel_start + header_rows]
+
+    insert_at = pixel_start + old_h - 2   # before the last 2 footer rows
+    return lines[:insert_at] + [body_row] * extra + lines[insert_at:]
+
+
+# ---------------------------------------------------------------------------
+# Button XPMs
+# ---------------------------------------------------------------------------
+
+def resize_button(lines: list[str], extra: int) -> list[str]:
+    """Insert extra/2 plain body rows at the top and bottom of the button body."""
+    dim_idx, w, old_h, nc, cpp, pixel_start = parse_dims(lines)
+
+    if old_h <= 4:
+        # 1×1 dummy placeholders (shade, stick) — leave untouched
+        return lines
+
+    if extra % 2 != 0:
+        raise ValueError(f"extra ({extra}) must be even for symmetric button padding")
+
+    # The last body row (just before the postamble shadow rows) is always a
+    # plain @@-fill row for every button type — use it as the insertion template.
+    plain_row = lines[pixel_start + old_h - BTN_POSTAMBLE - 1]
+
+    lines = bump_height(lines, dim_idx, w, old_h, nc, cpp, old_h + extra)
+
+    half = extra // 2
+    body_len = old_h - BTN_PREAMBLE - BTN_POSTAMBLE   # e.g. 10 for original 24 px
+
+    # Insert at top of body (right after preamble)
+    top_insert = pixel_start + BTN_PREAMBLE
+    lines = lines[:top_insert] + [plain_row] * half + lines[top_insert:]
+
+    # Insert at bottom of body (right after the now-shifted body rows)
+    bot_insert = top_insert + half + body_len
+    lines = lines[:bot_insert] + [plain_row] * half + lines[bot_insert:]
+
+    return lines
+
+
+# ---------------------------------------------------------------------------
+# Main
+# ---------------------------------------------------------------------------
+
+def main() -> None:
+    parser = argparse.ArgumentParser(
+        description="Resize Chicago95 xfwm4 title-bar XPMs to a target height.",
+        formatter_class=argparse.RawDescriptionHelpFormatter,
+        epilog=__doc__,
+    )
+    parser.add_argument(
+        "--height", type=int, default=DEFAULT_HEIGHT,
+        help=f"Target title-bar height in pixels (default: {DEFAULT_HEIGHT})",
+    )
+    parser.add_argument(
+        "--src", required=True,
+        help="Source xfwm4 directory (e.g. /usr/share/themes/Chicago95/xfwm4)",
+    )
+    parser.add_argument(
+        "--dst", default=None,
+        help="Destination xfwm4 directory; defaults to --src (in-place edit)",
+    )
+    args = parser.parse_args()
+
+    src = os.path.expanduser(args.src)
+    dst = os.path.expanduser(args.dst) if args.dst else src
+
+    if not os.path.isdir(src):
+        sys.exit(f"Error: src directory not found: {src}")
+    os.makedirs(dst, exist_ok=True)
+
+    # Detect current height from title-3-active.xpm
+    probe = os.path.join(src, "title-3-active.xpm")
+    if not os.path.exists(probe):
+        sys.exit(f"Error: {probe} not found — is --src pointing at an xfwm4 dir?")
+
+    _, _, current_h, _, _, _ = parse_dims(read_xpm(probe))
+    extra = args.height - current_h
+
+    if extra == 0:
+        print(f"Title bar is already {current_h} px. Nothing to do.")
+        return
+    if extra < 0:
+        sys.exit(
+            f"Error: target {args.height} px < current {current_h} px. "
+            "Shrinking is not supported."
+        )
+    if extra % 2 != 0:
+        sys.exit(
+            f"Error: extra rows needed ({extra}) must be even "
+            "so buttons can be padded symmetrically."
+        )
+
+    print(f"Resizing xfwm4 title bar: {current_h} px → {args.height} px (+{extra} rows)")
+    print(f"  src: {src}")
+    print(f"  dst: {dst}")
+    print()
+
+    def process(fname: str, transform):
+        in_path  = os.path.join(src, fname)
+        out_path = os.path.join(dst, fname)
+        if not os.path.exists(in_path):
+            print(f"  SKIP (not found): {fname}")
+            return
+        lines = read_xpm(in_path)
+        lines = transform(lines)
+        write_xpm(out_path, lines)
+        print(f"  {fname}")
+
+    # --- Title background tiles ---
+    for i in range(1, 6):
+        for state in ("active", "inactive"):
+            process(f"title-{i}-{state}.xpm",
+                    lambda l: resize_title_or_top(l, extra, is_top=False))
+
+    # --- Top-corner frame pieces ---
+    for side in ("left", "right"):
+        for state in ("active", "inactive"):
+            process(f"top-{side}-{state}.xpm",
+                    lambda l: resize_title_or_top(l, extra, is_top=True))
+
+    # --- Button XPMs ---
+    btn_bases = ["close", "hide", "maximize", "maximize-toggled"]
+    for btn in btn_bases:
+        for state in ("active", "inactive", "pressed"):
+            process(f"{btn}-{state}.xpm",
+                    lambda l: resize_button(l, extra))
+
+    print()
+    print("Done.")
+    print()
+    print("To reload the theme live:")
+    print("  xfwm4 --replace &")
+    print()
+    print("To generate a diff (run after editing the Chicago95 repo in-place):")
+    print("  git -C ~/Projects/winblues/Chicago95 diff \\")
+    print("    > files/scripts/20-chicago95-xfwm4.diff")
+
+
+if __name__ == "__main__":
+    main()
