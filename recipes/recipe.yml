@@ -15,6 +15,7 @@ modules:
     install:
       packages:
       - audacious
+      - audacious-plugins-ffaudio
       - btop
       - catfish
       - edk2-ovmf
