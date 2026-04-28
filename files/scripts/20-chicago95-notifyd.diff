@@ -1,0 +1,12 @@
+diff --git a/Theme/Chicago95/xfce-notify-4.0/gtk.css b/Theme/Chicago95/xfce-notify-4.0/gtk.css
+index de79800..308e848 100755
+--- a/Theme/Chicago95/xfce-notify-4.0/gtk.css
++++ b/Theme/Chicago95/xfce-notify-4.0/gtk.css
+@@ -14,3 +14,7 @@
+   padding: 2px;
+   
+ }
++
++#XfceNotifyWindow image {
++  -gtk-icon-style: regular;
++}
