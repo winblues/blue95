@@ -9,4 +9,5 @@
   </property>
   <property name="theme" type="string" value="Chicago95"/>
   <property name="notify-location" type="string" value="bottom-right"/>
+  <property name="initial-opacity" type="double" value="1.0"/>
 </channel>

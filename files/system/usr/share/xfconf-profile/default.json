@@ -21,7 +21,8 @@
     },
     "xfce4-notifyd": {
       "/theme": "Chicago95",
-      "/notify-location": "bottom-right"
+      "/notify-location": "bottom-right",
+      "/initial-opacity": 1.0
     },
     "xfce4-terminal": {
       "/misc-toolbar-default": true
