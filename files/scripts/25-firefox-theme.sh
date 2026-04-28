@@ -65,6 +65,13 @@ cp "$WIN95_DIR/src/shared/colors/"*.css "$CHROME_DEST/CSS/colors/"
 # Do NOT also place firefox_author.css in CSS/ — fx-autoconfig would load it via a chrome://
 # URL where the same relative import resolves to a nonexistent double-nested path.
 cp "$WIN95_DIR/dist/firefox_author.css" "$CHROME_DEST/userChrome.css"
+# Blue95: bump UI font size from Win95's original 11px to 14px for readability
+# on modern displays. This overrides --text-ui-size via cascade (later :root wins).
+cat >> "$CHROME_DEST/userChrome.css" << 'CSSEOF'
+
+/* Blue95: increase UI font size for readability on modern displays */
+:root { --text-ui-size: 14px; }
+CSSEOF
 
 # JS userscript and its imports
 cp "$WIN95_DIR/src/firefox/win95_main.uc.mjs"          "$CHROME_DEST/JS/"
