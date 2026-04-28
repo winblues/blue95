@@ -22,7 +22,7 @@ wget -q "https://github.com/ricewind012/win95-themes/archive/${WIN95_SHA}.zip" -
 unzip -q win95.zip
 WIN95_DIR="win95-themes-${WIN95_SHA}"
 cd "$WIN95_DIR"
-npm ci --prefer-offline
+npm install --prefer-offline
 npm run build firefox agent
 npm run build firefox author
 npm run build firefox global
