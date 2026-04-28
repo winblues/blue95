@@ -53,13 +53,17 @@ cp "$FXAC_DIR/program/defaults/pref/config-prefs.js" \
 # ---------------------------------------------------------------------------
 PROFILE_TEMPLATE=/usr/lib64/firefox/browser/defaults/profile
 CHROME_DEST="$PROFILE_TEMPLATE/chrome"
-mkdir -p "$CHROME_DEST/CSS" "$CHROME_DEST/JS/userscript" "$CHROME_DEST/utils"
+mkdir -p "$CHROME_DEST/CSS/colors" "$CHROME_DEST/JS/userscript" "$CHROME_DEST/utils"
 
 # Compiled CSS
 cp "$WIN95_DIR/dist/firefox_agent.css"  "$CHROME_DEST/CSS/win95_agent.uc.css"
-cp "$WIN95_DIR/dist/firefox_author.css" "$CHROME_DEST/CSS/win95_author.uc.css"
 cp "$WIN95_DIR/dist/firefox_global.css" "$CHROME_DEST/CSS/firefox_global.uc.css"
-# userChrome.css is read by Firefox directly; author sheet is identical
+# Color theme files (imported by firefox_global.uc.css as relative "colors/..." paths)
+cp "$WIN95_DIR/src/shared/colors/"*.css "$CHROME_DEST/CSS/colors/"
+# userChrome.css: loaded by Firefox natively (not via fx-autoconfig) from the chrome root.
+# Its relative @import "./CSS/firefox_global.uc.css" resolves correctly from here.
+# Do NOT also place firefox_author.css in CSS/ — fx-autoconfig would load it via a chrome://
+# URL where the same relative import resolves to a nonexistent double-nested path.
 cp "$WIN95_DIR/dist/firefox_author.css" "$CHROME_DEST/userChrome.css"
 
 # JS userscript and its imports
@@ -90,6 +94,15 @@ pref("identity.fxaccounts.enabled", false);
 
 // Required for sidebar theming; may be removed by Mozilla eventually
 pref("sidebar.revamp", true);
+
+// Win95 color theme (controls which colors/ CSS is loaded)
+pref("win95.colors", "win2000");
+
+// Let xfwm4/Chicago95 draw the Win95-style WM title bar instead of Firefox CSD
+pref("browser.tabs.inTitlebar", 0);
+
+// Show text labels on toolbar buttons (classic Win95 IE style)
+pref("win95.navbar-button-labels", true);
 EOF
 
 # ---------------------------------------------------------------------------
