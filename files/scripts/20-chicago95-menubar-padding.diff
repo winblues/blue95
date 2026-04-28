@@ -1,0 +1,15 @@
+diff --git a/Theme/Chicago95/gtk-3.0/gtk-menu.css b/Theme/Chicago95/gtk-3.0/gtk-menu.css
+index ec5c90f..5b5ed6c 100644
+--- a/Theme/Chicago95/gtk-3.0/gtk-menu.css
++++ b/Theme/Chicago95/gtk-3.0/gtk-menu.css
+@@ -48,8 +48,8 @@ menubar,
+   color: @menu_text_color;
+   text-shadow: none;
+   -gtk-icon-shadow: none; }
+-  menubar menuitem {
+-    padding: 0px 6px;
++  menubar menuitem {
++    padding: 1px 6px;
+     min-height:20px; }
+ 
+ menu separator {
