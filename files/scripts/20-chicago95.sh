@@ -5,6 +5,7 @@ set -xueo pipefail
 diff=$(realpath 20-chicago95.diff)
 xfwm4_diff=$(realpath 20-chicago95-xfwm4.diff)
 notifyd_diff=$(realpath 20-chicago95-notifyd.diff)
+menubar_diff=$(realpath 20-chicago95-menubar-padding.diff)
 
 # Fetch
 TMPDIR=$(mktemp -d)
@@ -24,6 +25,9 @@ patch -p1 <$xfwm4_diff
 
 # Fix volume notification icon rendering (force regular/color icons over symbolic)
 patch -p1 <$notifyd_diff
+
+# Fix menubar dropdown popup appearing too close to menu bar text
+patch -p1 <$menubar_diff
 
 # Themes
 cp -r Theme/Chicago95 /usr/share/themes
