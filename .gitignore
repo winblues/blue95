@@ -6,3 +6,4 @@ cosign.private
 *.iso
 *.iso-CHECKSUM
 scratch/
+vendor/

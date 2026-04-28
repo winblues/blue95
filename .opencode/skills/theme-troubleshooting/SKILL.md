@@ -1,16 +1,14 @@
 ---
-name: blue95-visual-fix
+name: theme-troubleshooting
 description: Diagnose and fix visual/theming issues in Blue95 (XFCE, Chicago95 GTK theme, icon themes, xfconf defaults) and wire fixes into the build pipeline
 ---
 
 ## What I Do
 
-Guide the full workflow for diagnosing visual regressions or styling bugs in Blue95,
+Guide the full workflow for diagnosing visual or styling bugs in Blue95,
 applying fixes, wiring them into the build pipeline and drafting upstream PRs.
 
----
-
-## Architecture Refresher
+## Theme Architecture
 
 - **Chicago95** is pinned by SHA (`CHICAGO95_SHA`) in `files/scripts/20-chicago95.sh`.
 - Patches to Chicago95 live as `.diff` files in `files/scripts/` and are applied in
@@ -26,12 +24,9 @@ applying fixes, wiring them into the build pipeline and drafting upstream PRs.
 - Prefer `/usr` over `/etc` for system-wide changes; use chezmoi only for true `$HOME`-only
   settings.
 
----
-
 ## Diagnosis Workflow
 
 1. **Identify the GTK widget and CSS node.**
-
 
 2. **Identify the icon lookup path (if icon-related).**
    - Check `/usr/share/themes/Chicago95/ and `/usr/share/icons/Chicago95/`.
@@ -47,8 +42,6 @@ applying fixes, wiring them into the build pipeline and drafting upstream PRs.
      `~/.themes/Chicago95/` (same relative path), edit there, then restart the relevant
      daemon (e.g. `pkill xfce4-notifyd`).
    - xfconf: `xfconf-query -c <channel> -p <key> -s <value> --create -t <type>`.
-
----
 
 ## Fix Pipeline
 
@@ -78,20 +71,14 @@ applying fixes, wiring them into the build pipeline and drafting upstream PRs.
   correct category/size path.
 - If this is a Chicago95 upstream issue, include it in the `.diff` file instead.
 
----
-
 ## Upstream PR
 
 After confirming the fix works locally:
 
 1. Commit the change in `~/Projects/winblues/Chicago95` on a branch.
-2. Draft a PR against `grassmunk/Chicago95` with:
+2. Draft language for a PR against `grassmunk/Chicago95` with:
    - **Title**: concise, imperative, e.g. `xfce-notify: force regular icon rendering to prevent symbolic monochrome`
    - **Body**: what was broken, root cause, fix approach, and (if possible) before/after screenshots.
-3. Note the new SHA after the upstream PR merges; update `CHICAGO95_SHA` in
-   `20-chicago95.sh` and drop the corresponding `.diff` file.
-
----
 
 ## Key Files Quick Reference
 
@@ -102,9 +89,9 @@ After confirming the fix works locally:
 | `files/system/etc/skel/.config/xfce4/xfconf/xfce-perchannel-xml/` | xfconf XML defaults for new users |
 | `files/system/usr/share/xfconf-profile/default.json` | xfconf-profile defaults for existing users |
 | `files/system/usr/share/winblues/chezmoi/` | Per-user dotfiles (chezmoi, first-login only) |
-| `~/Projects/winblues/Chicago95/` | Pinned Chicago95 clone — edit here, then diff |
 | `~/.themes/Chicago95/` | Live user override for testing before committing |
-| `~/Projects/winblues/xfce-mirror/` | XFCE daemon sources for reading default values |
+| `vendor/Chicago95/` | Pinned Chicago95 clone edit here, then diff. May not exist. |
+| `vendor/xfce-mirror/` | XFCE source. May need to clone correct components. |
 
 ---
 
