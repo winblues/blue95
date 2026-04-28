@@ -45,26 +45,29 @@ cp "$FXAC_DIR/program/defaults/pref/config-prefs.js" \
    /usr/lib64/firefox/defaults/pref/config-prefs.js
 
 # ---------------------------------------------------------------------------
-# Stage theme files to a well-known path — chezmoi applies them per-profile
-# on first login
+# Install theme files into Firefox's default profile template.
+# Firefox copies this directory into every new profile on first launch,
+# so the theme is applied automatically without any per-user setup.
+# The chezmoi script handles the upgrade case (existing profiles).
 # ---------------------------------------------------------------------------
-THEME_DEST=/usr/share/winblues/firefox-theme
-mkdir -p "$THEME_DEST/CSS" "$THEME_DEST/JS/userscript" "$THEME_DEST/utils"
+PROFILE_TEMPLATE=/usr/lib64/firefox/browser/defaults/profile
+CHROME_DEST="$PROFILE_TEMPLATE/chrome"
+mkdir -p "$CHROME_DEST/CSS" "$CHROME_DEST/JS/userscript" "$CHROME_DEST/utils"
 
 # Compiled CSS
-cp "$WIN95_DIR/dist/firefox_agent.css"  "$THEME_DEST/CSS/win95_agent.uc.css"
-cp "$WIN95_DIR/dist/firefox_author.css" "$THEME_DEST/CSS/win95_author.uc.css"
-cp "$WIN95_DIR/dist/firefox_global.css" "$THEME_DEST/CSS/firefox_global.uc.css"
+cp "$WIN95_DIR/dist/firefox_agent.css"  "$CHROME_DEST/CSS/win95_agent.uc.css"
+cp "$WIN95_DIR/dist/firefox_author.css" "$CHROME_DEST/CSS/win95_author.uc.css"
+cp "$WIN95_DIR/dist/firefox_global.css" "$CHROME_DEST/CSS/firefox_global.uc.css"
 # userChrome.css is read by Firefox directly; author sheet is identical
-cp "$WIN95_DIR/dist/firefox_author.css" "$THEME_DEST/userChrome.css"
+cp "$WIN95_DIR/dist/firefox_author.css" "$CHROME_DEST/userChrome.css"
 
 # JS userscript and its imports
-cp "$WIN95_DIR/src/firefox/win95_main.uc.mjs"          "$THEME_DEST/JS/"
-cp "$WIN95_DIR/src/firefox/userscript/prefs.js"        "$THEME_DEST/JS/userscript/"
-cp "$WIN95_DIR/src/firefox/userscript/resizer.js"      "$THEME_DEST/JS/userscript/"
+cp "$WIN95_DIR/src/firefox/win95_main.uc.mjs"          "$CHROME_DEST/JS/"
+cp "$WIN95_DIR/src/firefox/userscript/prefs.js"        "$CHROME_DEST/JS/userscript/"
+cp "$WIN95_DIR/src/firefox/userscript/resizer.js"      "$CHROME_DEST/JS/userscript/"
 
 # fx-autoconfig profile utils (the actual script loader)
-cp "$FXAC_DIR/profile/chrome/utils/"* "$THEME_DEST/utils/"
+cp "$FXAC_DIR/profile/chrome/utils/"* "$CHROME_DEST/utils/"
 
 # ---------------------------------------------------------------------------
 # System-wide Firefox preferences
