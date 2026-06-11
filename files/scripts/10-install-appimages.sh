@@ -11,7 +11,9 @@ tar xf "$TMPDIR/palemoon.tar.xz"
 ln -s /usr/opt/palemoon/palemoon /usr/bin/palemoon
 
 cd "$TMPDIR"
-curl -Lo epyrus.tar.xz https://www.addons.epyrus.org/download/epyrus-2.1.3.linux-x86_64-gtk3.tar.xz
+EPYRUS_URL=$(curl -s http://www.epyrus.org/download.html \
+  | grep -o 'http://www\.epyrus\.org/epyrus-[^"]*linux-x86_64-gtk3\.tar\.xz')
+curl -Lo epyrus.tar.xz "$EPYRUS_URL"
 cd /usr/opt
 tar xf "$TMPDIR/epyrus.tar.xz"
 ln -s /usr/opt/epyrus/epyrus /usr/bin/epyrus
