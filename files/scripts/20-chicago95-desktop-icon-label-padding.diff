@@ -1,0 +1,16 @@
+diff --git a/Theme/Chicago95/gtk-3.0/apps/xfce.css b/Theme/Chicago95/gtk-3.0/apps/xfce.css
+index 6f13279..0659f9a 100644
+--- a/Theme/Chicago95/gtk-3.0/apps/xfce.css
++++ b/Theme/Chicago95/gtk-3.0/apps/xfce.css
+@@ -17,7 +17,10 @@ XfdesktopIconView.view {
+   background-size: calc(100% - 10px) calc(100% - 10px);
+   color: @selected_bg_color;
+   border-radius: 0px; 
+-  background-color: rgba(0, 0, 0, 0)}
++  background-color: rgba(0, 0, 0, 0);
++  -XfdesktopIconView-label-radius: 7;
++  -XfdesktopIconView-cell-spacing: 1;
++}
+   XfdesktopIconView.view:active {
+     background-image: -gtk-gradient(linear, left top, right bottom, from (@selected_bg_color));
+     text-shadow: none;

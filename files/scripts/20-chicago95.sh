@@ -6,6 +6,7 @@ diff=$(realpath 20-chicago95.diff)
 xfwm4_diff=$(realpath 20-chicago95-xfwm4.diff)
 notifyd_diff=$(realpath 20-chicago95-notifyd.diff)
 menubar_diff=$(realpath 20-chicago95-menubar-padding.diff)
+icon_label_padding_diff=$(realpath 20-chicago95-desktop-icon-label-padding.diff)
 
 # Fetch
 TMPDIR=$(mktemp -d)
@@ -28,6 +29,9 @@ patch -p1 <$notifyd_diff
 
 # Fix menubar dropdown popup appearing too close to menu bar text
 patch -p1 <$menubar_diff
+
+# Add padding to desktop icon labels
+patch -p1 <$icon_label_padding_diff
 
 # Themes
 cp -r Theme/Chicago95 /usr/share/themes
