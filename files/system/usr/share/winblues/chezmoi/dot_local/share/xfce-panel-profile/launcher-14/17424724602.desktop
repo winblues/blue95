@@ -1,14 +1,14 @@
 [Desktop Entry]
 Type=Application
-Exec=/usr/bin/flatpak run --branch=stable --arch=x86_64 --command=firefox --file-forwarding org.mozilla.firefox @@u %u @@
+Exec=/usr/bin/firefox %u
 Terminal=false
 X-MultipleArgs=false
 Icon=firefox
 StartupWMClass=firefox
 DBusActivatable=false
-Categories=GNOME;GTK;Network;WebBrowser;
+Categories=GTK;Network;WebBrowser;
 StartupNotify=true
 Name=Web Browser
-X-XFCE-Source=file:///var/lib/flatpak/exports/share/applications/org.mozilla.firefox.desktop
+X-XFCE-Source=file:///usr/share/applications/firefox.desktop
 Comment=Browse the web
 Path=

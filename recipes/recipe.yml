@@ -70,6 +70,7 @@ modules:
       # Raw RPMs
       - https://github.com/felixrieseberg/clippy/releases/download/v0.4.3/Clippy-0.4.3-1.x86_64.rpm
       - https://github.com/1j01/jspaint/releases/download/v1.0.0-beta.1/jspaint-1.0.0-Linux-x64.rpm
+      - firefox
 
 
   - type: default-flatpaks
@@ -82,7 +83,6 @@ modules:
           - com.tomjwatson.Emote
           - org.geany.Geany
           - org.libreoffice.LibreOffice
-          - org.mozilla.firefox
 
   - type: files
     files:
