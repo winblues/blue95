@@ -45,8 +45,8 @@ modules:
       - strace
       - virt-manager
       - vorbis-tools
-      - wine-ms-sans-serif-fonts
-      - wine-tahoma-fonts
+      - wine-ms-sans-serif-winefonts
+      - wine-tahoma-winefonts
       - xorg-x11-server-Xephyr # to test lightdm
       - xscreensaver-extras
       - xscreensaver-extras-gss
