@@ -50,7 +50,6 @@
         <value type="string" value="xfce4-settings-editor.desktop"/>
         <value type="string" value="org.xfce.mousepad.desktop"/>
         <value type="string" value="virt-manager.desktop"/>
-        <value type="string" value="1password.desktop"/>
         <value type="string" value="palemoon.desktop"/>
       </property>
       <property name="button-icon" type="string" value="xfdesktop-menu"/>
