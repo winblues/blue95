@@ -7,10 +7,6 @@ base-image: ghcr.io/winblues/vauxite
 image-version: 43
 
 modules:
-  - type: bling
-    install:
-      - 1password
-
   - type: dnf
     install:
       packages:

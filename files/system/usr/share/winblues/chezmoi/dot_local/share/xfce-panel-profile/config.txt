@@ -29,7 +29,7 @@
 /plugins/plugin-1/position-categories-alternate true
 /plugins/plugin-1/position-commands-alternate true
 /plugins/plugin-1/position-search-alternate true
-/plugins/plugin-1/recent [<'org.xfce.PanelProfiles.desktop'>, <'xfce4-terminal-emulator.desktop'>, <'xfce4-settings-editor.desktop'>, <'org.xfce.mousepad.desktop'>, <'virt-manager.desktop'>, <'1password.desktop'>]
+/plugins/plugin-1/recent [<'org.xfce.PanelProfiles.desktop'>, <'xfce4-terminal-emulator.desktop'>, <'xfce4-settings-editor.desktop'>, <'org.xfce.mousepad.desktop'>, <'virt-manager.desktop'>]
 /plugins/plugin-1/show-button-title true
 /plugins/plugin-1/sort-categories false
 /plugins/plugin-1/view-mode 2
