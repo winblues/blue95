@@ -38,4 +38,4 @@ URLS=(
 
 TARGET_DIR="/usr/share/backgrounds/Chicago95/Wallpaper"
 
-printf "%s\n" "${URLS[@]}" | xargs -n 1 -P 10 -I{} wget -P "$TARGET_DIR" "{}"
+printf "%s\n" "${URLS[@]}" | xargs -n 1 -P 10 -I{} wget --tries=5 --waitretry=10 -P "$TARGET_DIR" "{}"
